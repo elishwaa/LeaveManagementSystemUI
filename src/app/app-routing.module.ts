@@ -5,8 +5,6 @@ import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { EmployeeHomePageComponent } from './Employee/employee-home-page/employee-home-page.component';
 import { SubmitLeaveComponent } from './sharedComponents/submit-leave/submit-leave.component';
 import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-leave.component';
-import { EditEmployeeDetailsComponent } from './Employee/edit-employee-details/edit-employee-details.component';
-
 
 const routes: Routes = [
   
@@ -29,10 +27,6 @@ const routes: Routes = [
   { 
     path : 'cancel-leave', 
     component: CancelLeaveComponent
-  },
-  {
-    path: 'edit',
-    component: EditEmployeeDetailsComponent
   }
 ];
 

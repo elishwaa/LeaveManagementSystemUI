@@ -17,7 +17,6 @@ import {MatInputModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 
 import {MatDialogModule} from '@angular/material/dialog';
-import { EditEmployeeDetailsComponent } from './Employee/edit-employee-details/edit-employee-details.component';
 import { EditDetailsComponent } from './Employee/edit-details/edit-details.component';
 
 
@@ -29,7 +28,6 @@ import { EditDetailsComponent } from './Employee/edit-details/edit-details.compo
     EmployeeHomePageComponent,
     SubmitLeaveComponent,
     CancelLeaveComponent,
-    EditEmployeeDetailsComponent,
     EditDetailsComponent
   ],
   imports: [
