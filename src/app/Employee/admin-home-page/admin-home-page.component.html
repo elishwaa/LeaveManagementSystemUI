@@ -1,0 +1,32 @@
+<div class="topBar">
+    <a href="http://localhost:4200/">LogOut</a>
+</div>
+<div>
+    <div class="wrapper">
+        <nav id="sidebar">
+            <ul>
+                <li> Approve leave request</li>
+                <li> Employee information</li>
+                <li> Update employee details</li>
+                <li> Audit process</li>
+                <li> Report generation</li>
+            </ul>
+    
+        </nav>     
+    </div>
+</div>
+
+<div class="EmpInfoBox" >
+    <div class="EmpInfo" >        
+        <ul *ngFor="let details of loginparameters">
+            <h1 style="color: rgb(14, 143, 100);">{{details.firstName}}</h1>
+            <li><b>Employee Id</b> : {{details.id}} </li>
+            <li><b>Employee Type</b> : {{details.typeId}} </li>
+            <li><b>Full Name</b> : {{details.firstName}} {{details.middleName}} {{details.lastName}}   </li>
+            <li><b>Email</b> : {{details.email}} </li>
+            <li><b>Salary</b> : {{details.salary}} </li>
+
+        </ul>
+    </div>
+    
+</div>

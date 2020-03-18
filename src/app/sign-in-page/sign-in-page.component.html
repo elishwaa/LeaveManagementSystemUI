@@ -1,0 +1,34 @@
+<div class="LoginDiv">
+    <div class="firstHalf">
+        <img src="https://www.atsi.in/images//inner/emp-payroll.png">
+    </div>
+    <div class="secondHalf">
+
+        <div class="loginBox">
+            <form [formGroup]="signInForm">
+
+                <h1>Leave Management System</h1>
+                <label>Username</label> <br>
+                <input type="text" formControlName = "username"> <br> <br>
+
+                <label>Password</label> <br>
+                <input type="password" formControlName = "password"> <br> <br>
+
+                <label>Employee Type</label> <br>
+                <select formControlName = "empType">
+                    <option *ngFor="let type of empType" [value]="type.id">{{type.name}}</option>
+                    <!-- <option value=1>Admin</option>
+                    <option value=2>Employee</option>
+                    <option value=3>Manager</option> -->
+                </select> <br><br>
+            </form>
+
+            <button (click)="login()"> Login</button> <br> <br>
+            <a></a>
+            <a href="">Forgot Password</a>
+
+        </div>
+
+    </div>
+
+</div>

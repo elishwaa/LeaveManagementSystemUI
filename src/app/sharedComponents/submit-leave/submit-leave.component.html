@@ -1,0 +1,35 @@
+<div class="topBar">
+  <a href="http://localhost:4200/">LogOut</a>
+  <a href="http://localhost:4200/employee-home"> Back </a> 
+</div>
+<div class="submitBox">
+        <form [formGroup]="leaveRequest">
+        
+            <label >Employee Id</label>
+            <input type="number" class="form-control" formControlName = "empId" placeholder="enter your id">
+        
+          <label >Start Date</label>
+          <input type="date" class="form-control" formControlName= "startDate" placeholder="enter start date">
+        
+          <label >End Date</label>
+          <input type="date" class="form-control" formControlName = "endDate" placeholder="enter end date">
+        
+          <label >Leave Type</label><br>
+          <select formControlName = "leaveId"> 
+            <option value=1>Casual Leave</option>
+            <option value=2>Sick Leave</option>
+            <option value=3>Others</option>
+         </select> <br><br>
+       
+            <label >Reason</label>
+            <textarea type="text" class="form-control" formControlName = "reason" placeholder="enter reason"> </textarea>
+         
+      </form>
+        <button class="btn btn-primary" (click)= "SubmitLeave()" >Submit</button>
+
+</div>
+
+<div *ngIf = "returnData" class="dialogBox">
+  <h5> Leave Request Submitted Successfully</h5>
+</div>
+

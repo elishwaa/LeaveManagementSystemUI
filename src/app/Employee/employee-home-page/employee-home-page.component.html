@@ -1,0 +1,35 @@
+<div class="topBar">
+    <button mat-raised-button (click)=logout()>Logout</button>
+    <button mat-raised-button (click)="openDialog()">Edit Info</button>
+    <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+</div>
+<div>
+    <div class="wrapper">
+        <nav id="sidebar">o
+            <ul  >
+                <li><a routerLink="/submit-leave" routerLinkActive="active">Submit Leave request</a></li>
+                <li><a (click) ="getLeaveRequests()">Cancel leave request </a></li>
+                <li><a routerLink="/submit-leave" routerLinkActive="active">Transaction listing</a></li>
+                <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li>
+            </ul>
+            <ul *ngIf = "Type">
+                <li><a>Employee leave requests</a></li>
+                <li><a>Employee leave request status</a> </li>
+            </ul>
+        </nav>     
+    </div>
+</div>
+
+<div class="EmpInfoBox" >
+    <div class="EmpInfo" >        
+        <ul>
+            <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
+            <li><b>Employee Id</b> : {{loginparameters.id}} </li>
+            <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
+            <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
+            <li><b>Email</b> : {{loginparameters.email}} </li>
+            <li><b>Salary</b> : {{loginparameters.salary}} </li>
+            <li><b>Username</b> : {{loginparameters.username}}</li>
+        </ul>
+    </div>
+</div>

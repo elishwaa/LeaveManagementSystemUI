@@ -1,0 +1,38 @@
+<div class="topBar">
+    <a href="http://localhost:4200/">LogOut</a>
+    <a (click)="ReloadEmployeeInfo()"> Back </a> 
+</div>
+<div class="editBox">
+    <form [formGroup]="employeeDetails">
+            
+        <label >Employee Id</label>
+        <input type="number" class="form-control" formControlName = "id" >
+
+        <label >Employee TypeId</label>
+        <input type="number" class="form-control" formControlName = "typeId" >
+
+        <label >First Name</label>
+        <input type="text" class="form-control" formControlName= "firstName" >
+
+        <label >Middle Name</label>
+        <input type="text" class="form-control" formControlName = "middleName" >
+
+        <label >Last Name</label>
+        <input type="text" class="form-control" formControlName = "lastName">
+
+        <label >Email</label>
+        <input type="text" class="form-control" formControlName = "email" >
+
+        <label >Salary</label>
+        <input type="number" class="form-control" formControlName = "salary" >
+
+        <label >Username</label>
+        <input type="text" class="form-control" formControlName = "username" >
+    
+    </form><br>
+    <button (click)="editEmployeeDetails()">Save Changes</button>
+    <div *ngIf = "returnData" >
+        <h5> Employee details submitted Successfully</h5>
+    </div>
+</div>
+

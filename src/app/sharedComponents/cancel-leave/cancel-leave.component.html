@@ -1,0 +1,20 @@
+<div class="topBar">
+    <a href="http://localhost:4200/">LogOut</a>
+    <a href="http://localhost:4200/employee-home"> Back </a> 
+</div>
+<div>
+    <table id="leaveDetails">
+        <tr *ngFor= "let data of leaveRequests; index as i">
+            <td [attr.data-index]="i" hidden>{{data.id}}</td>
+            <td>{{data.empId}}</td>
+            <td>{{data.employeeName}}</td>
+            <td>{{data.startDate}}</td>
+            <td>{{data.endDate}}</td>
+            <td>{{data.leaveId}}</td>
+            <td>{{data.leave}}</td>
+            <td style="color: red;">{{data.status}}</td>
+            <td>{{data.reason}}</td>
+            <td> <button (click)="CancelLeave(i)">Cancel Leave</button></td>            
+        </tr>
+    </table>
+</div>
