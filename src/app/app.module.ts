@@ -19,6 +19,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { EditDetailsComponent } from './Employee/edit-details/edit-details.component';
 import { DeletePopUpComponent } from './sharedComponents/delete-pop-up/delete-pop-up.component';
 import { ChangePasswordPopUpComponent } from './sharedComponents/change-password-pop-up/change-password-pop-up.component';
+import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { ChangePasswordPopUpComponent } from './sharedComponents/change-password
     CancelLeaveComponent,
     EditDetailsComponent,
     DeletePopUpComponent,
-    ChangePasswordPopUpComponent
+    ChangePasswordPopUpComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +52,6 @@ import { ChangePasswordPopUpComponent } from './sharedComponents/change-password
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
-  entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent]
+  entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,ForgotPasswordComponent]
 })
 export class AppModule { }

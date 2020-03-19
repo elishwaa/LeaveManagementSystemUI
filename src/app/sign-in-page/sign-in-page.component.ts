@@ -5,6 +5,9 @@ import { LeaveMgmtService } from '../services/leave-mgmt.service';
 import { Observable } from 'rxjs';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material';
+import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/forgot-password.component';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -25,7 +28,7 @@ export class SignInPageComponent implements OnInit {
   ];
 
   loginDetails: string;
-  constructor(public route: Router, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
+  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
@@ -56,5 +59,16 @@ export class SignInPageComponent implements OnInit {
         this.route.navigateByUrl('employee-home');
       }
     });
+  }
+  forotPassword(){
+    const dialogRef = this.dialog.open(ForgotPasswordComponent, {
+      width: '30%',
+      height: '35%',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+   
   }
 }

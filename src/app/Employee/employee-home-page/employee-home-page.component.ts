@@ -28,7 +28,8 @@ export class EmployeeHomePageComponent implements OnInit {
   returnData: any;
   newPassword:string ;
   reEnterdpassword:string ;
-  constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
+  constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, 
+    public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
@@ -72,42 +73,16 @@ export class EmployeeHomePageComponent implements OnInit {
           }
         )
       }
-    });''
-
-  }
-  openChangePassDialog(id:number): void{
-
-    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
-      width: '25%',
-      height: '40%',
-      data: {
-        password1: this.newPassword  , password2:this.reEnterdpassword
-      }
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && (result.password1 == result.password2)) {
-        this.httpClient.post(environment.apiUrl + 'LeaveRequest/ChangePassword', {id, password: result.password1}).subscribe(
-          data => {
-            debugger
-            if (data) {
-             console.log(data);
-             this.openSnackBar("Password updation","Success!!");
-            }
-          }
-        )
-      }
-    });
   }
+  openChangePassDialog(id:number){
+    this._service.openChangePassDialog(id);
+  }
+  
   logout() {
     this.route.navigateByUrl('');
   }
 
-  openSnackBar(message: string, action:string) {
-    console.log(123);
-    
-    this._snackBar.open(message,action ,{
-      duration: 2000,
-    });
-  }
+ 
 }

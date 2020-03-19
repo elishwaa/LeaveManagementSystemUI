@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams} from '@angular/common/http'
 import { LoginParameters } from '../models/LoginParameters';
 import { environment} from '../../environments/environment'
-
-
+import { ChangePasswordPopUpComponent } from '../sharedComponents/change-password-pop-up/change-password-pop-up.component';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +21,11 @@ export class LeaveMgmtService {
   endDate:Date;
   leaveType:string;
   reason:string;
+  newPassword: any;
+  reEnterdpassword: any;
 
-  constructor(public route: Router, public httpClient: HttpClient,private injector: Injector ){
+  constructor(public route: Router, public httpClient: HttpClient,private injector: Injector,
+    private _snackBar: MatSnackBar,public dialog: MatDialog ){
 
    }
    
@@ -40,4 +43,38 @@ export class LeaveMgmtService {
    updateSessionStorage(data:any){
      sessionStorage.setItem('employee',JSON.stringify(data) )
    }
+   openChangePassDialog(id:number): void{
+
+    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
+      width: '25%',
+      height: '40%',
+      data: {
+        password1: this.newPassword  , password2:this.reEnterdpassword
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && (result.password1 == result.password2)) {
+        this.httpClient.post(environment.apiUrl + 'LeaveRequest/ChangePassword', {id, password: result.password1}).subscribe(
+          data => {
+            debugger
+            if (data) {
+             console.log(data);
+             this.openSnackBar("Password updation","Success!!");
+            }
+          }
+        )
+      }
+      else{
+        this.openSnackBar("Password mismatch","Operation Failed!!");
+      }
+    });
+  }
+  openSnackBar(message: string, action:string) {
+    console.log(123);
+    
+    this._snackBar.open(message,action ,{
+      duration: 2000,
+    });
+  }
 }
