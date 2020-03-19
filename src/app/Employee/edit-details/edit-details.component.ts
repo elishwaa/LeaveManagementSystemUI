@@ -18,45 +18,19 @@ export interface DialogData {
   styleUrls: ['./edit-details.component.css']
 })
 export class EditDetailsComponent implements OnInit {
-  returnData:any;
-  loginparameters:LoginParameters
-  employeeDetails:FormGroup;
+  // returnData:any;
+  // loginparameters:LoginParameters
+  // employeeDetails:FormGroup;
   constructor(
     public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, public httpClient:HttpClient, public router:Router) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   ngOnInit(): void {
-  
-    
-    // this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
-
-    // this.employeeDetails = new FormGroup({
-    //   id: new FormControl(this.loginparameters.id) ,
-    //   typeId: new FormControl(this.loginparameters.typeId) ,
-    //   firstName: new FormControl(this.loginparameters.firstName),
-    //   middleName: new FormControl(this.loginparameters.middleName),
-    //   lastName: new FormControl(this.loginparameters.lastName),
-    //   email: new FormControl(this.loginparameters.email),
-    //   salary: new FormControl(this.loginparameters.salary),
-    //   username: new FormControl(this.loginparameters.username)
-    // });  
   }
   
 
   onNoClick(): void {
     this.dialogRef.close();
   }
-//   editEmployeeDetails(){
-//     let data = {...this.employeeDetails.value, id:parseInt(this.employeeDetails.value.id), typeId:parseInt(this.employeeDetails.value.typeId),salary:parseInt(this.employeeDetails.value.salary)}
-//     this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit',data ).subscribe(
-//      data =>
-//      {
-//        this.returnData = data;
-//        console.log(this.returnData);
-//      }
-//    )
-//    return this.returnData;
-   
-//  }
 
 }

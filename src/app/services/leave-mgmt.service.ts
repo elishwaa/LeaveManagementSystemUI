@@ -38,8 +38,6 @@ export class LeaveMgmtService {
    }
  
    updateSessionStorage(data:any){
-     console.log(data);
-     
      sessionStorage.setItem('employee',JSON.stringify(data) )
    }
 }

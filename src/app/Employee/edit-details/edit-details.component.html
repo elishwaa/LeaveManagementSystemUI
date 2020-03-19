@@ -1,67 +1,40 @@
 <div class="dialogBox">
-            
-        <!-- <label >Employee Id</label>
-        <input type="number" class="form-control" formControlName = "id" >
+    <mat-form-field class="example-full-width">
+        <mat-label>Employee id</mat-label>
+        <input matInput placeholder="id" [(ngModel)]="data.id">
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Type id</mat-label>
+        <input matInput placeholder="type id" [(ngModel)]="data.typeId">
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input matInput placeholder="firstName" [(ngModel)]="data.firstName" >
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Middle name</mat-label>
+        <input matInput placeholder="middleName" [(ngModel)]="data.middleName" >
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Last name</mat-label>
+        <input matInput placeholder="lastName" [(ngModel)]="data.lastName" >
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email" [(ngModel)]="data.email" >
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Salary</mat-label>
+        <input matInput placeholder="salary" [(ngModel)]="data.salary" >
+    </mat-form-field><br>
+    <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="username" [(ngModel)]="data.username">
+    </mat-form-field><br>
 
-        <label >Employee TypeId</label>
-        <input type="number" class="form-control" formControlName = "typeId" >
-
-        <label >First Name</label>
-        <input type="text" class="form-control" formControlName= "firstName" >
-
-        <label >Middle Name</label>
-        <input type="text" class="form-control" formControlName = "middleName" >
-
-        <label >Last Name</label>
-        <input type="text" class="form-control" formControlName = "lastName">
-
-        <label >Email</label>
-        <input type="text" class="form-control" formControlName = "email" >
-
-        <label >Salary</label>
-        <input type="number" class="form-control" formControlName = "salary" >
-
-        <label >Username</label>
-        <input type="text" class="form-control" formControlName = "username" > -->
-        <!-- <form class="example-form" > -->
-            <mat-form-field class="example-full-width">
-              <mat-label>Employee id</mat-label>
-                <input matInput placeholder="id" [(ngModel)]="data.id">
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Type id</mat-label>
-                <input matInput placeholder="type id" [(ngModel)]="data.typeId">
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>First name</mat-label>
-                <input matInput placeholder="firstName" [(ngModel)]="data.firstName" >
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Middle name</mat-label>
-                <input matInput placeholder="middleName" [(ngModel)]="data.middleName" >
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Last name</mat-label>
-                <input matInput placeholder="lastName" [(ngModel)]="data.lastName" >
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="email" [(ngModel)]="data.email" >
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Salary</mat-label>
-                <input matInput placeholder="salary" [(ngModel)]="data.salary" >
-            </mat-form-field><br>
-            <mat-form-field class="example-full-width">
-                <mat-label>Username</mat-label>
-                <input matInput placeholder="username" [(ngModel)]="data.username">
-            </mat-form-field><br>
-
-    
-    <!-- </form><br> -->
     <button mat-button [mat-dialog-close]="data">Save Changes</button>
     <button mat-button (click)="onNoClick()"> Cancel</button>
-    <div *ngIf = "returnData" >
+    <!-- <div *ngIf = "returnData" >
         <h5> Employee details submitted Successfully</h5>
-    </div>
+    </div> -->
 </div>

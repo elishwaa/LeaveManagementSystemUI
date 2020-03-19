@@ -13,11 +13,12 @@ import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-lea
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
-import {MatInputModule} from '@angular/material';
+import {MatInputModule, MatSnackBar, MatSnackBarModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
-
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditDetailsComponent } from './Employee/edit-details/edit-details.component';
+import { DeletePopUpComponent } from './sharedComponents/delete-pop-up/delete-pop-up.component';
+import { ChangePasswordPopUpComponent } from './sharedComponents/change-password-pop-up/change-password-pop-up.component';
 
 
 @NgModule({
@@ -28,7 +29,9 @@ import { EditDetailsComponent } from './Employee/edit-details/edit-details.compo
     EmployeeHomePageComponent,
     SubmitLeaveComponent,
     CancelLeaveComponent,
-    EditDetailsComponent
+    EditDetailsComponent,
+    DeletePopUpComponent,
+    ChangePasswordPopUpComponent
   ],
   imports: [
     BrowserModule,
@@ -42,10 +45,11 @@ import { EditDetailsComponent } from './Employee/edit-details/edit-details.compo
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSnackBarModule
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
-  entryComponents: [EditDetailsComponent]
+  entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent]
 })
 export class AppModule { }

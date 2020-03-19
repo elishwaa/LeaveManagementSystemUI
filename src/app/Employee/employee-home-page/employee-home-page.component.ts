@@ -8,6 +8,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Observable } from 'rxjs';
 import { EditDetailsComponent } from '../edit-details/edit-details.component';
 import { environment } from 'src/environments/environment';
+import { ChangePasswordPopUpComponent } from 'src/app/sharedComponents/change-password-pop-up/change-password-pop-up.component';
+import { MatSnackBar } from '@angular/material';
 // import { environment} from '../../../environments/environment'
 
 @Component({
@@ -20,10 +22,13 @@ export class EmployeeHomePageComponent implements OnInit {
   loginparameters: LoginParameters;
   loginEmpId: number;
   Type: boolean = false;
+  success:boolean =false;
   employeeType: any;
   LRStatus: any;
   returnData: any;
-  constructor(public _service: LeaveMgmtService, public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
+  newPassword:string ;
+  reEnterdpassword:string ;
+  constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
@@ -61,19 +66,48 @@ export class EmployeeHomePageComponent implements OnInit {
         this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
           data => {
             if (data) {
-              debugger
               this._service.updateSessionStorage(result);
-              debugger
               this.loginparameters = result;
             }
           }
         )
       }
+    });''
+
+  }
+  openChangePassDialog(id:number): void{
+
+    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
+      width: '25%',
+      height: '40%',
+      data: {
+        password1: this.newPassword  , password2:this.reEnterdpassword
+      }
     });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && (result.password1 == result.password2)) {
+        this.httpClient.post(environment.apiUrl + 'LeaveRequest/ChangePassword', {id, password: result.password1}).subscribe(
+          data => {
+            debugger
+            if (data) {
+             console.log(data);
+             this.openSnackBar("Password updation","Success!!");
+            }
+          }
+        )
+      }
+    });
   }
   logout() {
     this.route.navigateByUrl('');
   }
 
+  openSnackBar(message: string, action:string) {
+    console.log(123);
+    
+    this._snackBar.open(message,action ,{
+      duration: 2000,
+    });
+  }
 }
