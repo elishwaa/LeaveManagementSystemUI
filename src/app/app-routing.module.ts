@@ -6,6 +6,7 @@ import { EmployeeHomePageComponent } from './Employee/employee-home-page/employe
 import { SubmitLeaveComponent } from './sharedComponents/submit-leave/submit-leave.component';
 import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-leave.component';
 import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
+import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
 
 const routes: Routes = [
   
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'all-leave-requests',
     component: AllLeaveRequestsComponent
+  },
+  {
+    path: 'all-employees',
+    component: AllEmployeesComponent
   }
 ];
 

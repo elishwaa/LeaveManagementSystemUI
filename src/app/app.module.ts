@@ -22,6 +22,7 @@ import { ChangePasswordPopUpComponent } from './sharedComponents/change-password
 import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forgot-password.component';
 import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
 import {MatTableModule} from '@angular/material/table';
+import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {MatTableModule} from '@angular/material/table';
     DeletePopUpComponent,
     ChangePasswordPopUpComponent,
     ForgotPasswordComponent,
-    AllLeaveRequestsComponent
+    AllLeaveRequestsComponent,
+    AllEmployeesComponent
   ],
   imports: [
     BrowserModule,

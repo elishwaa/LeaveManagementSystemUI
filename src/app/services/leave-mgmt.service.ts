@@ -81,4 +81,7 @@ export class LeaveMgmtService {
       duration: 2000,
     });
   }
+  getAllEmployees(): Observable<any>{
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/allEmployees')
+  }
 }

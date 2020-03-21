@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaveMgmtService } from '../../services/leave-mgmt.service';
 import { LoginParameters } from '../../models/LoginParameters'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -9,19 +10,28 @@ import { LoginParameters } from '../../models/LoginParameters'
 })
 export class AdminHomePageComponent implements OnInit {
 
-  loginparameters: LoginParameters[]
-  constructor(public _service: LeaveMgmtService) { }
+  loginparameters: LoginParameters
+  constructor(public _service: LeaveMgmtService, public route: Router) { }
 
   ngOnInit() {
 
-    // this._service.getEmployeeInfo()
-    //   .subscribe
-    //   (
-    //     data => {
-    //       this.loginparameters = data;
-    //     }
-    //   )
-
+    this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
   }
 
+  AllLeaveRequests(){
+    this._service.AllLeaveRequests(this.loginparameters.id).subscribe((details) => {
+      debugger;
+      console.log(details);
+      if (details) {
+        sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        // this._service.allLeaveRequests[] = details;
+      }
+      this.route.navigateByUrl('all-leave-requests');
+    });
+  }
+  getAllEmployees(){
+    // this._service.adminId = this.loginparameters.id
+    this._service.getAllEmployees();
+    this.route.navigateByUrl('all-employees')
+  }
 }

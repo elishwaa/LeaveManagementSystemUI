@@ -32,9 +32,9 @@ export class SignInPageComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      username: new FormControl('charls'),
-      password: new FormControl('charls@123'),
-      empType: new FormControl(3)
+      username: new FormControl('Admin'),
+      password: new FormControl('irene123'),
+      empType: new FormControl(1)
     });
   }
 
@@ -48,17 +48,19 @@ export class SignInPageComponent implements OnInit {
         sessionStorage.setItem('employee', JSON.stringify(details));
         // this._service.employeeType = details.typeId;
         sessionStorage.setItem('empType', details.typeId);
+        // console.log(details.typeId);
+        
         
       }
-      if (sessionStorage.getItem(details.empType = '1')){
+      if (details.typeId == 1){
         this.route.navigateByUrl('admin-home');
       }
-      else if (sessionStorage.getItem(details.empType = '2')){
+      else if (details.typeId == 2 || details.typeId == 3){
         this.route.navigateByUrl('employee-home');
       }
-      else{
-        this.route.navigateByUrl('employee-home');
-      }
+      // else{
+      //   this.route.navigateByUrl('employee-home');
+      // }
     });
   }
   forotPassword(){

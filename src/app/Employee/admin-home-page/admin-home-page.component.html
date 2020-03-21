@@ -5,8 +5,8 @@
     <div class="wrapper">
         <nav id="sidebar">
             <ul>
-                <li> Approve leave request</li>
-                <li> Employee information</li>
+                <li (click)="AllLeaveRequests()"> Approve leave request</li>
+                <li (click)="getAllEmployees()"> Employee information</li>
                 <li> Update employee details</li>
                 <li> Audit process</li>
                 <li> Report generation</li>
@@ -18,13 +18,14 @@
 
 <div class="EmpInfoBox" >
     <div class="EmpInfo" >        
-        <ul *ngFor="let details of loginparameters">
-            <h1 style="color: rgb(14, 143, 100);">{{details.firstName}}</h1>
-            <li><b>Employee Id</b> : {{details.id}} </li>
-            <li><b>Employee Type</b> : {{details.typeId}} </li>
-            <li><b>Full Name</b> : {{details.firstName}} {{details.middleName}} {{details.lastName}}   </li>
-            <li><b>Email</b> : {{details.email}} </li>
-            <li><b>Salary</b> : {{details.salary}} </li>
+        <ul>
+            <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
+            <li><b>Employee Id</b> : {{loginparameters.id}} </li>
+            <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
+            <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
+            <li><b>Email</b> : {{loginparameters.email}} </li>
+            <li><b>Salary</b> : {{loginparameters.salary}} </li>
+            <li><b>Username</b> : {{loginparameters.username}}</li>
 
         </ul>
     </div>

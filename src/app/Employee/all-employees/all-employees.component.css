@@ -4,7 +4,7 @@ table {
   }
 
   .example-container {
-    height: 80%;
+    height: auto;
     overflow: auto;
     margin: 5%;
     margin-left: 8%;
