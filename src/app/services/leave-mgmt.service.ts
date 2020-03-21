@@ -6,16 +6,15 @@ import { LoginParameters } from '../models/LoginParameters';
 import { environment} from '../../environments/environment'
 import { ChangePasswordPopUpComponent } from '../sharedComponents/change-password-pop-up/change-password-pop-up.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { LeaveRequests } from '../models/leaveRequests';
 
 @Injectable({
   providedIn: 'root'
 })
 export class LeaveMgmtService {
   loginparameters: LoginParameters;
-  //loginparameters : any;
-  webApi = 'https://localhost:44398/api/Login/GetLogin'
-  // LRwebApi = 'https://localhost:44398/api/LeaveRequest/GetLeaveRequests'
-  employeeType: number;
+  webApi = 'https://localhost:44398/api/Login/GetLogin';
+  // employeeType: number;
   empId:number;
   startDate:Date;
   endDate:Date;
@@ -23,6 +22,7 @@ export class LeaveMgmtService {
   reason:string;
   newPassword: any;
   reEnterdpassword: any;
+  allLeaveRequests: LeaveRequests[];
 
   constructor(public route: Router, public httpClient: HttpClient,private injector: Injector,
     private _snackBar: MatSnackBar,public dialog: MatDialog ){
@@ -38,6 +38,10 @@ export class LeaveMgmtService {
    {
     let params = new HttpParams().set('id',empId.toString())
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveRequests', {params: params });
+   }
+   AllLeaveRequests(empId:number){
+    let params = new HttpParams().set('id',empId.toString())
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/allLeaveRequests', {params: params });
    }
  
    updateSessionStorage(data:any){

@@ -32,9 +32,9 @@ export class SignInPageComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      username: new FormControl(),
-      password: new FormControl(),
-      empType: new FormControl()
+      username: new FormControl('charls'),
+      password: new FormControl('charls@123'),
+      empType: new FormControl(3)
     });
   }
 
@@ -46,7 +46,8 @@ export class SignInPageComponent implements OnInit {
       console.log(details);
       if (details) {
         sessionStorage.setItem('employee', JSON.stringify(details));
-        this._service.employeeType = details.typeId;
+        // this._service.employeeType = details.typeId;
+        sessionStorage.setItem('empType', details.typeId);
         
       }
       if (sessionStorage.getItem(details.empType = '1')){
@@ -62,7 +63,7 @@ export class SignInPageComponent implements OnInit {
   }
   forotPassword(){
     const dialogRef = this.dialog.open(ForgotPasswordComponent, {
-      width: '30%',
+      width: '100%',
       height: '35%',
     });
     dialogRef.afterClosed().subscribe(result => {

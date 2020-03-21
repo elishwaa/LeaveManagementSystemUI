@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginParameters } from 'src/app/models/LoginParameters';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { HttpParams, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Observable } from 'rxjs';
 import { EditDetailsComponent } from '../edit-details/edit-details.component';
 import { environment } from 'src/environments/environment';
-import { ChangePasswordPopUpComponent } from 'src/app/sharedComponents/change-password-pop-up/change-password-pop-up.component';
 import { MatSnackBar } from '@angular/material';
-// import { environment} from '../../../environments/environment'
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-home-page',
@@ -18,7 +14,6 @@ import { MatSnackBar } from '@angular/material';
   styleUrls: ['./employee-home-page.component.css']
 })
 export class EmployeeHomePageComponent implements OnInit {
-  // webApi = 'https://localhost:44398/api/LeaveRequest'
   loginparameters: LoginParameters;
   loginEmpId: number;
   Type: boolean = false;
@@ -34,7 +29,7 @@ export class EmployeeHomePageComponent implements OnInit {
   ngOnInit() {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
 
-    this.employeeType = this._service.employeeType;
+    this.employeeType = sessionStorage.getItem('empType')
     if (this.employeeType == 3) {
       this.Type = true;
     }
@@ -84,5 +79,17 @@ export class EmployeeHomePageComponent implements OnInit {
     this.route.navigateByUrl('');
   }
 
+  AllLeaveRequests(){
+    this._service.AllLeaveRequests(this.loginparameters.id).subscribe((details) => {
+      debugger;
+      console.log(details);
+      if (details) {
+        sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        // this._service.allLeaveRequests[] = details;
+      }
+      this.route.navigateByUrl('all-leave-requests');
+    });
+   
+  }
  
 }

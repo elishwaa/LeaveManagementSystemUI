@@ -1,7 +1,7 @@
 export class LeaveRequests
 {
    id:number;
-   empid :number;
+   empId :number;
    startDate: Date;
    endDate: Date;
    leaveId: number;

@@ -20,7 +20,8 @@ import { EditDetailsComponent } from './Employee/edit-details/edit-details.compo
 import { DeletePopUpComponent } from './sharedComponents/delete-pop-up/delete-pop-up.component';
 import { ChangePasswordPopUpComponent } from './sharedComponents/change-password-pop-up/change-password-pop-up.component';
 import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forgot-password.component';
-
+import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
+import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forg
     EditDetailsComponent,
     DeletePopUpComponent,
     ChangePasswordPopUpComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    AllLeaveRequestsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forg
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTableModule
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
