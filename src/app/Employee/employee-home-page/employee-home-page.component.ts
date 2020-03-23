@@ -7,6 +7,9 @@ import { EditDetailsComponent } from '../edit-details/edit-details.component';
 import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
+import { stringify } from 'querystring';
+import { LeaveRequests } from 'src/app/models/leaveRequests';
 
 @Component({
   selector: 'app-employee-home-page',
@@ -15,6 +18,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class EmployeeHomePageComponent implements OnInit {
   loginparameters: LoginParameters;
+  leaveRequests: LeaveRequests;
   loginEmpId: number;
   Type: boolean = false;
   success:boolean =false;
@@ -44,6 +48,28 @@ export class EmployeeHomePageComponent implements OnInit {
       }
       this.route.navigateByUrl('cancel-leave');
     });
+  }
+  openSubmitLeave(id:number): void{
+    const dialogRef = this.dialog.open(SubmitLeaveComponent, {
+      width: '30%',
+      height: '75%',
+      data: {
+        empId: id
+      }
+    });
+
+    // dialogRef.afterClosed().subscribe(result => {
+    //   if (result) {
+    //     let data = { ...result, empId: parseInt(result.id) }
+    //     this.httpClient.post(environment.apiUrl + 'LeaveRequest/SaveLeave', data).subscribe(
+    //       data => {
+    //         if (data) {  
+    //           this._service.openSnackBar("Leave Request","Success!!")
+    //         }
+    //       }
+    //     )
+    //   }
+    // });
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {

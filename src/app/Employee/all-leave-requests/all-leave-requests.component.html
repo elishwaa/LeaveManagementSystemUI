@@ -31,11 +31,19 @@
         <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
     </ng-container>
 
-    <ng-container matColumnDef="actions">
+    <ng-container matColumnDef="approve">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element; let i = index"> 
             <button mat-raised-button color="primary"
                 (click)="ApproveRequest(element)">Approve</button> 
+            </td>
+    </ng-container> 
+
+    <ng-container matColumnDef="editAndApprove">
+        <th mat-header-cell *matHeaderCellDef> Action </th>
+        <td mat-cell *matCellDef="let element; let i = index"> 
+            <button mat-raised-button color="primary"
+                (click)="EditAndApproveRequests(element)">Edit and Approve</button> 
             </td>
     </ng-container>
 

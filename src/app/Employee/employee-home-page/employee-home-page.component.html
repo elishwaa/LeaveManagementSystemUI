@@ -7,7 +7,7 @@
     <div class="wrapper">
         <nav id="sidebar">
             <ul  >
-                <li><a routerLink="/submit-leave" routerLinkActive="active">Submit Leave request</a></li>
+                <li><a (click)="openSubmitLeave(loginparameters.id)">Submit Leave request</a></li>
                 <li><a (click) ="getLeaveRequests()">leave requests status </a></li>
                 <li><a routerLink="/submit-leave" routerLinkActive="active">Transaction listing</a></li>
                 <!-- <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li> -->

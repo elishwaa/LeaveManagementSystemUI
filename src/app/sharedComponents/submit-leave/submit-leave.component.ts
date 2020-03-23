@@ -1,14 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { MatDialog} from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { LoginParameters } from 'src/app/models/LoginParameters';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment} from '../../../environments/environment'
+import { EmployeeHomePageComponent } from 'src/app/Employee/employee-home-page/employee-home-page.component';
+import { DialogData } from 'src/app/Employee/edit-details/edit-details.component';
 
 @Component({
   selector: 'app-submit-leave',
@@ -20,8 +22,9 @@ export class SubmitLeaveComponent implements OnInit {
  
   // webApi = 'https://localhost:44398/api/LeaveRequest/SaveLeave';
   leaveRequest: FormGroup;
-  returnData:any;
-  constructor(public _service: LeaveMgmtService, public httpClient:HttpClient, public route: Router) { }
+  // returnData:any;
+  constructor(public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, public httpClient:HttpClient, public _service:LeaveMgmtService){ }
 
   ngOnInit() {
     this.leaveRequest = new FormGroup({
@@ -32,18 +35,24 @@ export class SubmitLeaveComponent implements OnInit {
       reason: new FormControl(),
     });
   }
-  
-  SubmitLeave() : Observable<any>{
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+  SubmitLeave() {
     
     let data = {...this.leaveRequest.value, empId:parseInt(this.leaveRequest.value.empId), leaveId:parseInt(this.leaveRequest.value.leaveId)}
+    console.log(data);
+    console.log(123);
+    
        this.httpClient.post(environment.apiUrl + 'LeaveRequest/SaveLeave',data ).subscribe(
         data =>
         {
-          this.returnData = data;
-          console.log(this.returnData);
+           if (data) {  
+            this.onNoClick();
+            this._service.openSnackBar("Leave Request","Success!!")
+          }
         }
       )
-      return this.returnData;
       
     }
 

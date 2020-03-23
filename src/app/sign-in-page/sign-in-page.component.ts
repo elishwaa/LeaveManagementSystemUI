@@ -32,9 +32,9 @@ export class SignInPageComponent implements OnInit {
 
   ngOnInit() {
     this.signInForm = new FormGroup({
-      username: new FormControl('Admin'),
-      password: new FormControl('irene123'),
-      empType: new FormControl(1)
+      username: new FormControl(),
+      password: new FormControl(),
+      empType: new FormControl()
     });
   }
 

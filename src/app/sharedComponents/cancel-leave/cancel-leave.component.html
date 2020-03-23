@@ -1,4 +1,4 @@
-<div class="topBar">
+<!-- <div class="topBar">
     <a href="http://localhost:4200/">LogOut</a>
     <a href="http://localhost:4200/employee-home"> Back </a> 
 </div>
@@ -17,4 +17,60 @@
             <td> <button (click)="openDialog(i)">Cancel Leave</button></td>            
         </tr>
     </table>
-</div>
+</div> -->
+
+<div class="example-container mat-elevation-z8">
+    <table mat-table [dataSource]="leaveRequests">
+    
+        <ng-container matColumnDef="employeeName">
+            <th mat-header-cell *matHeaderCellDef>Name </th>
+            <td mat-cell *matCellDef="let element" > {{element.employeeName}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="startDate">
+            <th mat-header-cell *matHeaderCellDef>Leave start date </th>
+            <td mat-cell *matCellDef="let element"> {{element.startDate | date}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="endDate">
+            <th mat-header-cell *matHeaderCellDef>Leave end date </th>
+            <td mat-cell *matCellDef="let element"> {{element.endDate | date}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="leave">
+            <th mat-header-cell *matHeaderCellDef>Leave Type</th>
+            <td mat-cell *matCellDef="let element"> {{element.leave}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell [ngStyle]="{color: element.status=='pending'? 'red': 'green'}" *matCellDef="let element"> {{element.status}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="reason">
+            <th mat-header-cell *matHeaderCellDef> Reason </th>
+            <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="cancel">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element; let i = index"> 
+                <button mat-raised-button color="primary"
+                (click)="openDialog(i)">Cancel</button> 
+                </td>
+        </ng-container> 
+    
+        <!-- <ng-container matColumnDef="editAndApprove">
+            <th mat-header-cell *matHeaderCellDef> Action </th>
+            <td mat-cell *matCellDef="let element; let i = index"> 
+                <button mat-raised-button color="primary"
+                    (click)="EditAndApproveRequests(element)">Edit and Approve</button> 
+                </td>
+        </ng-container> -->
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    </div>
+    <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator> -->
+    <!-- </div> -->

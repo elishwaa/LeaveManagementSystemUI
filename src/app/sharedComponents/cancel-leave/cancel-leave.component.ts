@@ -16,6 +16,7 @@ import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 })
 export class CancelLeaveComponent implements OnInit {
   //  webApi = 'https://localhost:44398/api/LeaveRequest/delete';
+  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','cancel'];
    leaveRequests: LeaveRequests[];
    data :any;
    status:any;
@@ -30,13 +31,14 @@ export class CancelLeaveComponent implements OnInit {
     
   }
   CancelLeave(index: number){
-    let leaverequestId = Number(this.leaveRequests[index].id);
-    let params = new HttpParams().set('id',leaverequestId.toString())
-    this.httpClient.delete(environment.apiUrl+'LeaveRequest/delete' ,{params:params} ).subscribe(
+    debugger
+    this._service.CancelLeave(this.leaveRequests[index].id).subscribe(
         (data) =>{
           console.log(data);
             if(data = true){
-              this.leaveRequests.splice(index, 1);
+              //  this.leaveRequests.splice(index, 1);
+              // this.displayedColumns.splice(index,1);
+              // this._service.getLeaveRequests(this.leaveRequests[index].empId)
               }
         },
         (err) => {
@@ -44,9 +46,7 @@ export class CancelLeaveComponent implements OnInit {
         }
     );
  } 
- openDialog(index: number): void {
-
-   console.log(123);
+ openDialog(i:number): void {
    
    const dialogRef = this.dialog.open(DeletePopUpComponent, {
     width: '25%',
@@ -58,7 +58,7 @@ export class CancelLeaveComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      this.CancelLeave(index);
+      this.CancelLeave(i);
     }
   });
 }

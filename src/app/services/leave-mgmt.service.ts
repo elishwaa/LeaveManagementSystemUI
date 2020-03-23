@@ -23,6 +23,7 @@ export class LeaveMgmtService {
   newPassword: any;
   reEnterdpassword: any;
   allLeaveRequests: LeaveRequests[];
+  leaverequestId:number;
 
   constructor(public route: Router, public httpClient: HttpClient,private injector: Injector,
     private _snackBar: MatSnackBar,public dialog: MatDialog ){
@@ -36,16 +37,22 @@ export class LeaveMgmtService {
    
    getLeaveRequests(empId:number):  Observable<any>
    {
+     debugger
     let params = new HttpParams().set('id',empId.toString())
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveRequests', {params: params });
    }
-   AllLeaveRequests(empId:number){
+   AllLeaveRequests(empId:number): Observable<any>{
     let params = new HttpParams().set('id',empId.toString())
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/allLeaveRequests', {params: params });
    }
  
    updateSessionStorage(data:any){
      sessionStorage.setItem('employee',JSON.stringify(data) )
+   }
+
+   CancelLeave(index:number):Observable<any>{
+    let params = new HttpParams().set('id',index.toString())
+    return this.httpClient.delete(environment.apiUrl+'LeaveRequest/delete' ,{params:params} )
    }
    openChangePassDialog(id:number): void{
 
@@ -83,5 +90,8 @@ export class LeaveMgmtService {
   }
   getAllEmployees(): Observable<any>{
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/allEmployees')
+  }
+  ApproveRequest(id:number){
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/Approve/'+ id)
   }
 }

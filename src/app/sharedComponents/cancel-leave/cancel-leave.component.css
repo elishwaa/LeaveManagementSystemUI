@@ -1,4 +1,4 @@
-table{
+/* table{
     border: black;
 }
 #leaveDetails {
@@ -15,9 +15,9 @@ table{
   
   /* #leaveDetails tr:nth-child(even){background-color: #f2f2f2;} */
   
-  #leaveDetails tr:hover {background-color: #ddd;}
+  /* #leaveDetails tr:hover {background-color: #ddd;} */
   
-  #leaveDetails th {
+  /* #leaveDetails th {
     padding-top: 12px;
     padding-bottom: 12px;
     text-align: left;
@@ -27,12 +27,24 @@ table{
   .topBar{
     width: 100%;
     height: 5%;
-    top: 0;
-}
-a{
+    top: 0; */
+/* } */
+/* a{
     float: right;
     color:black;
     padding-right: 5%;
     margin-top: 1.5%;
     font-size: large;
+} */ 
+
+table {
+  width: 100%;
+ 
+}
+
+.example-container {
+  height: 80%;
+  overflow: auto;
+  margin: 5%;
+  margin-left: 8%;
 }

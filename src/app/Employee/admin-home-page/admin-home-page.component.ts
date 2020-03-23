@@ -24,13 +24,11 @@ export class AdminHomePageComponent implements OnInit {
       console.log(details);
       if (details) {
         sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
-        // this._service.allLeaveRequests[] = details;
       }
       this.route.navigateByUrl('all-leave-requests');
     });
   }
   getAllEmployees(){
-    // this._service.adminId = this.loginparameters.id
     this._service.getAllEmployees();
     this.route.navigateByUrl('all-employees')
   }

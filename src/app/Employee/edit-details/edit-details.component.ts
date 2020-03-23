@@ -18,9 +18,6 @@ export interface DialogData {
   styleUrls: ['./edit-details.component.css']
 })
 export class EditDetailsComponent implements OnInit {
-  // returnData:any;
-  // loginparameters:LoginParameters
-  // employeeDetails:FormGroup;
   constructor(
     public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}

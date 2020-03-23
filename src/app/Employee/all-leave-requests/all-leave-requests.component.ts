@@ -5,6 +5,9 @@ import { LeaveRequests } from 'src/app/models/leaveRequests';
 import { HttpParams, HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
+import { MatDialog } from '@angular/material';
+import { EditDetailsComponent } from '../edit-details/edit-details.component';
+import { EditAndApproveComponent } from '../edit-and-approve/edit-and-approve.component';
 
 @Component({
   selector: 'app-all-leave-requests',
@@ -12,9 +15,9 @@ import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
   styleUrls: ['./all-leave-requests.component.css']
 })
 export class AllLeaveRequestsComponent implements OnInit {
-  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','actions'];
+  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','approve','editAndApprove'];
   // dataSource = new MatTableDataSource<leaveRequests>(ELEMENT_DATA);
-  constructor(public httpClient: HttpClient, public _service :LeaveMgmtService){}
+  constructor(public httpClient: HttpClient, public dialog: MatDialog,public _service :LeaveMgmtService){}
   leaveRequests: LeaveRequests[];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
@@ -24,7 +27,7 @@ export class AllLeaveRequestsComponent implements OnInit {
     console.log(this.leaveRequests);
   }
   ApproveRequest(employee: LeaveRequests){
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/Approve/'+ employee.id).subscribe(
+    this._service.ApproveRequest(employee.id).subscribe(
       data =>{
         if(data){
           employee.status = 'Approved';
@@ -37,6 +40,31 @@ export class AllLeaveRequestsComponent implements OnInit {
       }
     );
    }
+   EditAndApproveRequests(leaveRequest: LeaveRequests):void {
+      const dialogRef = this.dialog.open(EditAndApproveComponent, {
+        width: '30%',
+        height: '75%',
+        data: {
+          id: leaveRequest.id, empId:leaveRequest.empId, employeeName: leaveRequest.employeeName, startDate:leaveRequest.startDate, endDate: leaveRequest.endDate,
+          leave:leaveRequest.leave,leaveId:leaveRequest.leaveId, status:leaveRequest.status, reason:leaveRequest.reason
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.empId), salary: parseInt(result.leaveId) }
+          this.httpClient.post(environment.apiUrl + 'LeaveRequest/EditAndApprove', data).subscribe(
+            data => {
+              if (data) {
+                sessionStorage.setItem('AllLeaveRequests',JSON.stringify(result) )
+                this.leaveRequests = result;
+              }
+            }
+          )
+        }
+      });
+  
+    }
     
 }
 

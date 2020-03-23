@@ -23,6 +23,7 @@ import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forg
 import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
 import {MatTableModule} from '@angular/material/table';
 import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
+import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-approve.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { AllEmployeesComponent } from './Employee/all-employees/all-employees.co
     ChangePasswordPopUpComponent,
     ForgotPasswordComponent,
     AllLeaveRequestsComponent,
-    AllEmployeesComponent
+    AllEmployeesComponent,
+    EditAndApproveComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,7 @@ import { AllEmployeesComponent } from './Employee/all-employees/all-employees.co
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
-  entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,ForgotPasswordComponent]
+  entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
+    ForgotPasswordComponent, EditAndApproveComponent]
 })
 export class AppModule { }
