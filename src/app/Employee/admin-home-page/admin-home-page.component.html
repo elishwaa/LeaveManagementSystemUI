@@ -29,6 +29,7 @@
                     <li><b>Email</b> : {{loginparameters.email}} </li>
                     <li><b>Salary</b> : {{loginparameters.salary}} </li>
                     <li><b>Username</b> : {{loginparameters.username}}</li>
+                    <li><b>Location</b> : {{loginparameters.locationName}}</li>
 
                 </ul>
             </div>
@@ -38,7 +39,7 @@
 
             <ul>
                 <li (click)="AddNewEmployee()"> New Employee</li>
-                <li> New Employee Designation</li>
+                <li (click)="AddNewDesignation()"> New Employee Designation</li>
                 <li (click)="AddNewLeaveType()"> Add Leave Types</li>
                 <li> Add a location</li>
                 <li> New Project</li>

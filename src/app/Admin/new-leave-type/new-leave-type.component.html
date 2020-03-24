@@ -1,1 +1,9 @@
-<p>new-leave-type works!</p>
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label> New Leave Type</mat-label>
+        <input matInput placeholder="enter new leave Type" [(ngModel)]="newLeave"> <br>
+    </mat-form-field><br>
+
+    <button mat-button (click)="SaveNewLeave()">Add New Designation</button> <br>
+    <button mat-button (click)="onNoClick()"> Cancel</button>
+</div>

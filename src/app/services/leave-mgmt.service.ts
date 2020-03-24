@@ -1,7 +1,7 @@
 import { Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams} from '@angular/common/http'
+import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http'
 import { LoginParameters } from '../models/LoginParameters';
 import { environment} from '../../environments/environment'
 import { ChangePasswordPopUpComponent } from '../sharedComponents/change-password-pop-up/change-password-pop-up.component';
@@ -32,6 +32,9 @@ export class LeaveMgmtService {
    getEmpType() :Observable<any>
    {
      return this.httpClient.get(environment.apiUrl+'Login/GetEmpType')
+   }
+   getLocation():Observable<any>{
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLocations')
    }
    
    getEmployeeInfo(loginDetails) : Observable<any>
@@ -101,5 +104,12 @@ export class LeaveMgmtService {
   SaveEmployee(newEmployee): Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/AddEmployee', newEmployee)
 
+  }
+  AddNewDesignation(designation): Observable<any>{
+    // designation = JSON.stringify(designation)
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewDesignation' ,{designation: designation})
+  }
+  AddNewLeave(leave):Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLeave' ,{leave: leave})
   }
 }

@@ -15,7 +15,7 @@ import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/subm
 })
 export class AllEmployeesComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'middleName', 'lastName','email','salary','username','employeeInfo','transactions','leaveRequests','addLeaveRequest'];
+  displayedColumns: string[] = ['firstName', 'middleName', 'lastName','email','salary','username','location','employeeInfo','transactions','leaveRequests','addLeaveRequest'];
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   employeeInfo: LoginParameters[]
   constructor(public _service: LeaveMgmtService,public dialog: MatDialog,public httpClient: HttpClient,public route:Router) { }
@@ -36,14 +36,14 @@ export class AllEmployeesComponent implements OnInit {
         data: {
           id: employeeInfo.id , typeId: employeeInfo.typeId, firstName: employeeInfo.firstName,
           middleName: employeeInfo.middleName, lastName: employeeInfo.lastName, email: employeeInfo.email,
-          salary: employeeInfo.salary, username: employeeInfo.username
+          salary: employeeInfo.salary, username: employeeInfo.username, locationId:employeeInfo.locationId, locationName:employeeInfo.locationName
         }
       });
   
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           debugger
-          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
+          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), locationId: parseInt(result.locationId), salary: parseInt(result.salary) }
           this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
             data => {
               if (data) {

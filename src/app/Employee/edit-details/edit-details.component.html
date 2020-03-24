@@ -7,6 +7,18 @@
         <mat-label>Type id</mat-label>
         <input matInput placeholder="type id" [(ngModel)]="data.typeId">
     </mat-form-field><br>
+
+    <!-- select  -->
+    <mat-form-field>
+        <mat-label>Employee Type</mat-label>
+        <mat-select [(ngModel)]="data.typeId">
+          <mat-option *ngFor="let type of empType" [value]="type.id">
+            {{type.empType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
+    <!-- select -->
+
     <mat-form-field class="example-full-width">
         <mat-label>First name</mat-label>
         <input matInput placeholder="firstName" [(ngModel)]="data.firstName" >
@@ -31,6 +43,22 @@
         <mat-label>Username</mat-label>
         <input matInput placeholder="username" [(ngModel)]="data.username">
     </mat-form-field><br>
+
+    <!-- <mat-form-field hidden class="example-full-width">
+        <mat-label>Location Id</mat-label>
+        <input matInput placeholder="location id" [(ngModel)]="data.locationId">
+    </mat-form-field><br> -->
+
+    <!-- select  -->
+    <mat-form-field>
+        <mat-label>Location</mat-label>
+        <mat-select [(ngModel)]="data.locationId">
+          <mat-option *ngFor="let type of locations" [value]="type.locationId">
+            {{type.locationName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
+    <!-- select  -->
 
     <button mat-button [mat-dialog-close]="data">Save Changes</button>
     <button mat-button (click)="onNoClick()"> Cancel</button>

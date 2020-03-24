@@ -4,6 +4,8 @@ import { LoginParameters } from '../../models/LoginParameters'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NewEmployeeComponent } from 'src/app/Admin/new-employee/new-employee.component';
+import { NewDesignationComponent } from 'src/app/Admin/new-designation/new-designation.component';
+import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-type.component';
 
 @Component({
   selector: 'app-home-page',
@@ -44,7 +46,16 @@ export class AdminHomePageComponent implements OnInit {
     });
   }
   AddNewLeaveType(){
-
+    this.dialog.open(NewLeaveTypeComponent,{
+      width: '30%',
+      height: '35%',
+    });
+  }
+  AddNewDesignation(){
+    this.dialog.open(NewDesignationComponent,{
+      width: '30%',
+      height: '35%',
+    });
   }
 
 }

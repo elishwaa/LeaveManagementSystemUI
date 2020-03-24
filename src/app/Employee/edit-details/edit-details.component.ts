@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 export interface DialogData {
   animal: string;
   name: string;
@@ -18,11 +19,27 @@ export interface DialogData {
   styleUrls: ['./edit-details.component.css']
 })
 export class EditDetailsComponent implements OnInit {
+  empType =[];
+  locations =[];
   constructor(
-    public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
+    public dialogRef: MatDialogRef<EmployeeHomePageComponent>, public _service:LeaveMgmtService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
 
   ngOnInit(): void {
+    this._service.getEmpType().subscribe(
+      data =>{
+        this.empType = data;
+        console.log(this.empType);
+        
+      } )
+    
+    this._service.getLocation().subscribe(
+      data =>{
+        this.locations = data;
+        console.log(this.locations);
+        
+      } )
+    
   }
   
 

@@ -55,7 +55,7 @@ export class SignInPageComponent implements OnInit {
         sessionStorage.setItem('employee', JSON.stringify(details));
         // this._service.employeeType = details.typeId;
         sessionStorage.setItem('empType', details.typeId);
-        // console.log(details.typeId);
+        console.log(details.typeId);
         
         
       }

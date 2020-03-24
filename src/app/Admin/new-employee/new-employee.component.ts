@@ -12,6 +12,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class NewEmployeeComponent implements OnInit {
   newEmployeeForm: FormGroup;
   empType = [];
+  locations =[];
   constructor(public dialogRef: MatDialogRef<AdminHomePageComponent>, public _service: LeaveMgmtService) { }
 
   ngOnInit() {
@@ -20,6 +21,12 @@ export class NewEmployeeComponent implements OnInit {
       this.empType = data;
     }
   )
+  this._service.getLocation().subscribe(
+    data =>{
+      this.locations = data;
+      console.log(this.locations);
+      
+    } )
 
   this.newEmployeeForm = new FormGroup({
     firstName: new FormControl(),
@@ -28,12 +35,12 @@ export class NewEmployeeComponent implements OnInit {
     empType: new FormControl(),
     email: new FormControl(),
     salary: new FormControl(),
-    // username: new FormControl(),
-    // password: new FormControl()
+    location: new FormControl()
   });
   }
   SaveNewEmployee(){
-     this._service.SaveEmployee({...this.newEmployeeForm.value, empType:parseInt(this.newEmployeeForm.value.empType),salary:parseInt(this.newEmployeeForm.value.salary)}).subscribe(
+     this._service.SaveEmployee({...this.newEmployeeForm.value, empType:parseInt(this.newEmployeeForm.value.empType),salary:parseInt(this.newEmployeeForm.value.salary),
+    location:parseInt(this.newEmployeeForm.value.location)}).subscribe(
        data=>{
          if(data){
            console.log(data);

@@ -1,0 +1,10 @@
+<div>
+    <mat-form-field class="example-full-width">
+        <mat-label> New Employee Designation</mat-label>
+        <input matInput placeholder="enter new designation" [(ngModel)]="newDesignation"> <br>
+    </mat-form-field><br>
+
+    <button mat-button (click)="SaveNewDesignation()">Add New Designation</button> <br>
+    <button mat-button (click)="onNoClick()"> Cancel</button>
+</div>
+

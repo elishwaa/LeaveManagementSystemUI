@@ -31,7 +31,10 @@ export class EmployeeHomePageComponent implements OnInit {
     public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+    console.log(this.loginparameters);
+    
 
     this.employeeType = sessionStorage.getItem('empType')
     if (this.employeeType == 3) {
@@ -64,9 +67,9 @@ export class EmployeeHomePageComponent implements OnInit {
       width: '30%',
       height: '75%',
       data: {
-        id: this.loginparameters.id, typeId: this.loginparameters.typeId, firstName: this.loginparameters.firstName,
+        id: this.loginparameters.id, typeId: this.loginparameters.typeId,typeName:this.loginparameters.typeName, firstName: this.loginparameters.firstName,
         middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,
-        salary: this.loginparameters.salary, username: this.loginparameters.username
+        salary: this.loginparameters.salary, username: this.loginparameters.username, locationId:this.loginparameters.locationId, locationName:this.loginparameters.locationName
       }
     });
 

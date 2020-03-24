@@ -42,6 +42,14 @@
         <input matInput placeholder="enter salary " formControlName="salary">
     </mat-form-field><br>
 
+    <mat-form-field>
+        <mat-label>Location</mat-label>
+        <mat-select  formControlName="location">
+          <mat-option *ngFor="let type of locations" [value]="type.locationId">
+            {{type.locationName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
     <!-- <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput placeholder="enter username " formControlName="username" >
