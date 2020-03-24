@@ -29,6 +29,7 @@ import { NewEmployeeComponent } from './Admin/new-employee/new-employee.componen
 import { NewLeaveTypeComponent } from './Admin/new-leave-type/new-leave-type.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NewDesignationComponent } from './Admin/new-designation/new-designation.component';
+import { NewLocationComponent } from './Admin/new-location/new-location.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NewDesignationComponent } from './Admin/new-designation/new-designation
     EditAndApproveComponent,
     NewEmployeeComponent,
     NewLeaveTypeComponent,
-    NewDesignationComponent
+    NewDesignationComponent,
+    NewLocationComponent
   ],
   imports: [
     BrowserModule,
@@ -69,6 +71,6 @@ import { NewDesignationComponent } from './Admin/new-designation/new-designation
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent, EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent]
+    ForgotPasswordComponent, EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
 })
 export class AppModule { }

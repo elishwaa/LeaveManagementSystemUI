@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { NewEmployeeComponent } from 'src/app/Admin/new-employee/new-employee.component';
 import { NewDesignationComponent } from 'src/app/Admin/new-designation/new-designation.component';
 import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-type.component';
+import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.component';
 
 @Component({
   selector: 'app-home-page',
@@ -40,7 +41,7 @@ export class AdminHomePageComponent implements OnInit {
     this.route.navigateByUrl('');
   }
   AddNewEmployee() :void {
-    const dialogRef = this.dialog.open(NewEmployeeComponent, {
+    this.dialog.open(NewEmployeeComponent, {
       width: '30%',
       height: '75%',
     });
@@ -57,5 +58,10 @@ export class AdminHomePageComponent implements OnInit {
       height: '35%',
     });
   }
-
+  AddNewLocation(){
+    this.dialog.open(NewLocationComponent,{
+      width: '30%',
+      height: '35%',
+    });
+  }
 }

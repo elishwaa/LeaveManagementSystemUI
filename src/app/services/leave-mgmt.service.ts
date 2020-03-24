@@ -112,4 +112,7 @@ export class LeaveMgmtService {
   AddNewLeave(leave):Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLeave' ,{leave: leave})
   }
+  AddNewLocation(location):Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLocation' ,{location:location})
+  }
 }
