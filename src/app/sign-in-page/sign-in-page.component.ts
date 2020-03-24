@@ -21,22 +21,29 @@ export class SignInPageComponent implements OnInit {
   // inputPassword: string;
   // inputEmpType: number ;
   signInForm: FormGroup;
-  empType = [
-    {id: 1, name:'Admin'},
-    {id: 2, name:'Employee'},
-    {id: 3, name:'Manager'},
-  ];
+  empType = [];
 
   loginDetails: string;
   constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
+    this._service.getEmpType().subscribe(
+      data =>{
+        console.log(data);
+        
+        this.empType = data
+        console.log(this.empType);
+        
+      }
+    )
+   
     this.signInForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl(),
       empType: new FormControl()
     });
   }
+
 
   login() {
     console.log(this.signInForm.value);

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { LeaveMgmtService } from '../../services/leave-mgmt.service';
 import { LoginParameters } from '../../models/LoginParameters'
 import { Router } from '@angular/router';
+import { MatDialog } from '@angular/material';
+import { NewEmployeeComponent } from 'src/app/Admin/new-employee/new-employee.component';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +13,7 @@ import { Router } from '@angular/router';
 export class AdminHomePageComponent implements OnInit {
 
   loginparameters: LoginParameters
-  constructor(public _service: LeaveMgmtService, public route: Router) { }
+  constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -32,4 +34,17 @@ export class AdminHomePageComponent implements OnInit {
     this._service.getAllEmployees();
     this.route.navigateByUrl('all-employees')
   }
+  logout() {
+    this.route.navigateByUrl('');
+  }
+  AddNewEmployee() :void {
+    const dialogRef = this.dialog.open(NewEmployeeComponent, {
+      width: '30%',
+      height: '75%',
+    });
+  }
+  AddNewLeaveType(){
+
+  }
+
 }

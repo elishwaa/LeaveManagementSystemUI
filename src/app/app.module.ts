@@ -24,6 +24,10 @@ import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-lea
 import {MatTableModule} from '@angular/material/table';
 import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
 import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-approve.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import { NewEmployeeComponent } from './Admin/new-employee/new-employee.component';
+import { NewLeaveTypeComponent } from './Admin/new-leave-type/new-leave-type.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -39,7 +43,9 @@ import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-ap
     ForgotPasswordComponent,
     AllLeaveRequestsComponent,
     AllEmployeesComponent,
-    EditAndApproveComponent
+    EditAndApproveComponent,
+    NewEmployeeComponent,
+    NewLeaveTypeComponent
   ],
   imports: [
     BrowserModule,
@@ -55,11 +61,12 @@ import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-ap
     MatInputModule,
     MatButtonModule,
     MatSnackBarModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule,MatSelectModule
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent, EditAndApproveComponent]
+    ForgotPasswordComponent, EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent]
 })
 export class AppModule { }

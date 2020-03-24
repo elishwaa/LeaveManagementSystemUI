@@ -29,6 +29,10 @@ export class LeaveMgmtService {
     private _snackBar: MatSnackBar,public dialog: MatDialog ){
 
    }
+   getEmpType() :Observable<any>
+   {
+     return this.httpClient.get(environment.apiUrl+'Login/GetEmpType')
+   }
    
    getEmployeeInfo(loginDetails) : Observable<any>
    {
@@ -93,5 +97,9 @@ export class LeaveMgmtService {
   }
   ApproveRequest(id:number){
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/Approve/'+ id)
+  }
+  SaveEmployee(newEmployee): Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/AddEmployee', newEmployee)
+
   }
 }

@@ -1,33 +1,61 @@
 <div class="topBar">
-    <a href="http://localhost:4200/">LogOut</a>
+    <button mat-raised-button (click)=logout()>Logout</button>
 </div>
-<div>
+<!-- <div>
     <div class="wrapper">
         <nav id="sidebar">
             <ul>
                 <li (click)="AllLeaveRequests()"> Approve leave request</li>
                 <li (click)="getAllEmployees()"> Employee information</li>
-                <li> Update employee details</li>
+                <li routerLink="/update-features" routerLinkActive="active"> Update employee details</li>
                 <li> Audit process</li>
                 <li> Report generation</li>
             </ul>
     
         </nav>     
     </div>
-</div>
+</div> -->
 
-<div class="EmpInfoBox" >
-    <div class="EmpInfo" >        
-        <ul>
-            <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
-            <li><b>Employee Id</b> : {{loginparameters.id}} </li>
-            <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
-            <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
-            <li><b>Email</b> : {{loginparameters.email}} </li>
-            <li><b>Salary</b> : {{loginparameters.salary}} </li>
-            <li><b>Username</b> : {{loginparameters.username}}</li>
+<div class="EmpInfoBox">
+    <mat-tab-group>
+        <mat-tab label="Admin Info">
+            <div class="EmpInfo">
+                <ul>
+                    <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
+                    <li><b>Employee Id</b> : {{loginparameters.id}} </li>
+                    <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
+                    <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}}
+                        {{loginparameters.lastName}} </li>
+                    <li><b>Email</b> : {{loginparameters.email}} </li>
+                    <li><b>Salary</b> : {{loginparameters.salary}} </li>
+                    <li><b>Username</b> : {{loginparameters.username}}</li>
 
-        </ul>
-    </div>
-    
+                </ul>
+            </div>
+
+        </mat-tab>
+        <mat-tab label="Updations">
+
+            <ul>
+                <li (click)="AddNewEmployee()"> New Employee</li>
+                <li> New Employee Designation</li>
+                <li (click)="AddNewLeaveType()"> Add Leave Types</li>
+                <li> Add a location</li>
+                <li> New Project</li>
+                <li> Edit Leave Balance</li>
+                <li> View Leave Balance </li>
+            </ul>
+        </mat-tab>
+        <mat-tab label="Employee">
+            <ul>
+                <li (click)="AllLeaveRequests()"> Approve leave request</li>
+                <li (click)="getAllEmployees()"> Employee information</li>
+                <li> Audit process</li>
+                <li> Report generation</li>
+            </ul>
+        </mat-tab>
+    </mat-tab-group>
+
+
+
 </div>

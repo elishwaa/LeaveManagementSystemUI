@@ -1,0 +1,59 @@
+
+<div >
+    <form [formGroup]="newEmployeeForm">
+
+    <mat-form-field class="example-full-width">
+        <mat-label>First Name</mat-label>
+        <input matInput placeholder="enter first name" formControlName="firstName">
+    </mat-form-field><br>
+    
+    <mat-form-field class="example-full-width">
+        <mat-label>Middle Name</mat-label>
+        <input matInput placeholder="enter middle name" formControlName="middleName">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Last Name</mat-label>
+        <input matInput placeholder="enter last name" formControlName="lastName" >
+    </mat-form-field><br>
+
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Email Id</mat-label>
+        <mat-select matInput placeholder="enter emailId" > 
+
+        </mat-select>
+    </mat-form-field><br> -->
+    <mat-form-field>
+        <mat-label>Employee Type</mat-label>
+        <mat-select  formControlName="empType">
+          <mat-option *ngFor="let type of empType" [value]="type.id">
+            {{type.empType}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Email Id</mat-label>
+        <input matInput placeholder="enter emailId" formControlName="email" >
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Salary</mat-label>
+        <input matInput placeholder="enter salary " formControlName="salary">
+    </mat-form-field><br>
+
+    <!-- <mat-form-field class="example-full-width">
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="enter username " formControlName="username" >
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" maxlength="10"  matInput placeholder="enter password (10 digit maximum) " formControlName="password" >
+    </mat-form-field><br> -->
+    </form>
+
+    <button mat-button (click)="SaveNewEmployee()">Add Employee</button>
+    <button mat-button (click)="onNoClick()"> Cancel</button>
+
+</div>

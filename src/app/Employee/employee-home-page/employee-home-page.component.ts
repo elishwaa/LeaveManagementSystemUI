@@ -50,7 +50,7 @@ export class EmployeeHomePageComponent implements OnInit {
     });
   }
   openSubmitLeave(id:number): void{
-    const dialogRef = this.dialog.open(SubmitLeaveComponent, {
+     this.dialog.open(SubmitLeaveComponent, {
       width: '30%',
       height: '75%',
       data: {
@@ -58,18 +58,6 @@ export class EmployeeHomePageComponent implements OnInit {
       }
     });
 
-    // dialogRef.afterClosed().subscribe(result => {
-    //   if (result) {
-    //     let data = { ...result, empId: parseInt(result.id) }
-    //     this.httpClient.post(environment.apiUrl + 'LeaveRequest/SaveLeave', data).subscribe(
-    //       data => {
-    //         if (data) {  
-    //           this._service.openSnackBar("Leave Request","Success!!")
-    //         }
-    //       }
-    //     )
-    //   }
-    // });
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {
