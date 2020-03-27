@@ -7,6 +7,7 @@ import { NewEmployeeComponent } from 'src/app/Admin/new-employee/new-employee.co
 import { NewDesignationComponent } from 'src/app/Admin/new-designation/new-designation.component';
 import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-type.component';
 import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.component';
+import { NewProjectComponent } from 'src/app/Admin/new-project/new-project.component';
 
 @Component({
   selector: 'app-home-page',
@@ -64,4 +65,12 @@ export class AdminHomePageComponent implements OnInit {
       height: '35%',
     });
   }
+  AddNewProject(){
+    this.dialog.open(NewProjectComponent,{
+      width: '30%',
+      height: '35%',
+    }
+      )
+  }
+  
 }

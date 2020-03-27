@@ -36,6 +36,16 @@ export class LeaveMgmtService {
    getLocation():Observable<any>{
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLocations')
    }
+   GetLeaveBalance(Id):Observable<any>{
+    let params = new HttpParams().set('id',Id.toString())
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveBalance',{params:params})
+   }
+   getManager():Observable<any>{
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetManagers')
+   }
+   getProjects():Observable<any>{
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetProjects')
+   }
    
    getEmployeeInfo(loginDetails) : Observable<any>
    {
@@ -44,7 +54,6 @@ export class LeaveMgmtService {
    
    getLeaveRequests(empId:number):  Observable<any>
    {
-     debugger
     let params = new HttpParams().set('id',empId.toString())
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveRequests', {params: params });
    }
@@ -60,6 +69,10 @@ export class LeaveMgmtService {
    CancelLeave(index:number):Observable<any>{
     let params = new HttpParams().set('id',index.toString())
     return this.httpClient.delete(environment.apiUrl+'LeaveRequest/delete' ,{params:params} )
+   }
+   TransactionListing(empId):Observable<any>{
+    let params = new HttpParams().set('id',empId)
+    return this.httpClient.get(environment.apiUrl+'LeaveRequest/Transactions',{params:params})
    }
    openChangePassDialog(id:number): void{
 
@@ -114,5 +127,8 @@ export class LeaveMgmtService {
   }
   AddNewLocation(location):Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLocation' ,{location:location})
+  }
+  AddNewProject(project):Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewProject' ,{project:project})
   }
 }

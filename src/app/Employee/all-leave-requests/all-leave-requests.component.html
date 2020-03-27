@@ -1,5 +1,5 @@
 <div class="example-container mat-elevation-z8">
-<table mat-table [dataSource]="leaveRequests">
+<table mat-table [dataSource]="dataSource">
 
     <ng-container matColumnDef="employeeName">
         <th mat-header-cell *matHeaderCellDef>Name </th>
@@ -35,7 +35,7 @@
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element; let i = index"> 
             <button mat-raised-button color="primary"
-                (click)="ApproveRequest(element)">Approve</button> 
+                (click)="openDialog(element)">Approve</button> 
             </td>
     </ng-container> 
 
@@ -43,7 +43,7 @@
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element; let i = index"> 
             <button mat-raised-button color="primary"
-                (click)="EditAndApproveRequests(element)">Edit and Approve</button> 
+                (click)="EditAndApproveRequests(element,i)">Edit and Approve</button> 
             </td>
     </ng-container>
 

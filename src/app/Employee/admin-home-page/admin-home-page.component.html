@@ -1,20 +1,6 @@
 <div class="topBar">
     <button mat-raised-button (click)=logout()>Logout</button>
 </div>
-<!-- <div>
-    <div class="wrapper">
-        <nav id="sidebar">
-            <ul>
-                <li (click)="AllLeaveRequests()"> Approve leave request</li>
-                <li (click)="getAllEmployees()"> Employee information</li>
-                <li routerLink="/update-features" routerLinkActive="active"> Update employee details</li>
-                <li> Audit process</li>
-                <li> Report generation</li>
-            </ul>
-    
-        </nav>     
-    </div>
-</div> -->
 
 <div class="EmpInfoBox">
     <mat-tab-group>
@@ -42,17 +28,14 @@
                 <li (click)="AddNewDesignation()"> New Employee Designation</li>
                 <li (click)="AddNewLeaveType()"> Add Leave Types</li>
                 <li (click)="AddNewLocation()"> Add a location</li>
-                <li> New Project</li>
-                <li> Edit Leave Balance</li>
-                <li> View Leave Balance </li>
+                <li (click)="AddNewProject()"> New Project</li>
+                <li routerLink="/edit-leave-balance" routerLinkActive="active"> Edit Leave Balance</li>
             </ul>
         </mat-tab>
         <mat-tab label="Employee">
             <ul>
                 <li (click)="AllLeaveRequests()"> Approve leave request</li>
                 <li (click)="getAllEmployees()"> Employee information</li>
-                <li> Audit process</li>
-                <li> Report generation</li>
             </ul>
         </mat-tab>
     </mat-tab-group>

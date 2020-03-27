@@ -30,6 +30,11 @@ import { NewLeaveTypeComponent } from './Admin/new-leave-type/new-leave-type.com
 import {MatSelectModule} from '@angular/material/select';
 import { NewDesignationComponent } from './Admin/new-designation/new-designation.component';
 import { NewLocationComponent } from './Admin/new-location/new-location.component';
+import { EditLeaveBalanceComponent } from './Admin/edit-leave-balance/edit-leave-balance.component';
+import { LeaveBalancePopUpComponent } from './Admin/leave-balance-pop-up/leave-balance-pop-up.component';
+import { NewProjectComponent } from './Admin/new-project/new-project.component';
+import { TransactionListingComponent } from './Employee/transaction-listing/transaction-listing.component';
+import { NewLoginComponent } from './sharedComponents/new-login/new-login.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +54,13 @@ import { NewLocationComponent } from './Admin/new-location/new-location.componen
     NewEmployeeComponent,
     NewLeaveTypeComponent,
     NewDesignationComponent,
-    NewLocationComponent
+    NewLocationComponent,
+    EditLeaveBalanceComponent,
+    LeaveBalancePopUpComponent,
+    NewProjectComponent,
+    TransactionListingComponent,
+    NewLoginComponent
+
   ],
   imports: [
     BrowserModule,
@@ -66,11 +77,11 @@ import { NewLocationComponent } from './Admin/new-location/new-location.componen
     MatButtonModule,
     MatSnackBarModule,
     MatTableModule,
-    MatTabsModule,MatSelectModule
+    MatTabsModule,MatSelectModule,
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent, EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
+    ForgotPasswordComponent,NewLoginComponent, TransactionListingComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
 })
 export class AppModule { }

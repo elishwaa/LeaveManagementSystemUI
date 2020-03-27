@@ -10,6 +10,8 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
 import { stringify } from 'querystring';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
+import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
+import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
 
 @Component({
   selector: 'app-employee-home-page',
@@ -27,6 +29,10 @@ export class EmployeeHomePageComponent implements OnInit {
   returnData: any;
   newPassword:string ;
   reEnterdpassword:string ;
+  leaveBalance:LeaveBalanceDetails;
+
+  displayedColumns: string[] = ['casualLeave','sickLeave','other'];
+
   constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, 
     public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
@@ -35,11 +41,17 @@ export class EmployeeHomePageComponent implements OnInit {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
     console.log(this.loginparameters);
     
-
     this.employeeType = sessionStorage.getItem('empType')
     if (this.employeeType == 3) {
       this.Type = true;
     }
+    this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
+      data=>{
+          this.leaveBalance = data;
+          console.log(this.leaveBalance);
+          
+          
+      });
   }
   getLeaveRequests() {
 
@@ -102,11 +114,26 @@ export class EmployeeHomePageComponent implements OnInit {
       console.log(details);
       if (details) {
         sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
-        // this._service.allLeaveRequests[] = details;
       }
       this.route.navigateByUrl('all-leave-requests');
     });
    
   }
- 
-}
+  TransactionListing():void {
+      this._service.TransactionListing(this.loginparameters.id).subscribe(
+        data =>{
+          if(data){
+            this.dialog.open(TransactionListingComponent,{
+              width: '80%',
+              height: '75%',
+              data: data
+            });
+          }
+          else{
+            // ******************
+          }
+        }
+      )
+      
+    }
+  }

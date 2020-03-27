@@ -15,14 +15,11 @@ import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 })
 export class ForgotPasswordComponent implements OnInit {
   employeeId:any;
-  loginparameters:LoginParameters;
   emailId:string ;
   Error:boolean = false;
-  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient:HttpClient,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient:HttpClient){}
 
   ngOnInit() {
-    this.loginparameters = JSON.parse(sessionStorage.getItem('employee'))
   }
 
   ForgotPassword(){

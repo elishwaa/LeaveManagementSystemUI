@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
+import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
 
 @Component({
   selector: 'app-all-employees',
@@ -15,9 +16,10 @@ import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/subm
 })
 export class AllEmployeesComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'middleName', 'lastName','email','salary','username','location','employeeInfo','transactions','leaveRequests','addLeaveRequest'];
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  employeeInfo: LoginParameters[]
+  displayedColumns: string[] = ['firstName', 'middleName', 'lastName',,'type','email','salary',
+  'username','manager','project','location','employeeInfo','transactions','leaveRequests','addLeaveRequest'];
+  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  employeeInfo: LoginParameters[];
   constructor(public _service: LeaveMgmtService,public dialog: MatDialog,public httpClient: HttpClient,public route:Router) { }
 
   ngOnInit() {
@@ -77,6 +79,23 @@ export class AllEmployeesComponent implements OnInit {
           }
         });
     
+    }
+    ShowTransactions(employee:LoginParameters):void {
+      this._service.TransactionListing(employee.id).subscribe(
+        data =>{
+          if(data){
+            this.dialog.open(TransactionListingComponent,{
+              width: '80%',
+              height: '75%',
+              data: data
+            });
+          }
+          else{
+            // ******************
+          }
+        }
+      )
+      
     }
   
 }

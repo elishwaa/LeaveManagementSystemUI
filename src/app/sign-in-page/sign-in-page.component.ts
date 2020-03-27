@@ -8,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/forgot-password.component';
 import { environment } from 'src/environments/environment';
+import { NewLoginComponent } from '../sharedComponents/new-login/new-login.component';
 
 
 @Component({
@@ -48,37 +49,39 @@ export class SignInPageComponent implements OnInit {
   login() {
     console.log(this.signInForm.value);
    
-    this._service.getEmployeeInfo({...this.signInForm.value, empType:parseInt(this.signInForm.value.empType)}).subscribe((details) => {
-      debugger;
-      console.log(details);
+    this._service.getEmployeeInfo({...this.signInForm.value, empType:parseInt(this.signInForm.value.empType)}).subscribe(
+      (details) => {
+     
       if (details) {
         sessionStorage.setItem('employee', JSON.stringify(details));
         // this._service.employeeType = details.typeId;
         sessionStorage.setItem('empType', details.typeId);
         console.log(details.typeId);
-        
-        
       }
+      
       if (details.typeId == 1){
         this.route.navigateByUrl('admin-home');
       }
       else if (details.typeId == 2 || details.typeId == 3){
         this.route.navigateByUrl('employee-home');
       }
-      // else{
-      //   this.route.navigateByUrl('employee-home');
-      // }
+      else{
+        this._service.openSnackBar("Invalid Login Details","Login Again")
+      }
     });
   }
-  forotPassword(){
-    const dialogRef = this.dialog.open(ForgotPasswordComponent, {
-      width: '100%',
+  confirmEmail(){
+   this.dialog.open(ForgotPasswordComponent, {
+      width: '30%',
       height: '35%',
     });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
+    
    
+  }
+  newLogin(){
+    this.dialog.open(NewLoginComponent,{
+      width: '30%',
+      height: '45%',
+    });
   }
 }

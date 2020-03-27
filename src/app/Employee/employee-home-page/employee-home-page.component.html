@@ -10,7 +10,7 @@
             <ul  >
                 <li><a (click)="openSubmitLeave(loginparameters.id)">Submit Leave request</a></li>
                 <li><a (click) ="getLeaveRequests()">leave requests status </a></li>
-                <li><a routerLink="/submit-leave" routerLinkActive="active">Transaction listing</a></li>
+                <li><a (click)="TransactionListing()">Transaction listing</a></li>
                 <!-- <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li> -->
             </ul>
             <ul *ngIf = "Type">
@@ -24,7 +24,7 @@
 <div class="EmpInfoBox" >
     <div class="EmpInfo" >        
         <ul>
-            <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
+            <h1 style="color: rgb(4, 52, 36);">{{loginparameters.firstName}}</h1>
             <li><b>Employee Id</b> : {{loginparameters.id}} </li>
             <li><b>Employee Type</b> : {{loginparameters.typeName}} </li>
             <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
@@ -32,8 +32,22 @@
             <li><b>Salary</b> : {{loginparameters.salary}} </li>
             <li><b>Username</b> : {{loginparameters.username}}</li>
             <li><b>Location Id</b> : {{loginparameters.locationName}}</li>
-
+            <h1 style="color: rgb(4, 52, 36);">Leave Balance </h1>
+            <table>
+                <tr>
+                    <td>Casual Leave</td>
+                    <td>Sick Leave</td>
+                    <td>Other</td>
+                </tr>
+                <tr  *ngFor="let data of leaveBalance">
+                    <td>{{data.casualLeave}}</td>
+                    <td>{{data.sickLeave}}</td>
+                    <td>{{data.other}}</td>
+                </tr>
+            </table>
         </ul>
+    
+       
     </div>
 </div>
 

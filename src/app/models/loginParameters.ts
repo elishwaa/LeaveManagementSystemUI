@@ -9,6 +9,10 @@ export class LoginParameters
    email: string;
    salary: number;
    username: string;
+   managerId:number;
+   managerName:string;
+   projectId:number;
+   projectName:string;
    locationId: number;
    locationName:string;
 }

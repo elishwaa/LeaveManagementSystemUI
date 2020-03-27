@@ -38,7 +38,7 @@ li a{
     width: 90%;
     height: 70%;
     margin: 3%;
-    margin-left: 5%;
+    margin-left: 3%;
    
 }
 
@@ -49,7 +49,6 @@ h2{
     width: 60%;
     float: right;
     margin-right: 8%;
-    margin-top: 5%;
 }
 .EmpInfo ul{
     margin-top: 5%;
@@ -62,7 +61,7 @@ h2{
 }
 table, tr,th{
    margin-left: 0;
-   width: 100%;
+   width: 80%;
    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
    border-collapse: collapse;
 }

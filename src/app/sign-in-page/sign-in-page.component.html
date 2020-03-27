@@ -17,15 +17,14 @@
                 <label>Employee Type</label> <br>
                 <select formControlName = "empType">
                     <option *ngFor="let type of empType" [value]="type.id">{{type.empType}}</option>
-                    <!-- <option value=1>Admin</option>
-                    <option value=2>Employee</option>
-                    <option value=3>Manager</option> -->
-                </select> <br><br>
+                   
+                </select> <br><br> 
             </form>
 
             <button (click)="login()"> Login</button> <br> <br>
             <a></a>
-            <a (click)="forotPassword()">Forgot Password</a>
+            <a (click)="confirmEmail()">Forgot Password</a> <br>
+            <a (click)="newLogin()">New Login ?</a>
 
         </div>
 
