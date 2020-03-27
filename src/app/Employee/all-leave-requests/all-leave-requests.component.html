@@ -7,13 +7,27 @@
     </ng-container>
 
     <ng-container matColumnDef="startDate">
-        <th mat-header-cell *matHeaderCellDef>Leave start date </th>
-        <td mat-cell *matCellDef="let element"> {{element.startDate | date}} </td>
+        <th mat-header-cell *matHeaderCellDef> Leave start date  <th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+                <input matInput placeholder="startDate" [value]="element.startDate" [(ngModel)]="element.startDate">
+            </mat-form-field>
+        </td>
     </ng-container>
 
+
+    <!-- <ng-container matColumnDef="startDate">
+        <th mat-header-cell *matHeaderCellDef>Leave start date </th>
+        <td mat-cell *matCellDef="let element"> {{element.startDate | date}} </td>
+    </ng-container> -->
+
     <ng-container matColumnDef="endDate">
-        <th mat-header-cell *matHeaderCellDef>Leave end date </th>
-        <td mat-cell *matCellDef="let element"> {{element.endDate | date}} </td>
+        <th mat-header-cell *matHeaderCellDef> Leave end date  <th>
+        <td mat-cell *matCellDef="let element">
+            <mat-form-field floatLabel="never">
+                <input matInput placeholder="endDate" [value]="element.endDate" [(ngModel)]="element.endDate">
+            </mat-form-field>
+        </td>
     </ng-container>
 
     <ng-container matColumnDef="leave">
@@ -39,13 +53,13 @@
             </td>
     </ng-container> 
 
-    <ng-container matColumnDef="editAndApprove">
+    <!-- <ng-container matColumnDef="editAndApprove">
         <th mat-header-cell *matHeaderCellDef> Action </th>
         <td mat-cell *matCellDef="let element; let i = index"> 
             <button mat-raised-button color="primary"
                 (click)="EditAndApproveRequests(element,i)">Edit and Approve</button> 
             </td>
-    </ng-container>
+    </ng-container> -->
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

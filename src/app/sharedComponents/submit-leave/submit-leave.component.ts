@@ -22,16 +22,23 @@ export class SubmitLeaveComponent implements OnInit {
  
   // webApi = 'https://localhost:44398/api/LeaveRequest/SaveLeave';
   leaveRequest: FormGroup;
+  leave =[];
   // returnData:any;
   constructor(public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, public httpClient:HttpClient, public _service:LeaveMgmtService){ }
 
   ngOnInit() {
+
+    this._service.getLeaves().subscribe(
+      data=>{
+        this.leave = data;
+      }
+    )
     this.leaveRequest = new FormGroup({
       empId: new FormControl(),
       startDate: new FormControl(),
       endDate: new FormControl(),
-      leaveId: new FormControl(),
+      leave: new FormControl(),
       reason: new FormControl(),
     });
   }
@@ -40,7 +47,7 @@ export class SubmitLeaveComponent implements OnInit {
   }
   SubmitLeave() {
     
-    let data = {...this.leaveRequest.value, empId:parseInt(this.leaveRequest.value.empId), leaveId:parseInt(this.leaveRequest.value.leaveId)}
+    let data = {...this.leaveRequest.value, empId:parseInt(this.leaveRequest.value.empId), leave:parseInt(this.leaveRequest.value.leave)}
     console.log(data);
     console.log(123);
     

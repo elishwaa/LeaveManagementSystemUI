@@ -16,9 +16,9 @@ import { TransactionListingComponent } from '../transaction-listing/transaction-
 })
 export class AllEmployeesComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'middleName', 'lastName',,'type','email','salary',
-  'username','manager','project','location','employeeInfo','transactions','leaveRequests','addLeaveRequest'];
-  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  displayedColumns: string[] = ['firstName', 'middleName', 'lastName','type','email','salary',
+  'username','project','location','employeeinfo','transactions','leaveRequests','addLeaveRequest'];
+  //  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   employeeInfo: LoginParameters[];
   constructor(public _service: LeaveMgmtService,public dialog: MatDialog,public httpClient: HttpClient,public route:Router) { }
 

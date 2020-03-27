@@ -53,14 +53,14 @@
       <option value=3>Others</option>
     </select>
  </mat-form-field><br> -->
- <mat-form-field class="example-full-width"> 
-    <mat-label>Leave Type</mat-label>
-      <select matNativeControl formControlName =leaveId>
-        <option value=1>Casual leave</option>
-        <option value=2>Sick Leave</option>
-        <option value=3>Other</option>
-      </select>
-</mat-form-field><br>
+ <mat-form-field>
+  <mat-label>Leave Type</mat-label>
+  <mat-select  formControlName="leave">
+    <mat-option *ngFor="let type of leave" [value]="type.id">
+      {{type.leaveName}}
+    </mat-option>
+  </mat-select>
+</mat-form-field> <br>
 
   <mat-form-field class="example-full-width">
       <mat-label>Reason</mat-label>

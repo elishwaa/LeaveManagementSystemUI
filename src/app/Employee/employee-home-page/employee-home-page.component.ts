@@ -55,13 +55,18 @@ export class EmployeeHomePageComponent implements OnInit {
   }
   getLeaveRequests() {
 
-    this._service.getLeaveRequests(this.loginparameters.id).subscribe((details) => {
+    this._service.getLeaveRequests(this.loginparameters.id).subscribe(
+      (details) => {
       debugger;
       console.log(details);
       if (details) {
         sessionStorage.setItem('leaveRequests', JSON.stringify(details));
+        this.route.navigateByUrl('cancel-leave');
       }
-      this.route.navigateByUrl('cancel-leave');
+      else{
+        this._service.openSnackBar("No Leave Requests", "Sorry!")
+      }
+      
     });
   }
   openSubmitLeave(id:number): void{

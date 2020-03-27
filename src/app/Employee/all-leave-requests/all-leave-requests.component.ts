@@ -21,7 +21,8 @@ export class AllLeaveRequestsComponent implements OnInit {
   data;
   dataSource;
 
-  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','approve','editAndApprove'];
+
+  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','approve'];
   constructor(public httpClient: HttpClient, public dialog: MatDialog,public _service :LeaveMgmtService){}
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -34,7 +35,9 @@ export class AllLeaveRequestsComponent implements OnInit {
     console.log(this.leaveRequests);
   }
   ApproveRequest(employee: LeaveRequests,i){
-    this._service.ApproveRequest(employee.id).subscribe(
+    console.log(employee);
+    
+    this._service.ApproveRequest(employee).subscribe(
       data =>{
         if(data){
 
@@ -66,35 +69,61 @@ export class AllLeaveRequestsComponent implements OnInit {
      }
    });
  }
- 
-   EditAndApproveRequests(leaveRequest: LeaveRequests):void {
-      const dialogRef = this.dialog.open(EditAndApproveComponent, {
-        width: '30%',
-        height: '75%',
-        data: {
-          id: leaveRequest.id, empId:leaveRequest.empId, employeeName: leaveRequest.employeeName, startDate:leaveRequest.startDate, endDate: leaveRequest.endDate,
-          leave:leaveRequest.leave,leaveId:leaveRequest.leaveId, status:leaveRequest.status, reason:leaveRequest.reason
-        }
-      });
-  
-      dialogRef.afterClosed().subscribe(result => {
-        if (result) {
+//  openDialog(): void {
+//   const dialogRef = this.dialog.open(EditDetailsComponent, {
+//     width: '30%',
+//     height: '75%',
+//     data: {
+//       id: this.loginparameters.id, typeId: this.loginparameters.typeId,typeName:this.loginparameters.typeName, firstName: this.loginparameters.firstName,
+//       middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,
+//       salary: this.loginparameters.salary, username: this.loginparameters.username, locationId:this.loginparameters.locationId, locationName:this.loginparameters.locationName
+//     }
+//   });
 
-          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.empId), salary: parseInt(result.leaveId) }
-          console.log(data);
-          
-          this.httpClient.post(environment.apiUrl + 'LeaveRequest/EditAndApprove', data).subscribe(
-            data => {
-              if (data) {
-                sessionStorage.setItem('AllLeaveRequests',JSON.stringify(result) )
-                this.leaveRequests = result;
-              }
-            }
-          )
-        }
-      });
+//   dialogRef.afterClosed().subscribe(result => {
+//     if (result) {
+//       let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
+//       this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
+//         data => {
+//           if (data) {
+//             this._service.updateSessionStorage(result);
+//             this.loginparameters = result;
+//           }
+//         }
+//       )
+//     }
+//   });
+
+// }
+ 
+  //  EditAndApproveRequests(leaveRequest: LeaveRequests):void {
+  //     const dialogRef = this.dialog.open(EditAndApproveComponent, {
+  //       width: '30%',
+  //       height: '75%',
+  //       data: {
+  //         empid: leaveRequest.id, empId:leaveRequest.empId, employeeName: leaveRequest.employeeName, startDate:leaveRequest.startDate, endDate: leaveRequest.endDate,
+  //         leave:leaveRequest.leave,id:leaveRequest.leaveId, status:leaveRequest.status, reason:leaveRequest.reason
+  //       }
+  //     });
   
-    }
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       if (result) {
+
+  //         let data = { ...result, id: parseInt(result.id), empId: parseInt(result.empId), leaveId: parseInt(result.leaveId) }
+  //         console.log(data);
+          
+  //         this.httpClient.post(environment.apiUrl + 'LeaveRequest/EditLeaveRequest', data).subscribe(
+  //           data => {
+  //             if (data) {
+  //               sessionStorage.setItem('AllLeaveRequests',JSON.stringify(result) )
+  //               this.leaveRequests = result;
+  //             }
+  //           }
+  //         )
+  //       }
+  //     });
+  
+  //   }
     
 }
 

@@ -51,6 +51,9 @@ export class LeaveMgmtService {
    {
     return this.httpClient.post(environment.apiUrl+'Login/GetLogin',loginDetails);  
    }
+   getLeaves():Observable<any>{
+     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaves');  
+   }
    
    getLeaveRequests(empId:number):  Observable<any>
    {
@@ -111,8 +114,8 @@ export class LeaveMgmtService {
   getAllEmployees(): Observable<any>{
     return this.httpClient.get(environment.apiUrl+'LeaveRequest/allEmployees')
   }
-  ApproveRequest(id:number){
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/Approve/'+ id)
+  ApproveRequest(leaverequest){
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/Approve', leaverequest)
   }
   SaveEmployee(newEmployee): Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/AddEmployee', newEmployee)
