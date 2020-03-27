@@ -16,7 +16,7 @@ import { TransactionListingComponent } from '../transaction-listing/transaction-
 })
 export class AllEmployeesComponent implements OnInit {
 
-  displayedColumns: string[] = ['firstName', 'middleName', 'lastName','type','email','salary',
+  displayedColumns: string[] = ['id','firstName', 'middleName', 'lastName','type','email','salary',
   'username','project','location','employeeinfo','transactions','leaveRequests','addLeaveRequest'];
   //  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   employeeInfo: LoginParameters[];
@@ -38,14 +38,14 @@ export class AllEmployeesComponent implements OnInit {
         data: {
           id: employeeInfo.id , typeId: employeeInfo.typeId, firstName: employeeInfo.firstName,
           middleName: employeeInfo.middleName, lastName: employeeInfo.lastName, email: employeeInfo.email,
-          salary: employeeInfo.salary, username: employeeInfo.username, locationId:employeeInfo.locationId, locationName:employeeInfo.locationName
+          salary: employeeInfo.salary, username: employeeInfo.username,projectId: employeeInfo.projectId , projectName:employeeInfo.projectName, locationId:employeeInfo.locationId, locationName:employeeInfo.locationName
         }
       });
   
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           debugger
-          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), locationId: parseInt(result.locationId), salary: parseInt(result.salary) }
+          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId),projectId:parseInt(result.projectId), locationId: parseInt(result.locationId), salary: parseInt(result.salary) }
           this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
             data => {
               if (data) {
@@ -63,10 +63,13 @@ export class AllEmployeesComponent implements OnInit {
       this._service.getLeaveRequests(employee.id).subscribe((details) => {
         debugger;
         console.log(details);
-        if (details) {
+        if (details[0]!= null) {
           sessionStorage.setItem('leaveRequests', JSON.stringify(details));
+          this.route.navigateByUrl('cancel-leave');
         }
-        this.route.navigateByUrl('cancel-leave');
+        else{
+          this._service.openSnackBar("No leave requests to show","Have a nice day")
+        }
       });
     }
 
@@ -91,7 +94,7 @@ export class AllEmployeesComponent implements OnInit {
             });
           }
           else{
-            // ******************
+           this._service.openSnackBar("No transactions to show","Sorry!!")
           }
         }
       )

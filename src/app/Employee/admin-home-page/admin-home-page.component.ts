@@ -28,10 +28,14 @@ export class AdminHomePageComponent implements OnInit {
     this._service.AllLeaveRequests(this.loginparameters.id).subscribe((details) => {
       debugger;
       console.log(details);
-      if (details) {
+      if (details[0]!= null) {
         sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        this.route.navigateByUrl('all-leave-requests');
       }
-      this.route.navigateByUrl('all-leave-requests');
+      else{
+        this._service.openSnackBar("No Leave Requests to show","Have a nice day")
+      }
+  
     });
   }
   getAllEmployees(){

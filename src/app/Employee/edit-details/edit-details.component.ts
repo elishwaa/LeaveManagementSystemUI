@@ -21,6 +21,7 @@ export interface DialogData {
 export class EditDetailsComponent implements OnInit {
   empType =[];
   locations =[];
+  projects =[];
   constructor(
     public dialogRef: MatDialogRef<EmployeeHomePageComponent>, public _service:LeaveMgmtService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
@@ -39,6 +40,12 @@ export class EditDetailsComponent implements OnInit {
         console.log(this.locations);
         
       } )
+
+      this._service.getProjects().subscribe(
+        data=>{
+          this.projects = data;
+        }
+      )
     
   }
   
