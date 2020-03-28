@@ -9,3 +9,14 @@ table{
   button{
       margin-left: 5%;
   }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 90%;
+    margin-left: 3%;
+  }
+
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  

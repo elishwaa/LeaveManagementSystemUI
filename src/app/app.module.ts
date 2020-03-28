@@ -13,7 +13,7 @@ import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-lea
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatOptionModule } from '@angular/material/core';
-import {MatInputModule, MatSnackBar, MatSnackBarModule} from '@angular/material';
+import {MatInputModule, MatSnackBar, MatSnackBarModule, MatSortModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditDetailsComponent } from './Employee/edit-details/edit-details.component';
@@ -77,7 +77,9 @@ import { NewLoginComponent } from './sharedComponents/new-login/new-login.compon
     MatButtonModule,
     MatSnackBarModule,
     MatTableModule,
-    MatTabsModule,MatSelectModule,
+    MatTabsModule,
+    MatSelectModule,
+    MatSortModule
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],

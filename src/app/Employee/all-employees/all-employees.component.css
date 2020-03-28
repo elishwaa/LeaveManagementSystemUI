@@ -4,8 +4,9 @@ table {
   }
 
   .example-container {
+    width: 95%;
     height: auto;
     overflow: auto;
-    margin: 5%;
-    margin-left: 8%;
+    margin-left: 2.5%;
+    margin-top: 2%;
   }

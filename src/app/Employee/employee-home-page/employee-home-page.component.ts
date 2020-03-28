@@ -135,7 +135,7 @@ export class EmployeeHomePageComponent implements OnInit {
             });
           }
           else{
-            // ******************
+            this._service.openSnackBar("No Transactions yet","Have a nice day")
           }
         }
       )

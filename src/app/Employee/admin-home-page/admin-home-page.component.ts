@@ -8,6 +8,7 @@ import { NewDesignationComponent } from 'src/app/Admin/new-designation/new-desig
 import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-type.component';
 import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.component';
 import { NewProjectComponent } from 'src/app/Admin/new-project/new-project.component';
+import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
 
 @Component({
   selector: 'app-home-page',
@@ -76,5 +77,27 @@ export class AdminHomePageComponent implements OnInit {
     }
       )
   }
-  
+  Report():void {
+  //   this._service.TransactionListing(this.loginparameters.id).subscribe(
+  //     data =>{
+  //       console.log(data);
+        
+  //       if(data[0]!= null){
+  //         this.dialog.open(TransactionListingComponent,{
+  //           width: '80%',
+  //           height: '75%',
+  //           data: data
+  //         });
+  //       }
+  //       else{
+  //         this._service.openSnackBar("No Transactions yet","Have a nice day")
+  //       }
+  //     }
+  //   )
+    this.dialog.open(TransactionListingComponent,{
+                width: '80%',
+                height: '75%'
+              });
+            
+  }
 }
