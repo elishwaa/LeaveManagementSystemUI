@@ -58,6 +58,9 @@ export class SubmitLeaveComponent implements OnInit {
             this.onNoClick();
             this._service.openSnackBar("Leave Request","Success!!")
           }
+          else{
+            this._service.openSnackBar("No leave balance", "Leave request failed")
+          }
         }
       )
       

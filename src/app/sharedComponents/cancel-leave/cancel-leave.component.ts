@@ -5,7 +5,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { LoginParameters } from 'src/app/models/LoginParameters';
 import { Observable } from 'rxjs';
 import { environment} from '../../../environments/environment'
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatTableDataSource } from '@angular/material';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 
 
@@ -18,7 +18,8 @@ export class CancelLeaveComponent implements OnInit {
   //  webApi = 'https://localhost:44398/api/LeaveRequest/delete';
   displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','cancel'];
    leaveRequests: LeaveRequests[];
-   data :any;
+   data ;
+   dataSource;;
    status:any;
    index:number;
    loginparameters:LoginParameters;
@@ -26,7 +27,13 @@ export class CancelLeaveComponent implements OnInit {
 
   ngOnInit() {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+
+    if(this.loginparameters.id == 2 || this.loginparameters.id == 3){
+      
+    }
     this.leaveRequests = JSON.parse(sessionStorage.getItem('leaveRequests'));
+    this.data = Object.assign( this.leaveRequests);
+    this.dataSource = new MatTableDataSource<Element>(this.data)
     console.log(this.leaveRequests);
     
   }
@@ -36,9 +43,8 @@ export class CancelLeaveComponent implements OnInit {
         (data) =>{
           console.log(data);
             if(data = true){
-              //  this.leaveRequests.splice(index, 1);
-              // this.displayedColumns.splice(index,1);
-              // this._service.getLeaveRequests(this.leaveRequests[index].empId)
+              this.data.splice(index,1)
+              this.dataSource = new MatTableDataSource<Element>(this.data);
               }
         },
         (err) => {

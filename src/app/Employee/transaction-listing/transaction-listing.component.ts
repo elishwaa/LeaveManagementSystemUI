@@ -32,7 +32,7 @@ export class TransactionListingComponent implements OnInit {
       this._service.TransactionListing(this.loginparameters.id).subscribe(
       data =>{
         console.log(data);
-        if(data[0]!= null){
+        if(data[0] != null){
           this.dataSource =  new MatTableDataSource(data);
           this.dataSource.sort = this.sort;
         }

@@ -22,7 +22,7 @@ export class AllLeaveRequestsComponent implements OnInit {
   dataSource;
 
 
-  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','approve'];
+  displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','approve','reject'];
   constructor(public httpClient: HttpClient, public dialog: MatDialog,public _service :LeaveMgmtService){}
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -46,7 +46,7 @@ export class AllLeaveRequestsComponent implements OnInit {
          
         }
         else{
-          this._service.openSnackBar("Leave Request","Failed!!");
+          this._service.openSnackBar("No Balance Leaves","Failed!!");
 
         }
       }
@@ -69,6 +69,38 @@ export class AllLeaveRequestsComponent implements OnInit {
      }
    });
  }
+ CancelLeave(index: number){
+  debugger
+  this._service.CancelLeave(this.leaveRequests[index].id).subscribe(
+      (data) =>{
+        console.log(data);
+          if(data = true){
+            this.data.splice(index,1)
+            this.dataSource = new MatTableDataSource<Element>(this.data);
+            }
+      },
+      (err) => {
+        console.log(err)
+      }
+  );
+} 
+openCancelDialog(element: LeaveRequests, i:number): void {
+ 
+ const dialogRef = this.dialog.open(DeletePopUpComponent, {
+  width: '25%',
+  height: '25%',
+  data: {
+    message: "Are you sure want to delete this request?"
+  }
+});
+
+dialogRef.afterClosed().subscribe(result => {
+  if (result) {
+    this.CancelLeave(i);
+  }
+});
+}
+
 //  openDialog(): void {
 //   const dialogRef = this.dialog.open(EditDetailsComponent, {
 //     width: '30%',
