@@ -13,7 +13,6 @@ import { LoginParameters } from 'src/app/models/LoginParameters';
 })
 export class EditLeaveBalanceComponent implements OnInit {
 
-  leaveBalance :LeaveBalanceDetails[];
   loginparameters :LoginParameters;
   displayedColumns: string[] = ['employeeId','employeeName','casualLeave','sick','other','action'];
 
@@ -24,8 +23,8 @@ export class EditLeaveBalanceComponent implements OnInit {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data=>{
-          // this.leaveBalance = data;
-          console.log(this.leaveBalance);
+         console.log(data);
+         
           
       });
   }
