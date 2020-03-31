@@ -134,4 +134,7 @@ export class LeaveMgmtService {
   AddNewProject(project):Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewProject' ,{project:project})
   }
+  Audit(auditData): Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/audit', auditData);
+  }
 }

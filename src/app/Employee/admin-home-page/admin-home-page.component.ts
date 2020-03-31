@@ -9,6 +9,7 @@ import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-ty
 import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.component';
 import { NewProjectComponent } from 'src/app/Admin/new-project/new-project.component';
 import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
+import { AuditComponent } from 'src/app/Admin/audit/audit.component';
 
 @Component({
   selector: 'app-home-page',
@@ -82,6 +83,12 @@ export class AdminHomePageComponent implements OnInit {
                 width: '80%',
                 height: '75%'
               });
+  }
+  Audit(){
+    this.dialog.open(AuditComponent,{
+      width: '30%',
+      height: '55%',
+    })
   }
 
 }

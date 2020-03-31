@@ -1,0 +1,26 @@
+
+<div class="Box"  [formGroup]="auditData">
+    <mat-form-field class="example-full-width">
+        <mat-label>Year</mat-label>
+        <input  matInput placeholder="enter year" formControlName ="year">
+    </mat-form-field><br>
+
+    <mat-form-field>
+        <mat-label>Leave Type</mat-label>
+        <mat-select  formControlName="leaveId">
+          <mat-option *ngFor="let type of leave" [value]="type.id">
+            {{type.leaveName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
+
+    <mat-form-field  class="example-full-width">
+        <mat-label>Number of days</mat-label>
+        <input type="number" matInput placeholder="enter number of leave days" formControlName =numberOfDays>
+    </mat-form-field><br>
+  
+    <button mat-button (click)="Audit()">Save</button>
+    <button mat-button (click)="onNoClick()"> Back</button>
+
+  </div>
+  

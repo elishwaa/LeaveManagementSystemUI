@@ -86,6 +86,6 @@ import { AuditComponent } from './Admin/audit/audit.component';
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent,NewLoginComponent, TransactionListingComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
+    ForgotPasswordComponent,NewLoginComponent,AuditComponent, TransactionListingComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
 })
 export class AppModule { }

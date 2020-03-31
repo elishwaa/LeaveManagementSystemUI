@@ -16,7 +16,8 @@ export class EditLeaveBalanceComponent implements OnInit {
   loginparameters :LoginParameters;
   headers:string[]=[];
   rowData=[];
-  // displayedColumns: string[] = ['employeeId','employeeName','casualLeave','sick','other','action'];
+  selectedRow: number;
+  // displayedColumns: string[] = ['action'];
   constructor(public _service: LeaveMgmtService, public dialog:MatDialog) {
 
    }
@@ -32,15 +33,9 @@ export class EditLeaveBalanceComponent implements OnInit {
         console.log(this.rowData);
       });
   }
-  // Edit(element:LeaveBalanceDetails){
-  //   this.dialog.open(LeaveBalancePopUpComponent,{
-  //     width: '30%',
-  //     height: '75%',
-  //     data:{
-  //       employeeId:element.employeeId, leaveId: element.casualLeave, 
-  //       leaveType: element.sick, total: element.other
-  //     }
-  //   });
-  // }
-
+  rowClick(rowId) {
+    this.selectedRow = rowId;
+    console.log(this.selectedRow);
+    
+  }
 }
