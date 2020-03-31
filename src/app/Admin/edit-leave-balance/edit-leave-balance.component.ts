@@ -14,18 +14,22 @@ import { LoginParameters } from 'src/app/models/LoginParameters';
 export class EditLeaveBalanceComponent implements OnInit {
 
   loginparameters :LoginParameters;
-  displayedColumns: string[] = ['employeeId','employeeName','casualLeave','sick','other','action'];
+  headers:string[]=[];
+  rowData=[];
+  // displayedColumns: string[] = ['employeeId','employeeName','casualLeave','sick','other','action'];
+  constructor(public _service: LeaveMgmtService, public dialog:MatDialog) {
 
-  constructor(public _service: LeaveMgmtService, public dialog:MatDialog) { }
+   }
 
   ngOnInit() {
 
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data=>{
-         console.log(data);
-         
-          
+        this.headers = Object.keys(data['Table'][0]);
+        console.log(this.headers);
+        this.rowData = data['Table']; 
+        console.log(this.rowData);
       });
   }
   // Edit(element:LeaveBalanceDetails){

@@ -59,23 +59,7 @@ h2{
     color: black;
     list-style-type: none;
 }
-table, tr,th{
-   margin-left: 0;
-   width: 80%;
-   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-   border-collapse: collapse;
-}
-td,th{
-    
-    border: 1px solid black;
-    padding: 8px;
-}
-th{
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    color:black;
-}
+
 .wrapper {
     display: flex;
     width: 100%;
@@ -111,4 +95,17 @@ th{
   
   .closebtn:hover {
     color: black;
+  }
+
+  table {
+    width: 100%;
+   
+  }
+
+  .example-container {
+    
+    overflow: auto;
+    margin: 5%;
+    width: 80%;
+    margin-left: 5%;
   }

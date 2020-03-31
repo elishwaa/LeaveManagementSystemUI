@@ -8,6 +8,7 @@ import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-lea
 import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
 import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
 import { EditLeaveBalanceComponent } from './Admin/edit-leave-balance/edit-leave-balance.component';
+import { AuditComponent } from './Admin/audit/audit.component';
 
 const routes: Routes = [
   
@@ -42,6 +43,10 @@ const routes: Routes = [
   {
     path: 'edit-leave-balance',
     component: EditLeaveBalanceComponent
+  },
+  {
+    path: 'audit',
+    component: AuditComponent
   }
 ];
 

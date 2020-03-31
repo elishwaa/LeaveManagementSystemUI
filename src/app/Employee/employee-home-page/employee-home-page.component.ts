@@ -21,7 +21,6 @@ import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
 export class EmployeeHomePageComponent implements OnInit {
   loginparameters: LoginParameters;
   leaveRequests: LeaveRequests;
-  loginEmpId: number;
   Type: boolean = false;
   success:boolean =false;
   employeeType: any;
@@ -30,7 +29,8 @@ export class EmployeeHomePageComponent implements OnInit {
   newPassword:string ;
   reEnterdpassword:string ;
   leaveBalance:LeaveBalanceDetails;
-
+  headers:string[]=[];
+  rowData=[];
   displayedColumns: string[] = ['casualLeave','sickLeave','other'];
 
   constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, 
@@ -47,10 +47,10 @@ export class EmployeeHomePageComponent implements OnInit {
     }
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data=>{
-          this.leaveBalance = data;
-          console.log(this.leaveBalance);
-          
-          
+        this.headers = Object.keys(data['Table'][0]);
+        console.log(this.headers);
+        this.rowData = data['Table']; 
+        console.log(this.rowData);
       });
   }
   getLeaveRequests() {

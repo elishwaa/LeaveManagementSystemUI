@@ -35,6 +35,7 @@ import { LeaveBalancePopUpComponent } from './Admin/leave-balance-pop-up/leave-b
 import { NewProjectComponent } from './Admin/new-project/new-project.component';
 import { TransactionListingComponent } from './Employee/transaction-listing/transaction-listing.component';
 import { NewLoginComponent } from './sharedComponents/new-login/new-login.component';
+import { AuditComponent } from './Admin/audit/audit.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,8 @@ import { NewLoginComponent } from './sharedComponents/new-login/new-login.compon
     LeaveBalancePopUpComponent,
     NewProjectComponent,
     TransactionListingComponent,
-    NewLoginComponent
+    NewLoginComponent,
+    AuditComponent
 
   ],
   imports: [

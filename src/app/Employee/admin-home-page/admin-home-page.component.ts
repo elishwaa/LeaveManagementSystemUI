@@ -78,26 +78,10 @@ export class AdminHomePageComponent implements OnInit {
       )
   }
   Report():void {
-  //   this._service.TransactionListing(this.loginparameters.id).subscribe(
-  //     data =>{
-  //       console.log(data);
-        
-  //       if(data[0]!= null){
-  //         this.dialog.open(TransactionListingComponent,{
-  //           width: '80%',
-  //           height: '75%',
-  //           data: data
-  //         });
-  //       }
-  //       else{
-  //         this._service.openSnackBar("No Transactions yet","Have a nice day")
-  //       }
-  //     }
-  //   )
     this.dialog.open(TransactionListingComponent,{
                 width: '80%',
                 height: '75%'
               });
-            
   }
+
 }
