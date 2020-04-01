@@ -2,7 +2,6 @@ import { OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
 import { AllEmployeesComponent } from '../all-employees/all-employees.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { DialogData } from '../edit-details/edit-details.component';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { LoginParameters } from 'src/app/models/LoginParameters';
@@ -22,7 +21,7 @@ export class TransactionListingComponent implements OnInit {
   loginparameters: LoginParameters;
   displayedColumns: string[] = ['name', 'leave', 'startdate', 'enddate', 'totaldays', 'status'];
   constructor(public dialogRef: MatDialogRef<AllEmployeesComponent>, public _service: LeaveMgmtService,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {
+    @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {

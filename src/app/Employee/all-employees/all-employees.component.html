@@ -65,32 +65,37 @@
         <ng-container matColumnDef="employeeinfo">
             <th mat-header-cell *matHeaderCellDef> Employee Info </th>
             <td mat-cell *matCellDef="let element; let i = index"> 
-                <button mat-raised-button color="primary"
-                    (click)="Edit(element)">Edit</button> 
+                <!-- <button mat-raised-button color="primary"
+                    (click)="Edit(element)">Edit</button>  -->
+                    <mat-icon (click)="Edit(element)" aria-hidden="false" aria-label="Example create icon">create</mat-icon> 
                 </td>
         </ng-container>
 
         <ng-container matColumnDef="transactions">
             <th mat-header-cell *matHeaderCellDef> Transactions </th>
             <td mat-cell *matCellDef="let element; let i = index"> 
-                <button mat-raised-button color="primary"
-                    (click)="ShowTransactions(element)">Show</button> 
+                <!-- <button mat-raised-button color="primary"
+                    (click)="ShowTransactions(element)">Show</button> import_export -->
+                    <mat-icon (click)="ShowTransactions(element)" aria-hidden="false" aria-label="Example import_export icon">import_export</mat-icon> 
                 </td>
         </ng-container>
 
         <ng-container matColumnDef="leaveRequests">
             <th mat-header-cell *matHeaderCellDef>Leave Requests</th>
             <td mat-cell *matCellDef="let element; let i = index"> 
-                <button mat-raised-button color="primary"
-                    (click)="EmployeeleaveRequests(element)">Open</button> 
+                <!-- <button mat-raised-button color="primary"
+                    (click)="EmployeeleaveRequests(element)">Open</button>  -->
+                    <mat-icon (click)="EmployeeleaveRequests(element)" aria-hidden="false" aria-label="Example drafts icon">drafts</mat-icon> 
                 </td>
         </ng-container>
 
         <ng-container matColumnDef="addLeaveRequest">
             <th mat-header-cell *matHeaderCellDef>Add Leave Requests</th>
             <td mat-cell *matCellDef="let element; let i = index"> 
-                <button mat-raised-button color="primary"
-                    (click)="AddLeaveRequest(element)">Add</button> 
+                <!-- <button mat-raised-button color="primary"
+                    (click)="AddLeaveRequest(element)">Add</button>  -->
+                    <mat-icon (click)="AddLeaveRequest(element)" aria-hidden="false" aria-label="Example add icon">add</mat-icon> 
+
                 </td>
         </ng-container>
 

@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { AllLeaveRequestsComponent } from '../all-leave-requests/all-leave-requests.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DialogData } from '../edit-details/edit-details.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 
 @Component({
@@ -15,7 +14,7 @@ export class EditAndApproveComponent implements OnInit {
 
   constructor( public _service:LeaveMgmtService,
     public dialogRef: MatDialogRef<AllLeaveRequestsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
 
   ngOnInit(): void {
     this._service.getLeaves().subscribe(

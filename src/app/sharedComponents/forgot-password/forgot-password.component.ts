@@ -1,7 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { SignInPageComponent } from 'src/app/sign-in-page/sign-in-page.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { DialogData } from 'src/app/Employee/edit-details/edit-details.component';
 import { EmployeeHomePageComponent } from 'src/app/Employee/employee-home-page/employee-home-page.component';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';

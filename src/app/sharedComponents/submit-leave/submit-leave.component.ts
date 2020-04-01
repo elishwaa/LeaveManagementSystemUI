@@ -10,7 +10,6 @@ import { LoginParameters } from 'src/app/models/LoginParameters';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { environment} from '../../../environments/environment'
 import { EmployeeHomePageComponent } from 'src/app/Employee/employee-home-page/employee-home-page.component';
-import { DialogData } from 'src/app/Employee/edit-details/edit-details.component';
 
 @Component({
   selector: 'app-submit-leave',
@@ -25,7 +24,7 @@ export class SubmitLeaveComponent implements OnInit {
   leave =[];
   // returnData:any;
   constructor(public dialogRef: MatDialogRef<EmployeeHomePageComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, public httpClient:HttpClient, public _service:LeaveMgmtService){ }
+    @Inject(MAT_DIALOG_DATA) public data: any, public httpClient:HttpClient, public _service:LeaveMgmtService){ }
 
   ngOnInit() {
 

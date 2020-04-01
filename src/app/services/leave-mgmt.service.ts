@@ -137,4 +137,7 @@ export class LeaveMgmtService {
   Audit(auditData): Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/audit', auditData);
   }
+  UpdatedLeaveBalance(updatedLeaveBalance):Observable<any>{
+    return this.httpClient.post(environment.apiUrl+'LeaveRequest/editLeaveBalance', updatedLeaveBalance);
+  }
 }

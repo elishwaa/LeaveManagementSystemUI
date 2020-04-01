@@ -36,6 +36,8 @@ import { NewProjectComponent } from './Admin/new-project/new-project.component';
 import { TransactionListingComponent } from './Employee/transaction-listing/transaction-listing.component';
 import { NewLoginComponent } from './sharedComponents/new-login/new-login.component';
 import { AuditComponent } from './Admin/audit/audit.component';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
   declarations: [
@@ -81,7 +83,8 @@ import { AuditComponent } from './Admin/audit/audit.component';
     MatTableModule,
     MatTabsModule,
     MatSelectModule,
-    MatSortModule
+    MatSortModule,
+    MatIconModule 
   ],
   providers: [LeaveMgmtService],
   bootstrap: [AppComponent],

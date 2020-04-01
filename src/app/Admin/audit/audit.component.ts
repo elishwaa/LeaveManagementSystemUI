@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { DialogData } from 'src/app/Employee/edit-details/edit-details.component';
 import { MatDialogRef } from '@angular/material';
 import { AdminHomePageComponent } from 'src/app/Employee/admin-home-page/admin-home-page.component';
 
