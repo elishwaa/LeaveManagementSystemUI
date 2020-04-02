@@ -11,6 +11,8 @@ import { LoginParameters } from 'src/app/models/LoginParameters';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
 import { environment } from 'src/environments/environment';
+import { ChangePasswordPopUpComponent } from '../change-password-pop-up/change-password-pop-up.component';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-employee-home-page',
@@ -105,10 +107,34 @@ export class EmployeeHomePageComponent implements OnInit {
     });
 
   }
-  openChangePassDialog(id:number){
-    this._service.openChangePassDialog(id);
+  openChangePassDialog(id:number): void{
+
+    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
+      width: '25%',
+      height: '40%',
+      data: {
+        password1: this.newPassword  , password2:this.reEnterdpassword
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && (result.passwordOne == result.passwordTwo)) {
+        let Encryptedpass = CryptoJS.AES.encrypt(result.passwordOne.trim(), this._service.encPassword.trim()).toString(); 
+        this._service.ChangePassword(id,Encryptedpass).subscribe(
+          data => {
+            debugger
+            if (data) {
+             console.log(data);
+             this._service.openSnackBar("Password updation","Success!!");
+            }
+          }
+        )
+      }
+      else{
+        this._service.openSnackBar("Password mismatch","Operation Failed!!");
+      }
+    });
   }
-  
   logout() {
    this._service.Logout();
   }

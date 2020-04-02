@@ -22,6 +22,7 @@ export class LeaveMgmtService {
   reEnterdpassword: any;
   allLeaveRequests: LeaveRequests[];
   leaverequestId:number;
+  encPassword: string = 'Bht235@$5';
 
   constructor(public route: Router, public httpClient: HttpClient,private injector: Injector,
     private _snackBar: MatSnackBar,public dialog: MatDialog ){
@@ -66,7 +67,9 @@ export class LeaveMgmtService {
    updateSessionStorage(data:any){
      sessionStorage.setItem('employee',JSON.stringify(data) )
    }
-
+   ChangePassword(id,Encryptedpass):Observable<any>{
+    return this.httpClient.post(environment.apiUrl + 'Employee/ChangePassword', {id, password: Encryptedpass});
+   }
    CancelLeave(index:number):Observable<any>{
     let params = new HttpParams().set('id',index.toString())
     return this.httpClient.delete(environment.apiUrl+'Leave/delete' ,{params:params} )
@@ -75,33 +78,7 @@ export class LeaveMgmtService {
     let params = new HttpParams().set('id',empId)
     return this.httpClient.get(environment.apiUrl+'Leave/Transactions',{params:params})
    }
-   openChangePassDialog(id:number): void{
-
-    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
-      width: '25%',
-      height: '40%',
-      data: {
-        password1: this.newPassword  , password2:this.reEnterdpassword
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && (result.password1 == result.password2)) {
-        this.httpClient.post(environment.apiUrl + 'Employee/ChangePassword', {id, password: result.password1}).subscribe(
-          data => {
-            debugger
-            if (data) {
-             console.log(data);
-             this.openSnackBar("Password updation","Success!!");
-            }
-          }
-        )
-      }
-      else{
-        this.openSnackBar("Password mismatch","Operation Failed!!");
-      }
-    });
-  }
+  
   openSnackBar(message: string, action:string) {
     console.log(123);
     

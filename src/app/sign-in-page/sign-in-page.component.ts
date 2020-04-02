@@ -20,7 +20,7 @@ export class SignInPageComponent implements OnInit {
   signInForm: FormGroup;
   empType = [];
   loginDetails: string;
-  encPassword: string = 'Bht235@$5';
+  
   constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class SignInPageComponent implements OnInit {
 
 
   login() {
-    let Encryptedpass = CryptoJS.AES.encrypt(this.signInForm.controls['password'].value.trim(), this.encPassword.trim()).toString(); 
+    let Encryptedpass = CryptoJS.AES.encrypt(this.signInForm.controls['password'].value.trim(), this._service.encPassword.trim()).toString(); 
     
     this.signInForm.controls['password'].setValue(Encryptedpass) ;
     
