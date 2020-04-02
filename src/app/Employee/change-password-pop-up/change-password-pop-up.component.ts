@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { EmployeeHomePageComponent } from 'src/app/Employee/employee-home-page/employee-home-page.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
+import { ForgotPasswordComponent } from 'src/app/sharedComponents/forgot-password/forgot-password.component';
+import { EmployeeHomePageComponent } from '../employee-home-page/employee-home-page.component';
 
 @Component({
   selector: 'app-change-password-pop-up',

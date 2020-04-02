@@ -13,12 +13,6 @@
 
                 <label>Password</label> <br>
                 <input type="password" formControlName = "password"> <br> <br>
-
-                <label>Employee Type</label> <br>
-                <select formControlName = "empType">
-                    <option *ngFor="let type of empType" [value]="type.id">{{type.empType}}</option>
-                   
-                </select> <br><br> 
             </form>
 
             <button (click)="login()"> Login</button> <br> <br>

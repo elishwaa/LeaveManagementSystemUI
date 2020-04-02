@@ -4,9 +4,9 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders} from '@angular/common/http'
 import { LoginParameters } from '../models/LoginParameters';
 import { environment} from '../../environments/environment'
-import { ChangePasswordPopUpComponent } from '../sharedComponents/change-password-pop-up/change-password-pop-up.component';
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { LeaveRequests } from '../models/leaveRequests';
+import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
 
 @Injectable({
   providedIn: 'root'
@@ -139,5 +139,10 @@ export class LeaveMgmtService {
   }
   UpdatedLeaveBalance(updatedLeaveBalance):Observable<any>{
     return this.httpClient.post(environment.apiUrl+'LeaveRequest/editLeaveBalance', updatedLeaveBalance);
+  }
+
+  Logout(){
+    this.route.navigateByUrl('');
+    sessionStorage.clear();
   }
 }

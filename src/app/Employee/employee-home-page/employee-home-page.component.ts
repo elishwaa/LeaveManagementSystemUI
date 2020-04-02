@@ -1,17 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginParameters } from 'src/app/models/LoginParameters';
-import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { Router } from '@angular/router';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EditDetailsComponent } from '../edit-details/edit-details.component';
-import { environment } from 'src/environments/environment';
 import { MatSnackBar } from '@angular/material';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
-import { stringify } from 'querystring';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
-import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
+import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
 import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
+import { LoginParameters } from 'src/app/models/LoginParameters';
+import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
+import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-employee-home-page',
@@ -110,7 +109,7 @@ export class EmployeeHomePageComponent implements OnInit {
   }
   
   logout() {
-    this.route.navigateByUrl('');
+   this._service.Logout();
   }
 
   AllLeaveRequests(){

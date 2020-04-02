@@ -28,20 +28,20 @@ export class SignInPageComponent implements OnInit {
   constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
-    this._service.getEmpType().subscribe(
-      data =>{
-        console.log(data);
+    // this._service.getEmpType().subscribe(
+    //   data =>{
+    //     console.log(data);
         
-        this.empType = data
-        console.log(this.empType);
+    //     this.empType = data
+    //     console.log(this.empType);
         
-      }
-    )
+    //   }
+    // )
    
     this.signInForm = new FormGroup({
       username: new FormControl(),
-      password: new FormControl(),
-      empType: new FormControl()
+      password: new FormControl()
+      // empType: new FormControl()
     });
   }
 
@@ -54,7 +54,6 @@ export class SignInPageComponent implements OnInit {
      
       if (details) {
         sessionStorage.setItem('employee', JSON.stringify(details));
-        // this._service.employeeType = details.typeId;
         sessionStorage.setItem('empType', details.typeId);
         console.log(details.typeId);
       }

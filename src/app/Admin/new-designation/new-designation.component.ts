@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { AdminHomePageComponent } from 'src/app/Employee/admin-home-page/admin-home-page.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
 
 @Component({
   selector: 'app-new-designation',

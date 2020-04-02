@@ -2,7 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminHomePageComponent } from './Employee/admin-home-page/admin-home-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { LeaveMgmtService } from './services/leave-mgmt.service';
 import { HttpClientModule }   from '@angular/common/http';
@@ -18,11 +17,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { EditDetailsComponent } from './Employee/edit-details/edit-details.component';
 import { DeletePopUpComponent } from './sharedComponents/delete-pop-up/delete-pop-up.component';
-import { ChangePasswordPopUpComponent } from './sharedComponents/change-password-pop-up/change-password-pop-up.component';
 import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forgot-password.component';
-import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
 import {MatTableModule} from '@angular/material/table';
-import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
 import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-approve.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NewEmployeeComponent } from './Admin/new-employee/new-employee.component';
@@ -33,10 +29,14 @@ import { NewLocationComponent } from './Admin/new-location/new-location.componen
 import { EditLeaveBalanceComponent } from './Admin/edit-leave-balance/edit-leave-balance.component';
 import { LeaveBalancePopUpComponent } from './Admin/leave-balance-pop-up/leave-balance-pop-up.component';
 import { NewProjectComponent } from './Admin/new-project/new-project.component';
-import { TransactionListingComponent } from './Employee/transaction-listing/transaction-listing.component';
 import { NewLoginComponent } from './sharedComponents/new-login/new-login.component';
 import { AuditComponent } from './Admin/audit/audit.component';
 import {MatIconModule} from '@angular/material/icon';
+import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
+import { TransactionListingComponent } from './sharedComponents/transaction-listing/transaction-listing.component';
+import { AllEmployeesComponent } from './Admin/all-employees/all-employees.component';
+import { AllLeaveRequestsComponent } from './sharedComponents/all-leave-requests/all-leave-requests.component';
+import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/change-password-pop-up.component';
 
 
 @NgModule({

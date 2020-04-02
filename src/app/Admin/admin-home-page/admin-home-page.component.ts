@@ -8,8 +8,8 @@ import { NewDesignationComponent } from 'src/app/Admin/new-designation/new-desig
 import { NewLeaveTypeComponent } from 'src/app/Admin/new-leave-type/new-leave-type.component';
 import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.component';
 import { NewProjectComponent } from 'src/app/Admin/new-project/new-project.component';
-import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
 import { AuditComponent } from 'src/app/Admin/audit/audit.component';
+import { TransactionListingComponent } from 'src/app/sharedComponents/transaction-listing/transaction-listing.component';
 
 @Component({
   selector: 'app-home-page',
@@ -22,7 +22,7 @@ export class AdminHomePageComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
-
+    
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
   }
 
@@ -45,7 +45,7 @@ export class AdminHomePageComponent implements OnInit {
     this.route.navigateByUrl('all-employees')
   }
   logout() {
-    this.route.navigateByUrl('');
+    this._service.Logout();
   }
   AddNewEmployee() :void {
     this.dialog.open(NewEmployeeComponent, {

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AdminHomePageComponent } from './Employee/admin-home-page/admin-home-page.component';
 import { SignInPageComponent } from './sign-in-page/sign-in-page.component';
 import { EmployeeHomePageComponent } from './Employee/employee-home-page/employee-home-page.component';
 import { SubmitLeaveComponent } from './sharedComponents/submit-leave/submit-leave.component';
 import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-leave.component';
-import { AllLeaveRequestsComponent } from './Employee/all-leave-requests/all-leave-requests.component';
-import { AllEmployeesComponent } from './Employee/all-employees/all-employees.component';
+import { AllLeaveRequestsComponent } from './sharedComponents/all-leave-requests/all-leave-requests.component';
 import { EditLeaveBalanceComponent } from './Admin/edit-leave-balance/edit-leave-balance.component';
 import { AuditComponent } from './Admin/audit/audit.component';
+import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
+import { AllEmployeesComponent } from './Admin/all-employees/all-employees.component';
 
 const routes: Routes = [
   

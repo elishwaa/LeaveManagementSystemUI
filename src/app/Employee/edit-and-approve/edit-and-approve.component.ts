@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { AllLeaveRequestsComponent } from '../all-leave-requests/all-leave-requests.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
+import { AllLeaveRequestsComponent } from 'src/app/sharedComponents/all-leave-requests/all-leave-requests.component';
 
 @Component({
   selector: 'app-edit-and-approve',

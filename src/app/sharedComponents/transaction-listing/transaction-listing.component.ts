@@ -1,10 +1,10 @@
 import { OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
-import { AllEmployeesComponent } from '../all-employees/all-employees.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import * as XLSX from 'xlsx';
 import { LoginParameters } from 'src/app/models/LoginParameters';
+import { AllEmployeesComponent } from 'src/app/Admin/all-employees/all-employees.component';
 
 @Component({
   selector: 'app-transaction-listing',

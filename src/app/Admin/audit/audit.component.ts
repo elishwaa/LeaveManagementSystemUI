@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { MatDialogRef } from '@angular/material';
-import { AdminHomePageComponent } from 'src/app/Employee/admin-home-page/admin-home-page.component';
+import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
 
 @Component({
   selector: 'app-audit',

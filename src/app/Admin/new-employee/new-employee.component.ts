@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
-import { AdminHomePageComponent } from 'src/app/Employee/admin-home-page/admin-home-page.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { FormGroup, FormControl } from '@angular/forms';
+import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
 
 @Component({
   selector: 'app-new-employee',

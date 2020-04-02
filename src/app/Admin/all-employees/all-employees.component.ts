@@ -2,12 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { LoginParameters } from 'src/app/models/LoginParameters';
 import { MatPaginator, MatDialog } from '@angular/material';
-import { EditDetailsComponent } from '../edit-details/edit-details.component';
+import { EditDetailsComponent } from '../../Employee/edit-details/edit-details.component';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
-import { TransactionListingComponent } from '../transaction-listing/transaction-listing.component';
+import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
 
 @Component({
   selector: 'app-all-employees',
