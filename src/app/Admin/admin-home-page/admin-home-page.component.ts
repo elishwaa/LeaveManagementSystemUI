@@ -19,11 +19,14 @@ import { TransactionListingComponent } from 'src/app/sharedComponents/transactio
 export class AdminHomePageComponent implements OnInit {
 
   loginparameters: LoginParameters
+  hideComponent:boolean = false;
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
-    
-    this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+    if(sessionStorage.getItem('employee') != null){
+      this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+      this.hideComponent = true;
+    }
   }
 
   AllLeaveRequests(){
