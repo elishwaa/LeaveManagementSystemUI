@@ -1,55 +1,61 @@
-<div class="topBar">
-    <button mat-raised-button (click)=logout()>Logout</button>
-    <button mat-raised-button (click)="openDialog()">Edit Info</button>
-    <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change Password</button>
-</div>
+<!-- <div *ngIf ="hideComponent == false">
+    <h3>Sorry, You dont have the permission to see this page !! </h3>
+</div> -->
 
-<div>
-    <div class="wrapper">
-        <nav id="sidebar">
-            <ul  >
-                <li><a (click)="openSubmitLeave(loginparameters.id)">Submit Leave request</a></li>
-                <li><a (click) ="getLeaveRequests()">leave requests status </a></li>
-                <li><a (click)="TransactionListing()">Transaction listing</a></li>
-                <!-- <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li> -->
-            </ul>
-            <ul *ngIf = "Type">
-                <li><a (click)="AllLeaveRequests()">Employee leave requests</a></li>
-                <!-- <li><a>Employee leave request status</a> </li> -->
-            </ul>
-        </nav>     
+<div *ngIf ="hideComponent">
+    <div class="topBar">
+        <button mat-raised-button (click)=logout()>Logout</button>
+        <button mat-raised-button (click)="openDialog()">Edit Info</button>
+        <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change Password</button>
     </div>
-</div>
-
-<div class="EmpInfoBox" >
-    <div class="EmpInfo" >        
-        <ul>
-            <h2 style="color: rgb(4, 52, 36);">{{loginparameters.firstName}}</h2>
-            <li><b>Employee Id</b> : {{loginparameters.id}} </li>
-            <li><b>Employee Type</b> : {{loginparameters.typeName}} </li>
-            <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
-            <li><b>Email</b> : {{loginparameters.email}} </li>
-            <li><b>Salary</b> : {{loginparameters.salary}} </li>
-            <li><b>Username</b> : {{loginparameters.username}}</li>
-            <li><b>Location Id</b> : {{loginparameters.locationName}}</li>
-            
-        </ul>
-        <div>
-            <div class="example-container mat-elevation-z8"*ngIf="rowData.length">
-                <table mat-table [dataSource]="rowData">
-        
-                    <ng-container *ngFor="let header of headers" matColumnDef="{{header}}">
-                        <th mat-header-cell *matHeaderCellDef > {{header}} </th>
-                        <td mat-cell *matCellDef="let element"> {{element[header]}}</td>
-                    </ng-container>
-                    
-                    <tr mat-header-row *matHeaderRowDef="headers sticky: true"></tr>
-                    <tr mat-row *matRowDef="let row; columns: headers;"></tr>
-                </table>
-            </div>
-        </div>
     
-       
+    <div>
+        <div class="wrapper">
+            <nav id="sidebar">
+                <ul  >
+                    <li><a (click)="openSubmitLeave(loginparameters.id)">Submit Leave request</a></li>
+                    <li><a (click) ="getLeaveRequests()">leave requests status </a></li>
+                    <li><a (click)="TransactionListing()">Transaction listing</a></li>
+                    <!-- <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li> -->
+                </ul>
+                <ul *ngIf = "Type">
+                    <li><a (click)="AllLeaveRequests()">Employee leave requests</a></li>
+                    <!-- <li><a>Employee leave request status</a> </li> -->
+                </ul>
+            </nav>     
+        </div>
+    </div>
+    
+    <div class="EmpInfoBox" >
+        <div class="EmpInfo" >        
+            <ul>
+                <h2 style="color: rgb(4, 52, 36);">{{loginparameters.firstName}}</h2>
+                <li><b>Employee Id</b> : {{loginparameters.id}} </li>
+                <li><b>Employee Type</b> : {{loginparameters.typeName}} </li>
+                <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}} {{loginparameters.lastName}}   </li>
+                <li><b>Email</b> : {{loginparameters.email}} </li>
+                <li><b>Salary</b> : {{loginparameters.salary}} </li>
+                <li><b>Username</b> : {{loginparameters.username}}</li>
+                <li><b>Location Id</b> : {{loginparameters.locationName}}</li>
+                
+            </ul>
+            <div>
+                <div class="example-container mat-elevation-z8"*ngIf="rowData.length">
+                    <table mat-table [dataSource]="rowData">
+            
+                        <ng-container *ngFor="let header of headers" matColumnDef="{{header}}">
+                            <th mat-header-cell *matHeaderCellDef > {{header}} </th>
+                            <td mat-cell *matCellDef="let element"> {{element[header]}}</td>
+                        </ng-container>
+                        
+                        <tr mat-header-row *matHeaderRowDef="headers sticky: true"></tr>
+                        <tr mat-row *matRowDef="let row; columns: headers;"></tr>
+                    </table>
+                </div>
+            </div>
+        
+           
+        </div>
     </div>
 </div>
 

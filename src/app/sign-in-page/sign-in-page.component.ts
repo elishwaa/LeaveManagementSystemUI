@@ -17,39 +17,26 @@ import { NewLoginComponent } from '../sharedComponents/new-login/new-login.compo
   styleUrls: ['./sign-in-page.component.css']
 })
 export class SignInPageComponent implements OnInit {
-
-  // inputUsername: string;
-  // inputPassword: string;
-  // inputEmpType: number ;
   signInForm: FormGroup;
   empType = [];
-
   loginDetails: string;
+  encPassword: string = 'Bht235@$5';
   constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
-    // this._service.getEmpType().subscribe(
-    //   data =>{
-    //     console.log(data);
-        
-    //     this.empType = data
-    //     console.log(this.empType);
-        
-    //   }
-    // )
-   
     this.signInForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl()
-      // empType: new FormControl()
     });
   }
 
 
   login() {
-    console.log(this.signInForm.value);
-   
-    this._service.getEmployeeInfo({...this.signInForm.value, empType:parseInt(this.signInForm.value.empType)}).subscribe(
+    let Encryptedpass = CryptoJS.AES.encrypt(this.signInForm.controls['password'].value.trim(), this.encPassword.trim()).toString(); 
+    
+    this.signInForm.controls['password'].setValue(Encryptedpass) ;
+    
+    this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (details) => {
      
       if (details) {

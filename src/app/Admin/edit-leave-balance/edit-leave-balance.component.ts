@@ -38,10 +38,12 @@ export class EditLeaveBalanceComponent implements OnInit {
     this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data => {
-        this.headers = Object.keys(data['Table'][0]);
+        console.log(data);
+        
+        this.headers = Object.keys(data.LeaveBalancedata);
         this.headers.push('Edit');
-        this.leaves = data['Table1']
-        this.rowData = data['Table'];
+        this.leaves = data.Leaves
+        this.rowData = data.LeaveBalancedata;
         console.log(this.leaves);
 
       });

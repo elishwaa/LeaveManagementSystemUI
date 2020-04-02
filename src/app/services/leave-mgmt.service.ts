@@ -13,8 +13,6 @@ import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up
 })
 export class LeaveMgmtService {
   loginparameters: LoginParameters;
-  webApi = 'https://localhost:44398/api/Login/GetLogin';
-  // employeeType: number;
   empId:number;
   startDate:Date;
   endDate:Date;
@@ -34,17 +32,17 @@ export class LeaveMgmtService {
      return this.httpClient.get(environment.apiUrl+'Login/GetEmpType')
    }
    getLocation():Observable<any>{
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLocations')
+    return this.httpClient.get(environment.apiUrl+'Location/GetLocations')
    }
    GetLeaveBalance(Id):Observable<any>{
     let params = new HttpParams().set('id',Id.toString())
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveBalance',{params:params})
+    return this.httpClient.get(environment.apiUrl+'Leave/GetLeaveBalance',{params:params})
    }
    getManager():Observable<any>{
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetManagers')
+    return this.httpClient.get(environment.apiUrl+'Employee/GetManagers')
    }
    getProjects():Observable<any>{
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetProjects')
+    return this.httpClient.get(environment.apiUrl+'Project/GetProjects')
    }
    
    getEmployeeInfo(loginDetails) : Observable<any>
@@ -52,17 +50,17 @@ export class LeaveMgmtService {
     return this.httpClient.post(environment.apiUrl+'Login/GetLogin',loginDetails);  
    }
    getLeaves():Observable<any>{
-     return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaves');  
+     return this.httpClient.get(environment.apiUrl+'Leave/GetLeaves');  
    }
    
    getLeaveRequests(empId:number):  Observable<any>
    {
     let params = new HttpParams().set('id',empId.toString())
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/GetLeaveRequests', {params: params });
+    return this.httpClient.get(environment.apiUrl+'Leave/GetLeaveRequests', {params: params });
    }
    AllLeaveRequests(empId:number): Observable<any>{
     let params = new HttpParams().set('id',empId.toString())
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/allLeaveRequests', {params: params });
+    return this.httpClient.get(environment.apiUrl+'Leave/allLeaveRequests', {params: params });
    }
  
    updateSessionStorage(data:any){
@@ -71,11 +69,11 @@ export class LeaveMgmtService {
 
    CancelLeave(index:number):Observable<any>{
     let params = new HttpParams().set('id',index.toString())
-    return this.httpClient.delete(environment.apiUrl+'LeaveRequest/delete' ,{params:params} )
+    return this.httpClient.delete(environment.apiUrl+'Leave/delete' ,{params:params} )
    }
    TransactionListing(empId):Observable<any>{
     let params = new HttpParams().set('id',empId)
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/Transactions',{params:params})
+    return this.httpClient.get(environment.apiUrl+'Leave/Transactions',{params:params})
    }
    openChangePassDialog(id:number): void{
 
@@ -89,7 +87,7 @@ export class LeaveMgmtService {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result && (result.password1 == result.password2)) {
-        this.httpClient.post(environment.apiUrl + 'LeaveRequest/ChangePassword', {id, password: result.password1}).subscribe(
+        this.httpClient.post(environment.apiUrl + 'Employee/ChangePassword', {id, password: result.password1}).subscribe(
           data => {
             debugger
             if (data) {
@@ -112,33 +110,33 @@ export class LeaveMgmtService {
     });
   }
   getAllEmployees(): Observable<any>{
-    return this.httpClient.get(environment.apiUrl+'LeaveRequest/allEmployees')
+    return this.httpClient.get(environment.apiUrl+'Employee/allEmployees')
   }
-  ApproveRequest(leaverequest){
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/Approve', leaverequest)
+  ApproveRequest(leaveRequest){
+    return this.httpClient.post(environment.apiUrl+'Leave/Approve', leaveRequest)
   }
   SaveEmployee(newEmployee): Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/AddEmployee', newEmployee)
+    return this.httpClient.post(environment.apiUrl+'Employee/AddEmployee', newEmployee)
 
   }
   AddNewDesignation(designation): Observable<any>{
     // designation = JSON.stringify(designation)
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewDesignation' ,{designation: designation})
+    return this.httpClient.post(environment.apiUrl+'Employee/NewDesignation' ,{designation: designation})
   }
   AddNewLeave(leave):Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLeave' ,{leave: leave})
+    return this.httpClient.post(environment.apiUrl+'Leave/NewLeave' ,{leave: leave})
   }
   AddNewLocation(location):Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewLocation' ,{location:location})
+    return this.httpClient.post(environment.apiUrl+'Location/NewLocation' ,{location:location})
   }
   AddNewProject(project):Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/NewProject' ,{project:project})
+    return this.httpClient.post(environment.apiUrl+'Project/NewProject' ,{project:project})
   }
   Audit(auditData): Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/audit', auditData);
+    return this.httpClient.post(environment.apiUrl+'Leave/audit', auditData);
   }
   UpdatedLeaveBalance(updatedLeaveBalance):Observable<any>{
-    return this.httpClient.post(environment.apiUrl+'LeaveRequest/editLeaveBalance', updatedLeaveBalance);
+    return this.httpClient.post(environment.apiUrl+'Leave/editLeaveBalance', updatedLeaveBalance);
   }
 
   Logout(){

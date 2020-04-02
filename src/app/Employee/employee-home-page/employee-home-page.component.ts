@@ -30,16 +30,17 @@ export class EmployeeHomePageComponent implements OnInit {
   leaveBalance:LeaveBalanceDetails;
   headers:string[]=[];
   rowData=[];
+  hideComponent: boolean = false;
   displayedColumns: string[] = ['casualLeave','sickLeave','other'];
 
   constructor(public _service: LeaveMgmtService,private _snackBar: MatSnackBar, 
     public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
-    
-    this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
-    console.log(this.loginparameters);
-    
+    if(sessionStorage.getItem('employee') != null){
+      this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+      this.hideComponent = true;
+    }
     this.employeeType = sessionStorage.getItem('empType')
     if (this.employeeType == 3) {
       this.Type = true;

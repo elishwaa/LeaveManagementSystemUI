@@ -12,7 +12,7 @@
                 <input type="text" formControlName = "username"> <br> <br>
 
                 <label>Password</label> <br>
-                <input type="password" formControlName = "password"> <br> <br>
+                <input type="password" formControlName = "password" [(ngModel)]="password"> <br> <br>
             </form>
 
             <button (click)="login()"> Login</button> <br> <br>
