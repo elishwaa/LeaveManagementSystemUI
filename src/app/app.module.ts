@@ -37,8 +37,8 @@ import { TransactionListingComponent } from './sharedComponents/transaction-list
 import { AllEmployeesComponent } from './Admin/all-employees/all-employees.component';
 import { AllLeaveRequestsComponent } from './sharedComponents/all-leave-requests/all-leave-requests.component';
 import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/change-password-pop-up.component';
-
-
+import { CookieService } from 'ngx-cookie-service';
+import {MatToolbarModule} from '@angular/material/toolbar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +79,7 @@ import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/
     BrowserAnimationsModule,
     MatInputModule,
     MatButtonModule,
+    MatToolbarModule,
     MatSnackBarModule,
     MatTableModule,
     MatTabsModule,
@@ -86,7 +87,7 @@ import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/
     MatSortModule,
     MatIconModule 
   ],
-  providers: [LeaveMgmtService],
+  providers: [LeaveMgmtService,CookieService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
     ForgotPasswordComponent,NewLoginComponent,AuditComponent, TransactionListingComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]

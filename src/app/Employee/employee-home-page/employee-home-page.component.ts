@@ -39,12 +39,11 @@ export class EmployeeHomePageComponent implements OnInit {
     public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('employee') != null){
-      this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+    if(localStorage.getItem('employee') != null){
+      this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
     }
-    this.employeeType = sessionStorage.getItem('empType')
-    if (this.employeeType == 3) {
+    if (this.loginparameters.typeName = 'Manager') {
       this.Type = true;
     }
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
@@ -62,7 +61,7 @@ export class EmployeeHomePageComponent implements OnInit {
       debugger;
       console.log(details);
       if (details) {
-        sessionStorage.setItem('leaveRequests', JSON.stringify(details));
+        localStorage.setItem('leaveRequests', JSON.stringify(details));
         this.route.navigateByUrl('cancel-leave');
       }
       else{
@@ -108,32 +107,7 @@ export class EmployeeHomePageComponent implements OnInit {
 
   }
   openChangePassDialog(id:number): void{
-
-    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
-      width: '25%',
-      height: '40%',
-      data: {
-        password1: this.newPassword  , password2:this.reEnterdpassword
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && (result.passwordOne == result.passwordTwo)) {
-        let Encryptedpass = CryptoJS.AES.encrypt(result.passwordOne.trim(), this._service.encPassword.trim()).toString(); 
-        this._service.ChangePassword(id,Encryptedpass).subscribe(
-          data => {
-            debugger
-            if (data) {
-             console.log(data);
-             this._service.openSnackBar("Password updation","Success!!");
-            }
-          }
-        )
-      }
-      else{
-        this._service.openSnackBar("Password mismatch","Operation Failed!!");
-      }
-    });
+    this._service.openChangePassDialog(id);
   }
   logout() {
    this._service.Logout();

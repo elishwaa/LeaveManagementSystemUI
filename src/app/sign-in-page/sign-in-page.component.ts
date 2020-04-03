@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as CryptoJS from 'crypto-js';
 import { LeaveMgmtService } from '../services/leave-mgmt.service';
-import { Observable } from 'rxjs';
-import { HttpParams, HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/forgot-password.component';
-import { environment } from 'src/environments/environment';
 import { NewLoginComponent } from '../sharedComponents/new-login/new-login.component';
+import { LoginParameters } from '../models/LoginParameters';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject } from 'rxjs';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -20,36 +21,44 @@ export class SignInPageComponent implements OnInit {
   signInForm: FormGroup;
   empType = [];
   loginDetails: string;
-  
-  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
+  loginParameters : LoginParameters;
+  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient, public cookieService: CookieService) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
       username: new FormControl(),
       password: new FormControl()
     });
+
+    if(this.cookieService.get('LoggedIn') != null){
+      this.loginParameters = JSON.parse(localStorage.getItem('employee'));
+      if (this.loginParameters.typeName = 'Admin'){
+        this.route.navigateByUrl('admin-home');
+      }
+      else{
+        this.route.navigateByUrl('employee-home');
+      }
+    }
+    
   }
 
 
   login() {
-    let Encryptedpass = CryptoJS.AES.encrypt(this.signInForm.controls['password'].value.trim(), this._service.encPassword.trim()).toString(); 
-    
-    this.signInForm.controls['password'].setValue(Encryptedpass) ;
-    
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (details) => {
      
-      if (details) {
-        sessionStorage.setItem('employee', JSON.stringify(details));
-        sessionStorage.setItem('empType', details.typeId);
+      if (details.id!=0) {
+        // this._service.visible = true;
+        this.cookieService.set('LoggedIn',details.typeName );
+        localStorage.setItem('employee', JSON.stringify(details));
+        localStorage.setItem('empType', details.typeId);
         console.log(details.typeId);
-      }
-      
-      if (details.typeId == 1){
-        this.route.navigateByUrl('admin-home');
-      }
-      else if (details.typeId == 2 || details.typeId == 3){
-        this.route.navigateByUrl('employee-home');
+          if (details.typeName ='Admin'){
+            this.route.navigateByUrl('admin-home');
+          }
+          else {
+            this.route.navigateByUrl('employee-home');
+          }
       }
       else{
         this._service.openSnackBar("Invalid Login Details","Login Again")

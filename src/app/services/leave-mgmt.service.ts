@@ -7,6 +7,8 @@ import { environment} from '../../environments/environment'
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { LeaveRequests } from '../models/leaveRequests';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
+import * as CryptoJS from 'crypto-js';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,10 +24,10 @@ export class LeaveMgmtService {
   reEnterdpassword: any;
   allLeaveRequests: LeaveRequests[];
   leaverequestId:number;
-  encPassword: string = 'Bht235@$5';
+  visible : boolean = true;
 
   constructor(public route: Router, public httpClient: HttpClient,private injector: Injector,
-    private _snackBar: MatSnackBar,public dialog: MatDialog ){
+    private _snackBar: MatSnackBar,public dialog: MatDialog,public cookieService: CookieService ){
 
    }
    getEmpType() :Observable<any>
@@ -97,7 +99,6 @@ export class LeaveMgmtService {
 
   }
   AddNewDesignation(designation): Observable<any>{
-    // designation = JSON.stringify(designation)
     return this.httpClient.post(environment.apiUrl+'Employee/NewDesignation' ,{designation: designation})
   }
   AddNewLeave(leave):Observable<any>{
@@ -118,6 +119,34 @@ export class LeaveMgmtService {
 
   Logout(){
     this.route.navigateByUrl('');
-    sessionStorage.clear();
+    localStorage.clear();
+    this.cookieService.delete('LoggedIn');
+  }
+  openChangePassDialog(id): void{
+
+    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
+      width: '25%',
+      height: '40%',
+      data: {
+        password1: this.newPassword  , password2:this.reEnterdpassword
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result && (result.passwordOne == result.passwordTwo)) {
+        this.ChangePassword(id,result.passwordOne).subscribe(
+          data => {
+            debugger
+            if (data) {
+             console.log(data);
+             this.openSnackBar("Password updation","Success!!");
+            }
+          }
+        )
+      }
+      else{
+        this.openSnackBar("Password mismatch","Operation Failed!!");
+      }
+    });
   }
 }

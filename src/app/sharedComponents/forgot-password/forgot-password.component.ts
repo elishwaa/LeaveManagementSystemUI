@@ -23,7 +23,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ForgotPassword(){
   let params = new HttpParams().set('emailId',this.emailId)
-  this.httpClient.get(environment.apiUrl+'LeaveRequest/ConfirmEmail', {params}).subscribe(
+  this.httpClient.get(environment.apiUrl+'Employee/ConfirmEmail', {params}).subscribe(
     data =>{
       if(data != 0){
         this.employeeId = data;

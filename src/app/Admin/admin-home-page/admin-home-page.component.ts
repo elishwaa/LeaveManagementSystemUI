@@ -23,8 +23,8 @@ export class AdminHomePageComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem('employee') != null){
-      this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+    if(localStorage.getItem('employee') != null){
+      this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
     }
   }

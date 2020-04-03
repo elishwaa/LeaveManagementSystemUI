@@ -4,6 +4,7 @@ import { SignInPageComponent } from 'src/app/sign-in-page/sign-in-page.component
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import * as CryptoJS from 'crypto-js';
 
 @Component({
   selector: 'app-new-login',
@@ -23,7 +24,7 @@ export class NewLoginComponent implements OnInit {
   }
 
   newLogin(){
-    // let params = new HttpParams().set('employeeId',this.employeeId.toString()) .set('username',this.username) .set('password',this.password)
+
     this.httpClient.post(environment.apiUrl+'Login/newLogin', {employeeId:Number(this.employeeId),username: this.username, password: this.password}).subscribe(
       data =>{
         if(data){

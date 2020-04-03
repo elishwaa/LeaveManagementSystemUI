@@ -7,3 +7,10 @@ body{
     right:0px;
     
 }
+.topbar{
+    width: 100%;
+}
+.topbar button{
+    float: right;
+    margin-right: 2%;
+}
