@@ -65,7 +65,7 @@ export class EmployeeHomePageComponent implements OnInit {
         this.route.navigateByUrl('cancel-leave');
       }
       else{
-        this._service.openSnackBar("No Leave Requests", "Sorry!")
+        this._service.OpenSnackBar("No Leave Requests", "Sorry!")
       }
       
     });
@@ -94,10 +94,11 @@ export class EmployeeHomePageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
-        this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
+        this._service.EditEmployee(data)
+        .subscribe(
           data => {
             if (data) {
-              this._service.updateSessionStorage(result);
+              this._service.UpdateLocalStorage(result);
               this.loginparameters = result;
             }
           }
@@ -135,7 +136,7 @@ export class EmployeeHomePageComponent implements OnInit {
             });
           }
           else{
-            this._service.openSnackBar("No Transactions yet","Have a nice day")
+            this._service.OpenSnackBar("No Transactions yet","Have a nice day")
           }
         }
       )

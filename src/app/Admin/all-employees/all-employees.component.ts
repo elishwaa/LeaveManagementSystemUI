@@ -18,7 +18,6 @@ export class AllEmployeesComponent implements OnInit {
 
   displayedColumns: string[] = ['id','firstName', 'middleName', 'lastName','type','email','salary',
   'username','project','location','employeeinfo','transactions','leaveRequests','addLeaveRequest'];
-  //  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   employeeInfo: LoginParameters[];
   constructor(public _service: LeaveMgmtService,public dialog: MatDialog,public httpClient: HttpClient,public route:Router) { }
 
@@ -49,7 +48,7 @@ export class AllEmployeesComponent implements OnInit {
           this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
             data => {
               if (data) {
-                this._service.updateSessionStorage(result);
+                this._service.UpdateLocalStorage(result);
                 this.employeeInfo = result;
                 window.location.reload();
               }
@@ -68,7 +67,7 @@ export class AllEmployeesComponent implements OnInit {
           this.route.navigateByUrl('cancel-leave');
         }
         else{
-          this._service.openSnackBar("No leave requests to show","Have a nice day")
+          this._service.OpenSnackBar("No leave requests to show","Have a nice day")
         }
       });
     }
@@ -94,7 +93,7 @@ export class AllEmployeesComponent implements OnInit {
             });
           }
           else{
-           this._service.openSnackBar("No transactions to show","Sorry!!")
+           this._service.OpenSnackBar("No transactions to show","Sorry!!")
           }
         }
       )

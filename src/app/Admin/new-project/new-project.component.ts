@@ -22,12 +22,12 @@ export class NewProjectComponent implements OnInit {
   SaveProject(){
     this._service.AddNewProject(this.newProject).subscribe(
       data=>{
-        if(data){
+        if(data == true){
           this.onNoClick();
-          this._service.openSnackBar("New Project","Added Succesfully!!")
+          this._service.OpenSnackBar("New Project","Added Succesfully!!")
         }
         else{
-          this._service.openSnackBar("New Project","Failed!!")
+          this._service.OpenSnackBar("New Project","Failed!!")
 
         }
       }

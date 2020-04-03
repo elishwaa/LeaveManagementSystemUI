@@ -27,10 +27,10 @@ export class NewDesignationComponent implements OnInit {
       data=>{
         if(data){
           this.onNoClick();
-          this._service.openSnackBar("New Employee Designation","Added Succesfully!!")
+          this._service.OpenSnackBar("New Employee Designation","Added Succesfully!!")
         }
         else{
-          this._service.openSnackBar("New Employee Designation","Failed!!")
+          this._service.OpenSnackBar("New Employee Designation","Failed!!")
 
         }
       }

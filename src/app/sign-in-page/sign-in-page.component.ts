@@ -22,7 +22,7 @@ export class SignInPageComponent implements OnInit {
   empType = [];
   loginDetails: string;
   loginParameters : LoginParameters;
-  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public httpClient: HttpClient, public cookieService: CookieService) { }
+  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
@@ -48,7 +48,7 @@ export class SignInPageComponent implements OnInit {
       (details) => {
      
       if (details.id!=0) {
-        // this._service.visible = true;
+        
         this.cookieService.set('LoggedIn',details.typeName );
         localStorage.setItem('employee', JSON.stringify(details));
         localStorage.setItem('empType', details.typeId);
@@ -61,7 +61,7 @@ export class SignInPageComponent implements OnInit {
           }
       }
       else{
-        this._service.openSnackBar("Invalid Login Details","Login Again")
+        this._service.OpenSnackBar("Invalid Login Details","Login Again")
       }
     });
   }

@@ -28,7 +28,6 @@ export class EditLeaveBalanceComponent implements OnInit {
     ],
     
   }]
-  // displayedColumns: string[] = ['action'];
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog) {
 
   }
@@ -78,10 +77,10 @@ export class EditLeaveBalanceComponent implements OnInit {
       this._service.UpdatedLeaveBalance(this.returnData).subscribe(
         data => {
           if (data) {
-            this._service.openSnackBar("Leave Balance Updated", "Success!!")
+            this._service.OpenSnackBar("Leave Balance Updated", "Success!!")
           }
           else {
-            this._service.openSnackBar("Leave Balance Updation", "Failed!!")
+            this._service.OpenSnackBar("Leave Balance Updation", "Failed!!")
           }
         }
       )

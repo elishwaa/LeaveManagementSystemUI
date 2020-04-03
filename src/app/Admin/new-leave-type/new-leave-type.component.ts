@@ -25,10 +25,10 @@ export class NewLeaveTypeComponent implements OnInit {
       data=>{
         if(data){
           this.onNoClick();
-          this._service.openSnackBar("New Leave Type","Added Succesfully!!")
+          this._service.OpenSnackBar("New Leave Type","Added Succesfully!!")
         }
         else{
-          this._service.openSnackBar("New Leave Type","Failed!!")
+          this._service.OpenSnackBar("New Leave Type","Failed!!")
 
         }
       }

@@ -25,10 +25,10 @@ export class NewLocationComponent implements OnInit {
       data=>{
         if(data){
           this.onNoClick();
-          this._service.openSnackBar("New Location","Added Succesfully!!")
+          this._service.OpenSnackBar("New Location","Added Succesfully!!")
         }
         else{
-          this._service.openSnackBar("New Location","Failed!!")
+          this._service.OpenSnackBar("New Location","Failed!!")
 
         }
       }

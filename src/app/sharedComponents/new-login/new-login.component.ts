@@ -25,12 +25,11 @@ export class NewLoginComponent implements OnInit {
 
   newLogin(){
 
-    this.httpClient.post(environment.apiUrl+'Login/newLogin', {employeeId:Number(this.employeeId),username: this.username, password: this.password}).subscribe(
+    this._service.AddLogin({employeeId:Number(this.employeeId),username: this.username, password: this.password}).subscribe(
       data =>{
         if(data){
           this.onNoClick();
-          this._service.openSnackBar("New Login Added","Success!!")
-          debugger
+          this._service.OpenSnackBar("New Login Added","Success!!")
         }
         else{
           this.Error = true;

@@ -47,18 +47,16 @@ export class SubmitLeaveComponent implements OnInit {
   SubmitLeave() {
     
     let data = {...this.leaveRequest.value, empId:parseInt(this.leaveRequest.value.empId), leave:parseInt(this.leaveRequest.value.leave)}
-    console.log(data);
-    console.log(123);
     
-       this.httpClient.post(environment.apiUrl + 'LeaveRequest/SaveLeave',data ).subscribe(
+    this._service.AddLeaveRequest(data). subscribe(
         data =>
         {
            if (data) {  
             this.onNoClick();
-            this._service.openSnackBar("Leave Request","Success!!")
+            this._service.OpenSnackBar("Leave Request","Success!!")
           }
           else{
-            this._service.openSnackBar("No leave balance", "Leave request failed")
+            this._service.OpenSnackBar("No leave balance", "Leave request failed")
           }
         }
       )

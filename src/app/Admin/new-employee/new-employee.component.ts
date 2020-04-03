@@ -61,7 +61,7 @@ export class NewEmployeeComponent implements OnInit {
            console.log(data);
 
            this.onNoClick();
-           this._service.openSnackBar("New Employee", "Added");
+           this._service.OpenSnackBar("New Employee", "Added");
          }
        }
      )

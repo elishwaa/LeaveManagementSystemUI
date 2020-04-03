@@ -25,8 +25,6 @@ export class TransactionListingComponent implements OnInit {
   }
 
   ngOnInit() {
-    // console.log(this.data);
-     
       this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
       this._service.TransactionListing(this.loginparameters.id).subscribe(
       data =>{
@@ -36,7 +34,7 @@ export class TransactionListingComponent implements OnInit {
           this.dataSource.sort = this.sort;
         }
         else{
-          this._service.openSnackBar("No Transactions yet","Have a nice day")
+          this._service.OpenSnackBar("No Transactions yet","Have a nice day")
         }
       }
     )

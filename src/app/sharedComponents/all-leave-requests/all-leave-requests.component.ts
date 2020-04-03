@@ -42,7 +42,7 @@ export class AllLeaveRequestsComponent implements OnInit {
          
         }
         else{
-          this._service.openSnackBar("No Balance Leaves","Failed!!");
+          this._service.OpenSnackBar("No Balance Leaves","Failed!!");
 
         }
       }
