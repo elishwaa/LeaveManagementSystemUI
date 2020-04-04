@@ -20,8 +20,6 @@ export class AppComponent {
         }
       }
     );
-    console.log(this.visible);
-    
   }
   logout(){
     this._service.logout();

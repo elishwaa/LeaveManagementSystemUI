@@ -5,8 +5,8 @@ table {
 
   .example-container {
     overflow: auto;
-    margin: 5%;
+    margin-top: 1%;
     width: 80%;
     margin-left: 10%;
-    height: 600px;
+    height: 85%;
   }

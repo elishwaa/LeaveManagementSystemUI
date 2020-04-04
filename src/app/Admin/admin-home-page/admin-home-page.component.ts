@@ -57,41 +57,41 @@ export class AdminHomePageComponent implements OnInit {
   logout() {
     this._service.logout();
   }
-  AddNewEmployee() :void {
+  addNewEmployee() :void {
     this.dialog.open(NewEmployeeComponent, {
       width: '25%',
       height: '80%',
     });
   }
-  AddNewLeaveType(){
+  addNewLeaveType(){
     this.dialog.open(NewLeaveTypeComponent,{
       width: '30%',
       height: '35%',
     });
   }
-  AddNewDesignation(){
+  addNewDesignation(){
     this.dialog.open(NewDesignationComponent,{
       width: '30%',
       height: '35%',
     });
   }
-  AddNewLocation(){
+  addNewLocation(){
     this.dialog.open(NewLocationComponent,{
       width: '30%',
       height: '35%',
     });
   }
-  AddNewProject(){
+  addNewProject(){
     this.dialog.open(NewProjectComponent,{
       width: '30%',
       height: '35%',
     }
       )
   }
-  Report():void {
+  report():void {
     this.route.navigateByUrl('/report');
   }
-  Audit(){
+  audit(){
     this.dialog.open(AuditComponent,{
       width: '30%',
       height: '55%',

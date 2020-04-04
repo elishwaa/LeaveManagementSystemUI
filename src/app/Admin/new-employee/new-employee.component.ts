@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
 
 @Component({
@@ -41,15 +41,15 @@ export class NewEmployeeComponent implements OnInit {
     )
 
   this.newEmployeeForm = new FormGroup({
-    firstName: new FormControl(),
-    middleName: new FormControl(),
-    lastName: new FormControl(),
-    empType: new FormControl(),
-    email: new FormControl(),
-    salary: new FormControl(),
-    manager: new FormControl(),
-    project: new FormControl(),
-    location: new FormControl()
+    firstName: new FormControl('',[Validators.required]),
+    middleName: new FormControl('',[Validators.required]),
+    lastName: new FormControl('',[Validators.required]),
+    empType: new FormControl('',[Validators.required]),
+    email: new FormControl('',[Validators.required]),
+    salary: new FormControl('',[Validators.required]),
+    manager: new FormControl('',[Validators.required]),
+    project: new FormControl('',[Validators.required]),
+    location: new FormControl('',[Validators.required])
   });
   }
   SaveNewEmployee(){

@@ -24,7 +24,7 @@ export class AllLeaveRequestsComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
-
+    this._service.visible.emit({LoggedInStatus: true});
     this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'));
     this.data = Object.assign(this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data);

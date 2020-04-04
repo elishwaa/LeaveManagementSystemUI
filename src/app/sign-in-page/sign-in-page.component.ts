@@ -27,7 +27,7 @@ export class SignInPageComponent implements OnInit {
       password: new FormControl()
     });
 
-    if (this.cookieService.get('LoggedIn') != null) {
+    if (this.cookieService.get('LoggedIn')) {
       this.loginParameters = JSON.parse(localStorage.getItem('employee'));
       if (this.loginParameters.typeName = 'Admin') {
         this.route.navigateByUrl('admin-home');
@@ -43,7 +43,7 @@ export class SignInPageComponent implements OnInit {
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (details) => {
         if (details.id != 0) {
-          this.cookieService.set('LoggedIn', details.typeName);
+          this.cookieService.set('LoggedIn', details.typeName,0.25);
           localStorage.setItem('employee', JSON.stringify(details));
           localStorage.setItem('empType', details.typeId);
           this._service.routeToHome(details.typeId);

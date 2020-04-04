@@ -68,7 +68,7 @@ export class LeaveMgmtService {
   }
 
   changePassword(id, Encryptedpass): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Employee/EditPassword', { id, password: Encryptedpass });
+    return this.httpClient.post(environment.apiUrl + 'Login/EditPassword', { id, password: Encryptedpass });
   }
   cancelLeave(index: number): Observable<any> {
     let params = new HttpParams().set('id', index.toString())
@@ -79,7 +79,7 @@ export class LeaveMgmtService {
     return this.httpClient.get(environment.apiUrl + 'Leave/Transactions', { params: params })
   }
   addLogin(data): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Login/newLogin', data)
+    return this.httpClient.post(environment.apiUrl + 'Login/Login', data)
   }
   openSnackBar(message: string, action: string) {
     console.log(123);

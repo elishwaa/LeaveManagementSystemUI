@@ -31,11 +31,11 @@ export class SubmitLeaveComponent implements OnInit {
       }
     )
     this.leaveRequest = new FormGroup({
-      empId: new FormControl(),
-      startDate: new FormControl(),
-      endDate: new FormControl(),
-      leave: new FormControl(),
-      reason: new FormControl(),
+      empId: new FormControl('',[Validators.required]),
+      startDate: new FormControl('',[Validators.required]),
+      endDate: new FormControl('',[Validators.required]),
+      leave: new FormControl('',[Validators.required]),
+      reason: new FormControl('',[Validators.required]),
     });
   }
   onNoClick(): void {

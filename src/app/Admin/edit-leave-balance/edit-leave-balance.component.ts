@@ -26,26 +26,21 @@ export class EditLeaveBalanceComponent implements OnInit {
     leaves: [
       { leaveId: 0, value: 0 }
     ],
-    
+
   }]
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog) {
 
   }
 
   ngOnInit() {
-
+    this._service.visible.emit({ LoggedInStatus: true });
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
-        console.log(data);
         this.headers = Object.keys(data['LeaveBalanceData'][0]);
         this.headers.push('Edit');
         this.leaves = data['Leaves']
         this.rowData = data['LeaveBalanceData'];
-        console.log(this.headers);
-        
-        
-
       });
   }
   updateLeaveBalance(data) {
@@ -66,7 +61,7 @@ export class EditLeaveBalanceComponent implements OnInit {
           this.leaves.forEach(leave => {
 
             if (element == leave.EType) {
-              this.returnData[0]['leaves'].push({ leaveId: leave.Id, value: Number(result[element] )})
+              this.returnData[0]['leaves'].push({ leaveId: leave.Id, value: Number(result[element]) })
             }
           })
         })
@@ -81,9 +76,9 @@ export class EditLeaveBalanceComponent implements OnInit {
             this._service.openSnackBar("Leave Balance Updated", "Success!!")
           }
         },
-        err =>{
-          if(err.status == 500)
-           this._service.openSnackBar("Invalid Details","Failed" )
+        err => {
+          if (err.status == 500)
+            this._service.openSnackBar("Invalid Details", "Failed")
         }
       )
     });

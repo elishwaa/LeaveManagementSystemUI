@@ -8,7 +8,7 @@ import { CancelLeaveComponent } from '../cancel-leave/cancel-leave.component';
 })
 export class DeletePopUpComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<CancelLeaveComponent>,
+  constructor(public dialogRef: MatDialogRef<CancelLeaveComponent>,@Inject(MAT_DIALOG_DATA) public data: any
 ) { }
 
   ngOnInit() {

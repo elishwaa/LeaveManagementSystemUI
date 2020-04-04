@@ -24,6 +24,7 @@ export class TransactionListingComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._service.visible.emit({LoggedInStatus: true});
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
     this._service.transactionListing(this.loginparameters.id).subscribe(
       data => {

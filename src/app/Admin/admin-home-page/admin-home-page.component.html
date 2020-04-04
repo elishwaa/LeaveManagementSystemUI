@@ -1,44 +1,41 @@
 <div *ngIf="hideComponent">
-<div class="EmpInfoBox">
-    <mat-tab-group>
-        <mat-tab label="Admin Info">
-            <div class="EmpInfo">
+    <div class="EmpInfoBox">
+        <mat-tab-group>
+            <mat-tab label="Admin Info">
+                <div class="EmpInfo">
+                    <ul>
+                        <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
+                        <li><b>Employee Id</b> : {{loginparameters.id}} </li>
+                        <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
+                        <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}}
+                            {{loginparameters.lastName}} </li>
+                        <li><b>Email</b> : {{loginparameters.email}} </li>
+                        <li><b>Salary</b> : {{loginparameters.salary}} </li>
+                        <li><b>Username</b> : {{loginparameters.username}}</li>
+                        <li><b>Location</b> : {{loginparameters.locationName}}</li>
+
+                    </ul>
+                </div>
+            </mat-tab>
+            <mat-tab label="Updations">
+
                 <ul>
-                    <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
-                    <li><b>Employee Id</b> : {{loginparameters.id}} </li>
-                    <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
-                    <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}}
-                        {{loginparameters.lastName}} </li>
-                    <li><b>Email</b> : {{loginparameters.email}} </li>
-                    <li><b>Salary</b> : {{loginparameters.salary}} </li>
-                    <li><b>Username</b> : {{loginparameters.username}}</li>
-                    <li><b>Location</b> : {{loginparameters.locationName}}</li>
-
+                    <li (click)="addNewEmployee()"> New Employee</li>
+                    <li (click)="addNewDesignation()"> New Employee Designation</li>
+                    <li (click)="addNewLeaveType()"> Add Leave Types</li>
+                    <li (click)="addNewLocation()"> Add a location</li>
+                    <li (click)="addNewProject()"> New Project</li>
+                    <li routerLink="/edit-leave-balance" routerLinkActive="active"> Edit Leave Balance</li>
                 </ul>
-            </div>
-
-        </mat-tab>
-        <mat-tab label="Updations">
-
-            <ul>
-                <li (click)="addNewEmployee()"> New Employee</li>
-                <li (click)="addNewDesignation()"> New Employee Designation</li>
-                <li (click)="addNewLeaveType()"> Add Leave Types</li>
-                <li (click)="addNewLocation()"> Add a location</li>
-                <li (click)="addNewProject()"> New Project</li>
-                <li routerLink="/edit-leave-balance" routerLinkActive="active"> Edit Leave Balance</li>
-            </ul>
-        </mat-tab>
-        <mat-tab label="Employee">
-            <ul>
-                <li (click)="allLeaveRequests()"> Approve leave request</li>
-                <li (click)="getAllEmployees()"> Employee information</li>
-                <li  (click)="audit()"> Audit </li>
-                <li  (click)="report()"> Report of Transactions</li>
-            </ul>
-        </mat-tab>
-    </mat-tab-group>
-
-
-</div>
+            </mat-tab>
+            <mat-tab label="Employee">
+                <ul>
+                    <li (click)="allLeaveRequests()"> Approve leave request</li>
+                    <li (click)="getAllEmployees()"> Employee information</li>
+                    <li (click)="audit()"> Audit </li>
+                    <li (click)="report()"> Report of Transactions</li>
+                </ul>
+            </mat-tab>
+        </mat-tab-group>
+    </div>
 </div>
