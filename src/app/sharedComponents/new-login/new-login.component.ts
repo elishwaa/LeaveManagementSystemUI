@@ -13,35 +13,35 @@ import * as CryptoJS from 'crypto-js';
 })
 export class NewLoginComponent implements OnInit {
 
-  employeeId:number;
-  username:string;
-  password:string;
+  employeeId: number;
+  username: string;
+  password: string;
 
-  Error:boolean = false;
-  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient:HttpClient){}
+  Error: boolean = false;
+  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
   }
 
-  newLogin(){
+  newLogin() {
 
-    this._service.AddLogin({employeeId:Number(this.employeeId),username: this.username, password: this.password}).subscribe(
-      data =>{
-        if(data){
+    this._service.addLogin({ employeeId: Number(this.employeeId), username: this.username, password: this.password }).subscribe(
+      data => {
+        if (data) {
           this.onNoClick();
-          this._service.OpenSnackBar("New Login Added","Success!!")
+          this._service.openSnackBar("New Login Added", "Success!!")
         }
       },
-      err =>{
-        if(err.status == 500)
-         this._service.OpenSnackBar("Invalid Details","Failed" )
+      err => {
+        if (err.status == 500)
+          this._service.openSnackBar("Invalid Details", "Failed")
       }
     );
-  
-    }
-    onNoClick(): void {
-      this.dialogRef.close();
-    }
-  
+
+  }
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
 
 }

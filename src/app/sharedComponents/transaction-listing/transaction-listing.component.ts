@@ -15,37 +15,37 @@ export class TransactionListingComponent implements OnInit {
 
 
   @ViewChild('TABLE', { static: false }) table: ElementRef;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  dataSource ;
+  dataSource: any;
   loginparameters: LoginParameters;
   displayedColumns: string[] = ['name', 'leave', 'startdate', 'enddate', 'totaldays', 'status'];
-  constructor( public _service: LeaveMgmtService) {
+  constructor(public _service: LeaveMgmtService) {
   }
 
   ngOnInit() {
-      this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-      this._service.TransactionListing(this.loginparameters.id).subscribe(
-      data =>{
+    this.loginparameters = JSON.parse(localStorage.getItem('employee'));
+    this._service.transactionListing(this.loginparameters.id).subscribe(
+      data => {
         console.log(data);
-        if(data[0] != null){
-          this.dataSource =  new MatTableDataSource(data);
+        if (data[0] != null) {
+          this.dataSource = new MatTableDataSource(data);
           this.dataSource.sort = this.sort;
         }
-        else{
-          this._service.OpenSnackBar("No Transactions yet","Have a nice day")
+        else {
+          this._service.openSnackBar("No Transactions yet", "Have a nice day")
         }
       }
     )
 
- 
+
   }
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ExportTOExcel() {
+  exportToExcel() {
     const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement);
     const wb: XLSX.WorkBook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');

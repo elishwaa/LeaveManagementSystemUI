@@ -20,17 +20,17 @@ export class NewLeaveTypeComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  SaveNewLeave(){
-    this._service.AddNewLeave(this.newLeave).subscribe(
+  saveNewLeave(){
+    this._service.addNewLeave(this.newLeave).subscribe(
       data=>{
         if(data){
           this.onNoClick();
-          this._service.OpenSnackBar("New Leave Type","Added Succesfully!!")
+          this._service.openSnackBar("New Leave Type","Added Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.OpenSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid  Details","Failed" )
       }
     )
    

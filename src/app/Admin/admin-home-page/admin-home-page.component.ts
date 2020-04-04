@@ -37,25 +37,25 @@ export class AdminHomePageComponent implements OnInit {
     );
   }
 
-  AllLeaveRequests(){
-    this._service.AllLeaveRequests(this.loginparameters.id).subscribe(
+  allLeaveRequests(){
+    this._service.allLeaveRequests(this.loginparameters.id).subscribe(
       (details) => {
       if (details[0]!= null) {
         localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
         this.route.navigateByUrl('all-leave-requests');
       }
       else{
-        this._service.OpenSnackBar("No Leave Requests to show","Have a nice day")
+        this._service.openSnackBar("No Leave Requests to show","Have a nice day")
       }
   
     });
   }
   getAllEmployees(){
-    this._service.GetAllEmployees();
+    this._service.getAllEmployees();
     this.route.navigateByUrl('all-employees')
   }
   logout() {
-    this._service.Logout();
+    this._service.logout();
   }
   AddNewEmployee() :void {
     this.dialog.open(NewEmployeeComponent, {

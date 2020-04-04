@@ -1,20 +1,17 @@
-<!-- <div *ngIf ="!hideComponent">
-    <h3>Sorry, You dont have the permission to see this page !! </h3>
-</div> -->
 
 <div *ngIf="hideComponent">
     <div>
         <nav id="sidebar">
             <ul>
-                <li> <button mat-raised-button (click)="Edit()">Edit Info</button> </li>
+                <li> <button mat-raised-button (click)="edit()">Edit Info</button> </li>
                 <li> <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change
                         Password</button> </li>
                 <li> <button mat-raised-button (click)="openSubmitLeave(loginparameters.id)">Submit Leave
                         request</button></li>
-                <li> <button mat-raised-button (click)="GetLeaveRequests()">Leave Requests Status</button></li>
-                <li> <button mat-raised-button (click)="TransactionListing()">Transaction Listing</button></li>
+                <li> <button mat-raised-button (click)="getLeaveRequests()">Leave Requests Status</button></li>
+                <li> <button mat-raised-button (click)="transactionListing()">Transaction Listing</button></li>
                 <li *ngIf="Type">
-                    <button mat-raised-button (click)="AllLeaveRequests()">Employee Leave Requests</button>
+                    <button mat-raised-button (click)="allLeaveRequests()">Employee Leave Requests</button>
                 <li>
             </ul>
         </nav>

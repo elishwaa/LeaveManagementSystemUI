@@ -35,7 +35,7 @@ export class EditLeaveBalanceComponent implements OnInit {
   ngOnInit() {
 
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-    this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
+    this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
         console.log(data);
         this.headers = Object.keys(data['LeaveBalanceData'][0]);
@@ -48,7 +48,7 @@ export class EditLeaveBalanceComponent implements OnInit {
 
       });
   }
-  UpdateLeaveBalance(data) {
+  updateLeaveBalance(data) {
     let window = this.dialog.open(LeaveBalancePopUpComponent, {
       width: '25%',
       height: '75%',
@@ -75,15 +75,15 @@ export class EditLeaveBalanceComponent implements OnInit {
       console.log(this.returnData);
 
 
-      this._service.UpdatedLeaveBalance(this.returnData).subscribe(
+      this._service.updatedLeaveBalance(this.returnData).subscribe(
         data => {
           if (data) {
-            this._service.OpenSnackBar("Leave Balance Updated", "Success!!")
+            this._service.openSnackBar("Leave Balance Updated", "Success!!")
           }
         },
         err =>{
           if(err.status == 500)
-           this._service.OpenSnackBar("Invalid Details","Failed" )
+           this._service.openSnackBar("Invalid Details","Failed" )
         }
       )
     });

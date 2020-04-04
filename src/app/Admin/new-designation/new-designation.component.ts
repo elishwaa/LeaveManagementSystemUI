@@ -22,17 +22,17 @@ export class NewDesignationComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  SaveNewDesignation(){
-    this._service.AddNewDesignation(this.newDesignation).subscribe(
+  saveNewDesignation(){
+    this._service.addNewDesignation(this.newDesignation).subscribe(
       data=>{
         if(data){
           this.onNoClick();
-          this._service.OpenSnackBar("New Employee Designation","Added Succesfully!!")
+          this._service.openSnackBar("New Employee Designation","Added Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.OpenSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid  Details","Failed" )
       }
     )
    

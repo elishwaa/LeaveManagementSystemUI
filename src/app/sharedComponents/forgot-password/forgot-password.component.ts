@@ -13,30 +13,30 @@ import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  employeeId:any;
-  emailId:string ;
-  Error:boolean = false;
-  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient:HttpClient){}
+  employeeId: any;
+  emailId: string;
+  Error: boolean = false;
+  constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
   }
 
-  ForgotPassword(){
-  let params = new HttpParams().set('emailId',this.emailId)
-  this._service.GetEmail({params})
-  .subscribe(
-    data =>{
-      if(data != 0){
-        this.employeeId = data;
-        this.onNoClick();
-        this._service.openChangePassDialog(this.employeeId)
-        debugger
-      }
-      else{
-        this.Error = true;
-      }
-    }
-  );
+  forgotPassword() {
+    let params = new HttpParams().set('emailId', this.emailId)
+    this._service.getEmail({ params })
+      .subscribe(
+        data => {
+          if (data != 0) {
+            this.employeeId = data;
+            this.onNoClick();
+            this._service.openChangePassDialog(this.employeeId)
+            debugger
+          }
+          else {
+            this.Error = true;
+          }
+        }
+      );
 
   }
   onNoClick(): void {

@@ -24,11 +24,11 @@ export class AppComponent {
     
   }
   logout(){
-    this._service.Logout();
+    this._service.logout();
   }
-  Home(){
+  home(){
     let type = JSON.parse(localStorage.getItem('empType'));
-    this._service.RouteToHome(type);
+    this._service.routeToHome(type);
   }
 }
 

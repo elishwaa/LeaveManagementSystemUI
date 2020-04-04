@@ -20,17 +20,17 @@ export class NewLocationComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  SaveNewLocation(){
-    this._service.AddNewLocation(this.newLocation).subscribe(
+  saveNewLocation(){
+    this._service.addNewLocation(this.newLocation).subscribe(
       data=>{
         if(data){
           this.onNoClick();
-          this._service.OpenSnackBar("New Location","Added Succesfully!!")
+          this._service.openSnackBar("New Location","Added Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.OpenSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid  Details","Failed" )
       }
     )
    

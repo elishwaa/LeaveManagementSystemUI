@@ -1,8 +1,4 @@
 <div *ngIf="hideComponent">
-<!-- <div class="topBar">
-    <button mat-raised-button (click)=logout()>Logout</button>
-</div> -->
-
 <div class="EmpInfoBox">
     <mat-tab-group>
         <mat-tab label="Admin Info">
@@ -25,20 +21,20 @@
         <mat-tab label="Updations">
 
             <ul>
-                <li (click)="AddNewEmployee()"> New Employee</li>
-                <li (click)="AddNewDesignation()"> New Employee Designation</li>
-                <li (click)="AddNewLeaveType()"> Add Leave Types</li>
-                <li (click)="AddNewLocation()"> Add a location</li>
-                <li (click)="AddNewProject()"> New Project</li>
+                <li (click)="addNewEmployee()"> New Employee</li>
+                <li (click)="addNewDesignation()"> New Employee Designation</li>
+                <li (click)="addNewLeaveType()"> Add Leave Types</li>
+                <li (click)="addNewLocation()"> Add a location</li>
+                <li (click)="addNewProject()"> New Project</li>
                 <li routerLink="/edit-leave-balance" routerLinkActive="active"> Edit Leave Balance</li>
             </ul>
         </mat-tab>
         <mat-tab label="Employee">
             <ul>
-                <li (click)="AllLeaveRequests()"> Approve leave request</li>
+                <li (click)="allLeaveRequests()"> Approve leave request</li>
                 <li (click)="getAllEmployees()"> Employee information</li>
-                <li  (click)="Audit()"> Audit </li>
-                <li  (click)="Report()"> Report of Transactions</li>
+                <li  (click)="audit()"> Audit </li>
+                <li  (click)="report()"> Report of Transactions</li>
             </ul>
         </mat-tab>
     </mat-tab-group>

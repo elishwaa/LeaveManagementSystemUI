@@ -19,17 +19,17 @@ export class NewProjectComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  SaveProject(){
-    this._service.AddNewProject(this.newProject).subscribe(
+  saveProject(){
+    this._service.addNewProject(this.newProject).subscribe(
       data=>{
         if(data == true){
           this.onNoClick();
-          this._service.OpenSnackBar("New Project","Added Succesfully!!")
+          this._service.openSnackBar("New Project","Added Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.OpenSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid  Details","Failed" )
       }
     )
    

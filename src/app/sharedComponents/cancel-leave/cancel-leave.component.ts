@@ -15,7 +15,6 @@ import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
   styleUrls: ['./cancel-leave.component.css']
 })
 export class CancelLeaveComponent implements OnInit {
-  //  webApi = 'https://localhost:44398/api/LeaveRequest/delete';
   displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','cancel'];
    leaveRequests: LeaveRequests[];
    data ;
@@ -37,9 +36,9 @@ export class CancelLeaveComponent implements OnInit {
     console.log(this.leaveRequests);
     
   }
-  CancelLeave(index: number){
+  cancelLeave(index: number){
     debugger
-    this._service.CancelLeave(this.leaveRequests[index].id).subscribe(
+    this._service.cancelLeave(this.leaveRequests[index].id).subscribe(
         (data) =>{
           console.log(data);
             if(data){
@@ -49,11 +48,11 @@ export class CancelLeaveComponent implements OnInit {
         },
         err =>{
           if(err.status == 500)
-           this._service.OpenSnackBar("Cancelation","Failed" )
+           this._service.openSnackBar("Cancelation","Failed" )
         }
     );
  } 
- openDialog(i:number): void {
+ cancelDialog(i:number): void {
    
    const dialogRef = this.dialog.open(DeletePopUpComponent, {
     width: '25%',
@@ -65,7 +64,7 @@ export class CancelLeaveComponent implements OnInit {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result) {
-      this.CancelLeave(i);
+      this.cancelLeave(i);
     }
   });
 }

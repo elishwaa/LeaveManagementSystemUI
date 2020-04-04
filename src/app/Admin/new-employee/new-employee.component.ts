@@ -3,7 +3,6 @@ import { MatDialogRef } from '@angular/material';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-new-employee',
@@ -57,16 +56,16 @@ export class NewEmployeeComponent implements OnInit {
     let data = {...this.newEmployeeForm.value, empType:parseInt(this.newEmployeeForm.value.empType),salary:parseInt(this.newEmployeeForm.value.salary),
       manager:parseInt(this.newEmployeeForm.value.manager), project:parseInt(this.newEmployeeForm.value.project),
       location:parseInt(this.newEmployeeForm.value.location)}
-     this._service.SaveEmployee(data).subscribe(
+     this._service.saveEmployee(data).subscribe(
        data=>{
          if(data){
            this.onNoClick();
-           this._service.OpenSnackBar("New Employee", "Added");
+           this._service.openSnackBar("New Employee", "Added");
          }
          },
          err =>{
           if(err.status == 500)
-           this._service.OpenSnackBar("Invalid Employee Details","Failed" )
+           this._service.openSnackBar("Invalid Employee Details","Failed" )
           }
      )
   }

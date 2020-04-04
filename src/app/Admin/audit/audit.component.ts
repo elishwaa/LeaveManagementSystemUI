@@ -32,17 +32,17 @@ export class AuditComponent implements OnInit {
     let data = {...this.auditData.value, year:parseInt(this.auditData.value.year), leaveId:parseInt(this.auditData.value.leaveId),
     numberOfDays: parseInt(this.auditData.value.numberOfDays)}
 
-    this._service.Audit(data).subscribe(
+    this._service.audit(data).subscribe(
       data =>
         {
            if (data) {  
             this.auditData.reset();
-            this._service.OpenSnackBar("Audit Process","Success!!")
+            this._service.openSnackBar("Audit Process","Success!!")
           }
         },
         err =>{
           if(err.status == 500)
-           this._service.OpenSnackBar("Audit","Failed" )
+           this._service.openSnackBar("Audit","Failed" )
         }
     )
 

@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import * as CryptoJS from 'crypto-js';
 import { LeaveMgmtService } from '../services/leave-mgmt.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/forgot-password.component';
 import { NewLoginComponent } from '../sharedComponents/new-login/new-login.component';
 import { LoginParameters } from '../models/LoginParameters';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -49,11 +46,11 @@ export class SignInPageComponent implements OnInit {
           this.cookieService.set('LoggedIn', details.typeName);
           localStorage.setItem('employee', JSON.stringify(details));
           localStorage.setItem('empType', details.typeId);
-          this._service.RouteToHome(details.typeId);
-          this._service.visible.emit({LoggedInStatus: true});
+          this._service.routeToHome(details.typeId);
+          this._service.visible.emit({ LoggedInStatus: true });
         }
         else {
-          this._service.OpenSnackBar("Invalid Login Details", "Login Again")
+          this._service.openSnackBar("Invalid Login Details", "Login Again")
         }
       });
   }

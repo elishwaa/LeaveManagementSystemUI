@@ -12,20 +12,20 @@ export class EditAndApproveComponent implements OnInit {
 
   leave = [];
 
-  constructor( public _service:LeaveMgmtService,
+  constructor(public _service: LeaveMgmtService,
     public dialogRef: MatDialogRef<AllLeaveRequestsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) {}
+    @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
     this._service.getLeaves().subscribe(
-      data =>{
+      data => {
         this.leave = data;
         console.log(this.leave);
-        
+
       }
     )
   }
-  
+
 
   onNoClick(): void {
     this.dialogRef.close();

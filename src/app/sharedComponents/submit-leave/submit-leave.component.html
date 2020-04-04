@@ -1,46 +1,35 @@
-
-<div class="dialogBox"  [formGroup]="leaveRequest">
+<div class="dialogBox" [formGroup]="leaveRequest">
   <mat-form-field class="example-full-width">
-      <mat-label>Employee id</mat-label>
-      <input  matInput placeholder="id" formControlName ="empId" [(ngModel)]= data.empId>
-  </mat-form-field><br>
-
-  <mat-form-field  class="example-full-width">
-      <mat-label>Start Date</mat-label>
-      <input type="date" matInput placeholder="type id" formControlName =startDate>
+    <mat-label>Employee id</mat-label>
+    <input matInput placeholder="id" formControlName="empId" [(ngModel)]=data.empId>
   </mat-form-field><br>
 
   <mat-form-field class="example-full-width">
-      <mat-label>End Date</mat-label>
-      <input type="date" matInput placeholder="firstName" formControlName =endDate>
+    <mat-label>Start Date</mat-label>
+    <input type="date" matInput placeholder="type id" formControlName=startDate>
   </mat-form-field><br>
 
-  <!-- <mat-form-field class="example-full-width">
+  <mat-form-field class="example-full-width">
+    <mat-label>End Date</mat-label>
+    <input type="date" matInput placeholder="firstName" formControlName=endDate>
+  </mat-form-field><br>
+
+  <mat-form-field>
     <mat-label>Leave Type</mat-label>
-    <select matInput placeholder="leavetype" [(ngModel)]="data.leaveId" >
-      <option value=1>Casual Leave</option>
-      <option value=2>Sick Leave</option>
-      <option value=3>Others</option>
-    </select>
- </mat-form-field><br> -->
- <mat-form-field>
-  <mat-label>Leave Type</mat-label>
-  <mat-select  formControlName="leave">
-    <mat-option *ngFor="let type of leave" [value]="type.id">
-      {{type.leaveName}}
-    </mat-option>
-  </mat-select>
-</mat-form-field> <br>
+    <mat-select formControlName="leave">
+      <mat-option *ngFor="let type of leave" [value]="type.id">
+        {{type.leaveName}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> <br>
 
   <mat-form-field class="example-full-width">
-      <mat-label>Reason</mat-label>
-      <textarea matInput placeholder="middleName" formControlName =reason ></textarea>
+    <mat-label>Reason</mat-label>
+    <textarea matInput placeholder="middleName" formControlName=reason></textarea>
   </mat-form-field><br>
-  
 
-  <button mat-button (click)="SubmitLeave()">Save Changes</button>
+
+  <button mat-button (click)="submitLeave()">Save Changes</button>
   <button mat-button (click)="onNoClick()"> Cancel</button>
-  <!-- <div *ngIf = "returnData" >
-      <h5> Employee details submitted Successfully</h5>
-  </div> -->
+
 </div>

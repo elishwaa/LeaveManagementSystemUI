@@ -59,14 +59,14 @@
         <ng-container matColumnDef="info">
             <th mat-header-cell *matHeaderCellDef> </th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <mat-icon (click)="Edit(element)" aria-hidden="false" aria-label="Example create icon">create</mat-icon>
+                <mat-icon (click)="edit(element)" aria-hidden="false" aria-label="Example create icon">create</mat-icon>
             </td>
         </ng-container>
 
         <ng-container matColumnDef="transactions">
             <th mat-header-cell *matHeaderCellDef>  </th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <mat-icon (click)="ShowTransactions(element)" aria-hidden="false"
+                <mat-icon (click)="showTransactions(element)" aria-hidden="false"
                     aria-label="Example import_export icon">import_export</mat-icon>
             </td>
         </ng-container>
@@ -74,7 +74,7 @@
         <ng-container matColumnDef="leaveRequests">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <mat-icon  (click)="EmployeeleaveRequests(element)" aria-hidden="false" aria-label="Example drafts icon" > 
+                <mat-icon  (click)="employeeleaveRequests(element)" aria-hidden="false" aria-label="Example drafts icon" > 
                     drafts</mat-icon>
             </td>
         </ng-container>
@@ -82,7 +82,7 @@
         <ng-container matColumnDef="addLeaveRequest">
             <th mat-header-cell *matHeaderCellDef></th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <mat-icon (click)="AddLeaveRequest(element)" aria-hidden="false" aria-label="Example add icon">add
+                <mat-icon (click)="addLeaveRequest(element)" aria-hidden="false" aria-label="Example add icon">add
                 </mat-icon>
 
             </td>

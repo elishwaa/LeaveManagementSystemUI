@@ -3,56 +3,38 @@
         <mat-label>Id</mat-label>
         <input matInput placeholder="name" [(ngModel)]="data.id">
     </mat-form-field><br>
-    <!-- <mat-form-field hidden class="example-full-width">
-        <mat-label>Employee Id</mat-label>
-        <input matInput placeholder="name" [(ngModel)]="data.empId">
-    </mat-form-field><br> -->
+
     <mat-form-field class="example-full-width">
         <mat-label>Employee Name</mat-label>
         <input matInput placeholder="name" disabled [(ngModel)]="data.employeeName">
     </mat-form-field><br>
 
-    
     <mat-form-field class="example-full-width">
         <mat-label>Start Date</mat-label>
         <input matInput placeholder="start date" [(ngModel)]="data.startDate ">
     </mat-form-field><br>
+
     <mat-form-field class="example-full-width">
         <mat-label>End Date</mat-label>
-        <input matInput placeholder="end date" [(ngModel)]="data.endDate " >
+        <input matInput placeholder="end date" [(ngModel)]="data.endDate ">
     </mat-form-field><br>
-    <!-- <mat-form-field hidden  class="example-full-width">
-        <mat-label>Leave Id</mat-label>
-        <input matInput placeholder="leave " [(ngModel)]="data.leaveId" >
-    </mat-form-field><br> -->
-
-
-    <!-- <mat-form-field class="example-full-width">
-        <mat-label>Leave Type</mat-label>
-        <input matInput placeholder="leave " [(ngModel)]="data.leave" >
-    </mat-form-field><br> -->
 
     <mat-form-field>
         <mat-label>Leave Type</mat-label>
         <mat-select>
-          <mat-option *ngFor="let data of leave" [value]="data.id">
-            {{data.leaveName}}
-          </mat-option>
+            <mat-option *ngFor="let data of leave" [value]="data.id">
+                {{data.leaveName}}
+            </mat-option>
         </mat-select>
-      </mat-form-field> <br>
-    <!-- <mat-form-field class="example-full-width">
-        <mat-label>Status</mat-label>
-        <input matInput placeholder="leave " [(ngModel)]="data.status" >
-    </mat-form-field><br> -->
+    </mat-form-field> <br>
+
     <mat-form-field class="example-full-width">
         <mat-label>Reason</mat-label>
-        <input matInput placeholder="leave " disabled [(ngModel)]="data.reason" >
+        <input matInput placeholder="leave " disabled [(ngModel)]="data.reason">
     </mat-form-field><br>
-   
+
 
     <button mat-button [mat-dialog-close]="data">Save Changes</button>
     <button mat-button (click)="onNoClick()"> Cancel</button>
-    <!-- <div *ngIf = "returnData" >
-        <h5> Employee details submitted Successfully</h5>
-    </div> -->
+
 </div>
