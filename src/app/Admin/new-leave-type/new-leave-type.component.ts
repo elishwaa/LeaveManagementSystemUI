@@ -27,10 +27,10 @@ export class NewLeaveTypeComponent implements OnInit {
           this.onNoClick();
           this._service.OpenSnackBar("New Leave Type","Added Succesfully!!")
         }
-        else{
-          this._service.OpenSnackBar("New Leave Type","Failed!!")
-
-        }
+      },
+      err =>{
+        if(err.status == 500)
+         this._service.OpenSnackBar("Invalid  Details","Failed" )
       }
     )
    

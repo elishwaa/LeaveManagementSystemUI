@@ -33,7 +33,6 @@ export class ForgotPasswordComponent implements OnInit {
         debugger
       }
       else{
-        debugger
         this.Error = true;
       }
     }

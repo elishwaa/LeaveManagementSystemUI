@@ -1,4 +1,4 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable, Injector, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
@@ -9,6 +9,7 @@ import { LeaveRequests } from '../models/leaveRequests';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
 import * as CryptoJS from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
+import { __spread } from 'tslib';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,9 @@ export class LeaveMgmtService {
   reEnterdpassword: any;
   allLeaveRequests: LeaveRequests[];
   leaverequestId: number;
-  visible: boolean = true;
+  // visible: boolean = true;
+
+  visible: EventEmitter<any> = new EventEmitter();
 
   constructor(public route: Router, public httpClient: HttpClient, private injector: Injector,
     private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService) {
@@ -60,7 +63,7 @@ export class LeaveMgmtService {
   }
   AllLeaveRequests(empId: number): Observable<any> {
     let params = new HttpParams().set('id', empId.toString())
-    return this.httpClient.get(environment.apiUrl + 'Leave/GetAllRequest', { params: params });
+    return this.httpClient.get(environment.apiUrl + 'Leave/GetAll', { params: params });
   }
   AddLeaveRequest(data): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Leave/AddRequest', data)
@@ -98,8 +101,8 @@ export class LeaveMgmtService {
   ApproveRequest(leaveRequest) {
     return this.httpClient.post(environment.apiUrl + 'Leave/Approve', leaveRequest)
   }
-  SaveEmployee(employee): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Employee/Add', employee)
+  SaveEmployee(addEmployee): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + 'Employee/Add', {employee :addEmployee})
 
   }
   EditEmployee(data):Observable<any>{
@@ -128,6 +131,7 @@ export class LeaveMgmtService {
     this.route.navigateByUrl('');
     localStorage.clear();
     this.cookieService.delete('LoggedIn');
+    this.visible.emit({LoggedInStatus: false});
   }
   openChangePassDialog(id): void {
 
@@ -155,5 +159,13 @@ export class LeaveMgmtService {
         this.OpenSnackBar("Password mismatch", "Operation Failed!!");
       }
     });
+  }
+  RouteToHome(type){
+    if (type == 1 ) {
+      this.route.navigateByUrl('admin-home');
+    }
+    else if(type!= 1){
+      this.route.navigateByUrl('employee-home');
+    }
   }
 }

@@ -23,10 +23,18 @@ export class AdminHomePageComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this._service.visible.emit({LoggedInStatus: true});
     if(localStorage.getItem('employee') != null){
       this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
     }
+    this._service.visible.subscribe(
+      data=>{
+        if('LoggedIn' in data){
+          data = data.LoggedIn;
+        }
+      }
+    );
   }
 
   AllLeaveRequests(){
@@ -81,10 +89,7 @@ export class AdminHomePageComponent implements OnInit {
       )
   }
   Report():void {
-    this.dialog.open(TransactionListingComponent,{
-                width: '80%',
-                height: '75%'
-              });
+    this.route.navigateByUrl('/report');
   }
   Audit(){
     this.dialog.open(AuditComponent,{

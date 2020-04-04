@@ -96,8 +96,8 @@ export class AllEmployeesComponent implements OnInit {
         data =>{
           if(data){
             this.dialog.open(TransactionListingComponent,{
-              width: '80%',
-              height: '75%',
+              width: '90%',
+              height: '90%',
               data: data
             });
           }

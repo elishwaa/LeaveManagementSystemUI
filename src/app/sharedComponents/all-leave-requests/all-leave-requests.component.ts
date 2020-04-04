@@ -70,13 +70,14 @@ export class AllLeaveRequestsComponent implements OnInit {
   this._service.CancelLeave(this.leaveRequests[index].id).subscribe(
       (data) =>{
         console.log(data);
-          if(data = true){
+          if(data){
             this.data.splice(index,1)
             this.dataSource = new MatTableDataSource<Element>(this.data);
             }
       },
-      (err) => {
-        console.log(err)
+      err =>{
+        if(err.status == 500)
+         this._service.OpenSnackBar("Cancelation","Failed" )
       }
   );
 } 

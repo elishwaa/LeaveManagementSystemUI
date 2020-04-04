@@ -38,12 +38,13 @@ export class EditLeaveBalanceComponent implements OnInit {
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data => {
         console.log(data);
-        
-        this.headers = Object.keys(data.LeaveBalancedata);
+        this.headers = Object.keys(data['LeaveBalanceData'][0]);
         this.headers.push('Edit');
-        this.leaves = data.Leaves
-        this.rowData = data.LeaveBalancedata;
-        console.log(this.leaves);
+        this.leaves = data['Leaves']
+        this.rowData = data['LeaveBalanceData'];
+        console.log(this.headers);
+        
+        
 
       });
   }
@@ -79,9 +80,10 @@ export class EditLeaveBalanceComponent implements OnInit {
           if (data) {
             this._service.OpenSnackBar("Leave Balance Updated", "Success!!")
           }
-          else {
-            this._service.OpenSnackBar("Leave Balance Updation", "Failed!!")
-          }
+        },
+        err =>{
+          if(err.status == 500)
+           this._service.OpenSnackBar("Invalid Details","Failed" )
         }
       )
     });

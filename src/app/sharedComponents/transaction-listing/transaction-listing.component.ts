@@ -20,8 +20,7 @@ export class TransactionListingComponent implements OnInit {
   dataSource ;
   loginparameters: LoginParameters;
   displayedColumns: string[] = ['name', 'leave', 'startdate', 'enddate', 'totaldays', 'status'];
-  constructor(public dialogRef: MatDialogRef<AllEmployeesComponent>, public _service: LeaveMgmtService,
-    @Inject(MAT_DIALOG_DATA) public data: any) {
+  constructor( public _service: LeaveMgmtService) {
   }
 
   ngOnInit() {

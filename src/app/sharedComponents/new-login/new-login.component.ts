@@ -31,9 +31,10 @@ export class NewLoginComponent implements OnInit {
           this.onNoClick();
           this._service.OpenSnackBar("New Login Added","Success!!")
         }
-        else{
-          this.Error = true;
-        }
+      },
+      err =>{
+        if(err.status == 500)
+         this._service.OpenSnackBar("Invalid Details","Failed" )
       }
     );
   

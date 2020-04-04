@@ -8,16 +8,28 @@ import { LeaveMgmtService } from './services/leave-mgmt.service';
 export class AppComponent {
   title = 'LeaveManagementSystem';
 
-  // constructor(public _service: LeaveMgmtService) {
-  
-  // }
-  // visible: boolean;
-  // ngOnInit(){
-  //   this.visible = this._service.visible;
-  // }
-  // logout(){
-  //   this._service.Logout();
-  // }
+  constructor(public _service: LeaveMgmtService) {
+  }
+ 
+  visible :boolean = false;
+  ngOnInit(){
+    this._service.visible.subscribe(
+      data=>{
+        if('LoggedInStatus' in data){
+          this.visible = data.LoggedInStatus;
+        }
+      }
+    );
+    console.log(this.visible);
+    
+  }
+  logout(){
+    this._service.Logout();
+  }
+  Home(){
+    let type = JSON.parse(localStorage.getItem('empType'));
+    this._service.RouteToHome(type);
+  }
 }
 
 

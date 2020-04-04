@@ -90,6 +90,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   providers: [LeaveMgmtService,CookieService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent,NewLoginComponent,AuditComponent, TransactionListingComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
+    ForgotPasswordComponent,NewLoginComponent,AuditComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
 })
 export class AppModule { }

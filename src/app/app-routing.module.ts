@@ -9,6 +9,7 @@ import { EditLeaveBalanceComponent } from './Admin/edit-leave-balance/edit-leave
 import { AuditComponent } from './Admin/audit/audit.component';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { AllEmployeesComponent } from './Admin/all-employees/all-employees.component';
+import { TransactionListingComponent } from './sharedComponents/transaction-listing/transaction-listing.component';
 
 const routes: Routes = [
   
@@ -47,6 +48,10 @@ const routes: Routes = [
   {
     path: 'audit',
     component: AuditComponent
+  },
+  {
+    path: 'report',
+    component: TransactionListingComponent
   }
 ];
 

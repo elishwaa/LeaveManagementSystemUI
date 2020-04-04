@@ -5,20 +5,18 @@
     color: black;
 }
 .functionBar{
-    
     width: 100%;
     height: 10%;
 }
-a, button{
-    float: right;
+li  button{
+    width: 90%;
     color:black;
-    margin-left: 2%;
-    margin-right: 2%;
-    margin-top: 1.5%;
+    margin-top: 15%;
     font-size: large;
+    padding-right: 40px;
 }
 ul{
-    margin-top: 40%;
+    margin-top: 10%;
 }
 li{
     list-style: none;
@@ -37,8 +35,6 @@ li a{
 
     width: 90%;
     height: 70%;
-    margin: 3%;
-    margin-left: 3%;
    
 }
 
@@ -59,53 +55,22 @@ h2{
     color: black;
     list-style-type: none;
 }
-
-.wrapper {
-    display: flex;
-    width: 100%;
-}
-
 #sidebar {
-    width: 250px;
+    width: 20%;
     position: fixed;
-    top: 0;
-    left: 0;
     height: 100vh;
-    z-index: 999;
     background-color: rgb(135, 207, 216);
-    color: #fff;
-    transition: all 0.3s;
+
 }
-.alert {
-    padding: 20px;
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .closebtn {
-    margin-left: 15px;
-    color: white;
-    font-weight: bold;
-    float: right;
-    font-size: 22px;
-    line-height: 20px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  .closebtn:hover {
-    color: black;
-  }
+table {
+    width: 100%;    
 
-  table {
-    width: 100%;
-   
-  }
+}
 
-  .example-container {
-    
+.example-container {
+
     overflow: auto;
     margin: 5%;
     width: 80%;
     margin-left: 5%;
-  }
+}

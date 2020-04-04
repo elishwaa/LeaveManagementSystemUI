@@ -39,9 +39,10 @@ export class AuditComponent implements OnInit {
             this.auditData.reset();
             this._service.OpenSnackBar("Audit Process","Success!!")
           }
-          else{
-            this._service.OpenSnackBar("Audit Process", "Failed")
-          }
+        },
+        err =>{
+          if(err.status == 500)
+           this._service.OpenSnackBar("Audit","Failed" )
         }
     )
 

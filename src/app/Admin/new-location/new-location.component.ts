@@ -27,10 +27,10 @@ export class NewLocationComponent implements OnInit {
           this.onNoClick();
           this._service.OpenSnackBar("New Location","Added Succesfully!!")
         }
-        else{
-          this._service.OpenSnackBar("New Location","Failed!!")
-
-        }
+      },
+      err =>{
+        if(err.status == 500)
+         this._service.OpenSnackBar("Invalid  Details","Failed" )
       }
     )
    

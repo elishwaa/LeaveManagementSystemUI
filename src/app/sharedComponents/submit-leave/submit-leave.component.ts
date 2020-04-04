@@ -55,9 +55,10 @@ export class SubmitLeaveComponent implements OnInit {
             this.onNoClick();
             this._service.OpenSnackBar("Leave Request","Success!!")
           }
-          else{
-            this._service.OpenSnackBar("No leave balance", "Leave request failed")
-          }
+        },
+        err =>{
+          if(err.status == 500)
+           this._service.OpenSnackBar("No Leave Balance","Sorry!" )
         }
       )
       

@@ -42,10 +42,11 @@ export class EmployeeHomePageComponent implements OnInit {
     if(localStorage.getItem('employee') != null){
       this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
+      if (this.loginparameters.typeName == 'Manager') {
+        this.Type = true;
+      }
     }
-    if (this.loginparameters.typeName == 'Manager') {
-      this.Type = true;
-    }
+    this._service.visible.emit({LoggedInStatus: true});
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data=>{
         console.log(data);
@@ -100,9 +101,12 @@ export class EmployeeHomePageComponent implements OnInit {
         .subscribe(
           data => {
             if (data) {
-             
               this.loginparameters = result;
             }
+          },
+          err =>{
+            if(err.status == 500)
+             this._service.OpenSnackBar("Updations","Failed" )
           }
         )
       }
@@ -130,20 +134,6 @@ export class EmployeeHomePageComponent implements OnInit {
    
   }
   TransactionListing():void {
-      this._service.TransactionListing(this.loginparameters.id).subscribe(
-        data =>{
-          if(data){
-            this.dialog.open(TransactionListingComponent,{
-              width: '80%',
-              height: '75%',
-              data: data
-            });
-          }
-          else{
-            this._service.OpenSnackBar("No Transactions yet","Have a nice day")
-          }
-        }
-      )
-      
+      this.route.navigateByUrl('/report');
     }
   }

@@ -54,24 +54,22 @@ export class NewEmployeeComponent implements OnInit {
   });
   }
   SaveNewEmployee(){
-     this._service.SaveEmployee({...this.newEmployeeForm.value, empType:parseInt(this.newEmployeeForm.value.empType),salary:parseInt(this.newEmployeeForm.value.salary),
+    let data = {...this.newEmployeeForm.value, empType:parseInt(this.newEmployeeForm.value.empType),salary:parseInt(this.newEmployeeForm.value.salary),
       manager:parseInt(this.newEmployeeForm.value.manager), project:parseInt(this.newEmployeeForm.value.project),
-      location:parseInt(this.newEmployeeForm.value.location)}).subscribe(
+      location:parseInt(this.newEmployeeForm.value.location)}
+     this._service.SaveEmployee(data).subscribe(
        data=>{
          if(data){
            this.onNoClick();
            this._service.OpenSnackBar("New Employee", "Added");
          }
-         (ok: HttpErrorResponse) =>{
-          if(!ok ){
-           this._service.OpenSnackBar("Adding new employee failed","Failed" )
+         },
+         err =>{
+          if(err.status == 500)
+           this._service.OpenSnackBar("Invalid Employee Details","Failed" )
           }
-         }
-       }
      )
-    
   }
-
   
   onNoClick(): void {
     this.dialogRef.close();

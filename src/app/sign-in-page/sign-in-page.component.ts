@@ -42,7 +42,6 @@ export class SignInPageComponent implements OnInit {
 
   }
 
-
   login() {
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (details) => {
@@ -50,12 +49,8 @@ export class SignInPageComponent implements OnInit {
           this.cookieService.set('LoggedIn', details.typeName);
           localStorage.setItem('employee', JSON.stringify(details));
           localStorage.setItem('empType', details.typeId);
-          if (details.typeId == 1 ) {
-            this.route.navigateByUrl('admin-home');
-          }
-          else if(details.typeId != 1){
-            this.route.navigateByUrl('employee-home');
-          }
+          this._service.RouteToHome(details.typeId);
+          this._service.visible.emit({LoggedInStatus: true});
         }
         else {
           this._service.OpenSnackBar("Invalid Login Details", "Login Again")
