@@ -25,7 +25,7 @@ export class AllLeaveRequestsComponent implements OnInit {
 
   ngOnInit() {
     
-    this.leaveRequests = JSON.parse(sessionStorage.getItem('AllLeaveRequests'));
+    this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'));
     this.data = Object.assign( this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data);
     console.log(this.leaveRequests);

@@ -31,7 +31,7 @@ export class LeaveMgmtService {
 
   }
   getEmpType(): Observable<any> {
-    return this.httpClient.get(environment.apiUrl + 'Login/GetType')
+    return this.httpClient.get(environment.apiUrl + 'Employee/GetType')
   }
   getLocation(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Location/Get')
@@ -54,20 +54,20 @@ export class LeaveMgmtService {
     return this.httpClient.get(environment.apiUrl + 'Leave/Get');
   }
 
-  getLeaveRequests(empId: number): Observable<any> {
+  GetLeaveRequests(empId: number): Observable<any> {
     let params = new HttpParams().set('id', empId.toString())
-    return this.httpClient.get(environment.apiUrl + 'Leave/GetRequests', { params: params });
+    return this.httpClient.get(environment.apiUrl + 'Leave/GetRequest', { params: params });
   }
   AllLeaveRequests(empId: number): Observable<any> {
     let params = new HttpParams().set('id', empId.toString())
-    return this.httpClient.get(environment.apiUrl + 'Leave/allRequests', { params: params });
+    return this.httpClient.get(environment.apiUrl + 'Leave/GetAllRequest', { params: params });
   }
   AddLeaveRequest(data): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Leave/AddRequest', data)
   }
-  UpdateLocalStorage(data: any) {
-    sessionStorage.setItem('employee', JSON.stringify(data))
-  }
+  // UpdateLocalStorage(data: any) {
+  //   localStorage.setItem('employee', JSON.stringify(data))
+  // }
   ChangePassword(id, Encryptedpass): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Employee/EditPassword', { id, password: Encryptedpass });
   }
@@ -92,18 +92,18 @@ export class LeaveMgmtService {
   GetEmail(data):Observable<any>{
     return this.httpClient.get(environment.apiUrl+'Employee/GetEmail', data )
   }
-  getAllEmployees(): Observable<any> {
+  GetAllEmployees(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Employee/GetAll')
   }
   ApproveRequest(leaveRequest) {
     return this.httpClient.post(environment.apiUrl + 'Leave/Approve', leaveRequest)
   }
-  SaveEmployee(newEmployee): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Employee/Add', newEmployee)
+  SaveEmployee(employee): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + 'Employee/Add', employee)
 
   }
   EditEmployee(data):Observable<any>{
-    return this.httpClient.post(environment.apiUrl + 'Leave/Edit', data)
+    return this.httpClient.post(environment.apiUrl + 'Employee/Edit', data)
   }
   AddNewDesignation(designation): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Employee/AddDesignation', { designation: designation })

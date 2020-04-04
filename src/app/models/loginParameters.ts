@@ -13,4 +13,6 @@ export class LoginParameters
    projectName:string;
    locationId: number;
    locationName:string;
+   managerId: number;
+   manager:string;
 }

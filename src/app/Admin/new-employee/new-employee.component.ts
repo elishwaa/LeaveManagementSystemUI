@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { FormGroup, FormControl } from '@angular/forms';
 import { AdminHomePageComponent } from '../admin-home-page/admin-home-page.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-new-employee',
@@ -58,10 +59,13 @@ export class NewEmployeeComponent implements OnInit {
       location:parseInt(this.newEmployeeForm.value.location)}).subscribe(
        data=>{
          if(data){
-           console.log(data);
-
            this.onNoClick();
            this._service.OpenSnackBar("New Employee", "Added");
+         }
+         (ok: HttpErrorResponse) =>{
+          if(!ok ){
+           this._service.OpenSnackBar("Adding new employee failed","Failed" )
+          }
          }
        }
      )

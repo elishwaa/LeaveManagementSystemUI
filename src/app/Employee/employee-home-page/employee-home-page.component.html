@@ -5,7 +5,7 @@
 <div *ngIf ="hideComponent">
     <div class="topBar">
         <button mat-raised-button (click)=logout()>Logout</button>
-        <button mat-raised-button (click)="openDialog()">Edit Info</button>
+        <button mat-raised-button (click)="Edit()">Edit Info</button>
         <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change Password</button>
     </div>
     
@@ -14,13 +14,11 @@
             <nav id="sidebar">
                 <ul  >
                     <li><a (click)="openSubmitLeave(loginparameters.id)">Submit Leave request</a></li>
-                    <li><a (click) ="getLeaveRequests()">leave requests status </a></li>
-                    <li><a (click)="TransactionListing()">Transaction listing</a></li>
-                    <!-- <li><a routerLink="/submit-leave" routerLinkActive="active">Leave request status</a></li> -->
+                    <li><a (click) ="GetLeaveRequests()">Leave Requests Status </a></li>
+                    <li><a (click)="TransactionListing()">Transaction Listing</a></li>
                 </ul>
                 <ul *ngIf = "Type">
-                    <li><a (click)="AllLeaveRequests()">Employee leave requests</a></li>
-                    <!-- <li><a>Employee leave request status</a> </li> -->
+                    <li><a (click)="AllLeaveRequests()">Employee Leave Requests</a></li>
                 </ul>
             </nav>     
         </div>

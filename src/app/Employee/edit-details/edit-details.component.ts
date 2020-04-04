@@ -2,6 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmployeeHomePageComponent } from '../employee-home-page/employee-home-page.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
+import { CookieService } from 'ngx-cookie-service';
+import { LoginParameters } from 'src/app/models/LoginParameters';
 
 
 @Component({
@@ -13,11 +15,16 @@ export class EditDetailsComponent implements OnInit {
   empType =[];
   locations =[];
   projects =[];
+  managers = [];
+  isAdmin:boolean = true;
   constructor(
-    public dialogRef: MatDialogRef<EmployeeHomePageComponent>, public _service:LeaveMgmtService,
+    public dialogRef: MatDialogRef<EmployeeHomePageComponent>,@Inject(MAT_DIALOG_DATA) public data: any, public _service:LeaveMgmtService,
    ) {}
 
   ngOnInit(): void {
+   if(JSON.parse(localStorage.getItem('employee')).typeName != 'Admin'){
+    this.isAdmin = false;
+   }
     this._service.getEmpType().subscribe(
       data =>{
         this.empType = data;
@@ -37,7 +44,11 @@ export class EditDetailsComponent implements OnInit {
           this.projects = data;
         }
       )
-    
+     this._service.getManager().subscribe(
+       data =>{
+         this.managers = data;
+       }
+     )
   }
   
 

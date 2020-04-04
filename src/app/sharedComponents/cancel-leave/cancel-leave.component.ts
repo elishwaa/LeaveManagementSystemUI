@@ -26,12 +26,12 @@ export class CancelLeaveComponent implements OnInit {
   constructor(public _service : LeaveMgmtService, public httpClient: HttpClient, public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.loginparameters = JSON.parse(sessionStorage.getItem('employee'));
+    this.loginparameters = JSON.parse(localStorage.getItem('employee'));
 
     if(this.loginparameters.id == 2 || this.loginparameters.id == 3){
       
     }
-    this.leaveRequests = JSON.parse(sessionStorage.getItem('leaveRequests'));
+    this.leaveRequests = JSON.parse(localStorage.getItem('leaveRequests'));
     this.data = Object.assign( this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data)
     console.log(this.leaveRequests);

@@ -30,11 +30,10 @@ export class AdminHomePageComponent implements OnInit {
   }
 
   AllLeaveRequests(){
-    this._service.AllLeaveRequests(this.loginparameters.id).subscribe((details) => {
-      debugger;
-      console.log(details);
+    this._service.AllLeaveRequests(this.loginparameters.id).subscribe(
+      (details) => {
       if (details[0]!= null) {
-        sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
         this.route.navigateByUrl('all-leave-requests');
       }
       else{
@@ -44,7 +43,7 @@ export class AdminHomePageComponent implements OnInit {
     });
   }
   getAllEmployees(){
-    this._service.getAllEmployees();
+    this._service.GetAllEmployees();
     this.route.navigateByUrl('all-employees')
   }
   logout() {
@@ -52,8 +51,8 @@ export class AdminHomePageComponent implements OnInit {
   }
   AddNewEmployee() :void {
     this.dialog.open(NewEmployeeComponent, {
-      width: '30%',
-      height: '75%',
+      width: '25%',
+      height: '80%',
     });
   }
   AddNewLeaveType(){

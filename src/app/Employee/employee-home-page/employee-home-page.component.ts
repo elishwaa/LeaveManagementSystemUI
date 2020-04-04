@@ -43,24 +43,26 @@ export class EmployeeHomePageComponent implements OnInit {
       this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
     }
-    if (this.loginparameters.typeName = 'Manager') {
+    if (this.loginparameters.typeName == 'Manager') {
       this.Type = true;
     }
     this._service.GetLeaveBalance(this.loginparameters.id).subscribe(
       data=>{
-        this.headers = Object.keys(data['Table'][0]);
+        console.log(data);
+        
+        this.headers = Object.keys(data['LeaveBalanceData'][0]);
         console.log(this.headers);
-        this.rowData = data['Table']; 
+        this.rowData = data['LeaveBalanceData']; 
         console.log(this.rowData);
       });
   }
-  getLeaveRequests() {
+  GetLeaveRequests() {
 
-    this._service.getLeaveRequests(this.loginparameters.id).subscribe(
+    this._service.GetLeaveRequests(this.loginparameters.id).subscribe(
       (details) => {
-      debugger;
-      console.log(details);
-      if (details) {
+        console.log(details);
+        
+      if (details[0]!= null) {
         localStorage.setItem('leaveRequests', JSON.stringify(details));
         this.route.navigateByUrl('cancel-leave');
       }
@@ -80,7 +82,7 @@ export class EmployeeHomePageComponent implements OnInit {
     });
 
   }
-  openDialog(): void {
+  Edit(): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {
       width: '30%',
       height: '75%',
@@ -98,7 +100,7 @@ export class EmployeeHomePageComponent implements OnInit {
         .subscribe(
           data => {
             if (data) {
-              this._service.UpdateLocalStorage(result);
+             
               this.loginparameters = result;
             }
           }
@@ -116,12 +118,14 @@ export class EmployeeHomePageComponent implements OnInit {
 
   AllLeaveRequests(){
     this._service.AllLeaveRequests(this.loginparameters.id).subscribe((details) => {
-      debugger;
-      console.log(details);
-      if (details) {
-        sessionStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+      if (details[0]!= null) {
+        localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        this.route.navigateByUrl('all-leave-requests');
       }
-      this.route.navigateByUrl('all-leave-requests');
+      else{
+        this._service.OpenSnackBar("No Leave Requests", "Have a nice day!")
+      }
+      
     });
    
   }

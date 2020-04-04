@@ -4,7 +4,7 @@ import { LoginParameters } from 'src/app/models/LoginParameters';
 import { MatPaginator, MatDialog } from '@angular/material';
 import { EditDetailsComponent } from '../../Employee/edit-details/edit-details.component';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
 import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
@@ -17,12 +17,12 @@ import { TransactionListingComponent } from '../../sharedComponents/transaction-
 export class AllEmployeesComponent implements OnInit {
 
   displayedColumns: string[] = ['id','firstName', 'middleName', 'lastName','type','email','salary',
-  'username','project','location','employeeinfo','transactions','leaveRequests','addLeaveRequest'];
+  'username','manager','project','location','info','transactions','leaveRequests','addLeaveRequest'];
   employeeInfo: LoginParameters[];
   constructor(public _service: LeaveMgmtService,public dialog: MatDialog,public httpClient: HttpClient,public route:Router) { }
 
   ngOnInit() {
-    this._service.getAllEmployees().subscribe(
+    this._service.GetAllEmployees().subscribe(
       data=>{
         this.employeeInfo = data;
         console.log(this.employeeInfo);
@@ -37,20 +37,29 @@ export class AllEmployeesComponent implements OnInit {
         data: {
           id: employeeInfo.id , typeId: employeeInfo.typeId, firstName: employeeInfo.firstName,
           middleName: employeeInfo.middleName, lastName: employeeInfo.lastName, email: employeeInfo.email,
-          salary: employeeInfo.salary, username: employeeInfo.username,projectId: employeeInfo.projectId , projectName:employeeInfo.projectName, locationId:employeeInfo.locationId, locationName:employeeInfo.locationName
+          salary: employeeInfo.salary, username: employeeInfo.username,projectId: employeeInfo.projectId , projectName:employeeInfo.projectName,
+          managerId: employeeInfo.managerId , manager:employeeInfo.manager, locationId:employeeInfo.locationId, locationName:employeeInfo.locationName
         }
       });
   
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           debugger
-          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId),projectId:parseInt(result.projectId), locationId: parseInt(result.locationId), salary: parseInt(result.salary) }
-          this.httpClient.post(environment.apiUrl + 'LeaveRequest/Edit', data).subscribe(
+          let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId),projectId:parseInt(result.projectId), 
+            locationId: parseInt(result.locationId), salary: parseInt(result.salary) }
+
+            this._service.EditEmployee(data).subscribe(
             data => {
               if (data) {
-                this._service.UpdateLocalStorage(result);
+               
                 this.employeeInfo = result;
                 window.location.reload();
+                // this._service.OpenSnackBar("Employee Details Updated", "Successfully")
+              }
+              (error: HttpErrorResponse) =>{
+               if(!error.ok ){
+                this._service.OpenSnackBar("","Failed" )
+               }
               }
             }
           )
@@ -59,11 +68,11 @@ export class AllEmployeesComponent implements OnInit {
   
     }
     EmployeeleaveRequests(employee: LoginParameters ){
-      this._service.getLeaveRequests(employee.id).subscribe((details) => {
+      this._service.GetLeaveRequests(employee.id).subscribe((details) => {
         debugger;
         console.log(details);
         if (details[0]!= null) {
-          sessionStorage.setItem('leaveRequests', JSON.stringify(details));
+          localStorage.setItem('leaveRequests', JSON.stringify(details));
           this.route.navigateByUrl('cancel-leave');
         }
         else{

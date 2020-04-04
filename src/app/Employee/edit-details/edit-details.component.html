@@ -9,7 +9,7 @@
     </mat-form-field><br>
 
     <!-- select  -->
-    <mat-form-field>
+    <mat-form-field >
         <mat-label>Employee Type</mat-label>
         <mat-select [(ngModel)]="data.typeId">
           <mat-option *ngFor="let type of empType" [value]="type.id">
@@ -44,22 +44,25 @@
         <input matInput placeholder="username" [(ngModel)]="data.username">
     </mat-form-field><br>
 
-    <!-- <mat-form-field hidden class="example-full-width">
-        <mat-label>Location Id</mat-label>
-        <input matInput placeholder="location id" [(ngModel)]="data.locationId">
-    </mat-form-field><br> -->
-
-    <!-- select  -->
-    <mat-form-field>
+    <mat-form-field *ngIf= "isAdmin">
       <mat-label>Project</mat-label>
       <mat-select [(ngModel)]="data.projectId">
-        <mat-option *ngFor="let type of projects" [value]="type.projectId">
-          {{type.projectName}}
+        <mat-option *ngFor="let type of projects" [value]="type.id">
+          {{type.name}}
         </mat-option>
       </mat-select>
     </mat-form-field> <br>
 
-    <mat-form-field>
+    <mat-form-field *ngIf= "isAdmin">
+      <mat-label>Manager</mat-label>
+      <mat-select [(ngModel)]="data.managerId">
+        <mat-option *ngFor="let type of managers" [value]="type.managerId">
+          {{type.managerName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> <br>
+
+    <mat-form-field *ngIf= "isAdmin">
         <mat-label>Location</mat-label>
         <mat-select [(ngModel)]="data.locationId">
           <mat-option *ngFor="let type of locations" [value]="type.locationId">
@@ -67,11 +70,7 @@
           </mat-option>
         </mat-select>
       </mat-form-field> <br>
-    <!-- select  -->
-
     <button mat-button color="primary" [mat-dialog-close]="data">Save Changes</button>
     <button mat-button color="primary" (click)="onNoClick()"> Cancel</button>
-    <!-- <div *ngIf = "returnData" >
-        <h5> Employee details submitted Successfully</h5>
-    </div> -->
+
 </div>

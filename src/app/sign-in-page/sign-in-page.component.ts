@@ -21,8 +21,8 @@ export class SignInPageComponent implements OnInit {
   signInForm: FormGroup;
   empType = [];
   loginDetails: string;
-  loginParameters : LoginParameters;
-  constructor(public route: Router,public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService) { }
+  loginParameters: LoginParameters;
+  constructor(public route: Router, public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
@@ -30,52 +30,49 @@ export class SignInPageComponent implements OnInit {
       password: new FormControl()
     });
 
-    if(this.cookieService.get('LoggedIn') != null){
+    if (this.cookieService.get('LoggedIn') != null) {
       this.loginParameters = JSON.parse(localStorage.getItem('employee'));
-      if (this.loginParameters.typeName = 'Admin'){
+      if (this.loginParameters.typeName = 'Admin') {
         this.route.navigateByUrl('admin-home');
       }
-      else{
+      else if ((this.loginParameters.typeName != 'Admin')) {
         this.route.navigateByUrl('employee-home');
       }
     }
-    
+
   }
 
 
   login() {
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (details) => {
-     
-      if (details.id!=0) {
-        
-        this.cookieService.set('LoggedIn',details.typeName );
-        localStorage.setItem('employee', JSON.stringify(details));
-        localStorage.setItem('empType', details.typeId);
-        console.log(details.typeId);
-          if (details.typeName ='Admin'){
+        if (details.id != 0) {
+          this.cookieService.set('LoggedIn', details.typeName);
+          localStorage.setItem('employee', JSON.stringify(details));
+          localStorage.setItem('empType', details.typeId);
+          if (details.typeId == 1 ) {
             this.route.navigateByUrl('admin-home');
           }
-          else {
+          else if(details.typeId != 1){
             this.route.navigateByUrl('employee-home');
           }
-      }
-      else{
-        this._service.OpenSnackBar("Invalid Login Details","Login Again")
-      }
-    });
+        }
+        else {
+          this._service.OpenSnackBar("Invalid Login Details", "Login Again")
+        }
+      });
   }
-  confirmEmail(){
-   this.dialog.open(ForgotPasswordComponent, {
-      width: '30%',
+  confirmEmail() {
+    this.dialog.open(ForgotPasswordComponent, {
+      width: '25%',
       height: '35%',
     });
-    
-   
+
+
   }
-  newLogin(){
-    this.dialog.open(NewLoginComponent,{
-      width: '30%',
+  newLogin() {
+    this.dialog.open(NewLoginComponent, {
+      width: '25%',
       height: '45%',
     });
   }

@@ -1,3 +1,4 @@
-.dialogBox{
-    align-content: center;
+mat-form-field{
+    width: 80%;
+    margin-left: 8%;
 }
