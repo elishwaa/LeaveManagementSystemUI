@@ -19,7 +19,6 @@ import { EditDetailsComponent } from './Employee/edit-details/edit-details.compo
 import { DeletePopUpComponent } from './sharedComponents/delete-pop-up/delete-pop-up.component';
 import { ForgotPasswordComponent } from './sharedComponents/forgot-password/forgot-password.component';
 import {MatTableModule} from '@angular/material/table';
-import { EditAndApproveComponent } from './Employee/edit-and-approve/edit-and-approve.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { NewEmployeeComponent } from './Admin/new-employee/new-employee.component';
 import { NewLeaveTypeComponent } from './Admin/new-leave-type/new-leave-type.component';
@@ -53,7 +52,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     ForgotPasswordComponent,
     AllLeaveRequestsComponent,
     AllEmployeesComponent,
-    EditAndApproveComponent,
     NewEmployeeComponent,
     NewLeaveTypeComponent,
     NewDesignationComponent,
@@ -90,6 +88,6 @@ import {MatToolbarModule} from '@angular/material/toolbar';
   providers: [LeaveMgmtService,CookieService],
   bootstrap: [AppComponent],
   entryComponents: [EditDetailsComponent, DeletePopUpComponent,ChangePasswordPopUpComponent,
-    ForgotPasswordComponent,NewLoginComponent,AuditComponent,NewProjectComponent,LeaveBalancePopUpComponent,EditAndApproveComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
+    ForgotPasswordComponent,NewLoginComponent,AuditComponent,NewProjectComponent,LeaveBalancePopUpComponent,NewEmployeeComponent,NewLeaveTypeComponent, NewDesignationComponent, NewLocationComponent]
 })
 export class AppModule { }

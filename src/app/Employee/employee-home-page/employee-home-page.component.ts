@@ -61,8 +61,6 @@ export class EmployeeHomePageComponent implements OnInit {
 
     this._service.getLeaveRequests(this.loginparameters.id).subscribe(
       (details) => {
-        console.log(details);
-
         if (details[0] != null) {
           localStorage.setItem('leaveRequests', JSON.stringify(details));
           this.route.navigateByUrl('cancel-leave');

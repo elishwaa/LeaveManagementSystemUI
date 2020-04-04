@@ -26,7 +26,7 @@ export class CancelLeaveComponent implements OnInit {
 
   ngOnInit() {
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-
+    this._service.visible.emit({LoggedInStatus: true});
     if(this.loginparameters.id == 2 || this.loginparameters.id == 3){
       
     }

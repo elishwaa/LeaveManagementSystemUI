@@ -6,6 +6,6 @@ table {
   .example-container {
     height: 80%;
     overflow: auto;
-    margin: 5%;
-    margin-left: 8%;
+    margin: 3%;
+    margin-left: 5%;
   }
