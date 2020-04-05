@@ -43,7 +43,6 @@ export class AllEmployeesComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        debugger
         let data = {
           ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), projectId: parseInt(result.projectId),
           locationId: parseInt(result.locationId), salary: parseInt(result.salary)
@@ -69,8 +68,6 @@ export class AllEmployeesComponent implements OnInit {
   }
   employeeleaveRequests(employee: LoginParameters) {
     this._service.getLeaveRequests(employee.id).subscribe((details) => {
-      debugger;
-      console.log(details);
       if (details[0] != null) {
         localStorage.setItem('leaveRequests', JSON.stringify(details));
         this.route.navigateByUrl('cancel-leave');

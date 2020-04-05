@@ -32,14 +32,11 @@ export class CancelLeaveComponent implements OnInit {
     this.leaveRequests = JSON.parse(localStorage.getItem('leaveRequests'));
     this.data = Object.assign( this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data)
-    console.log(this.leaveRequests);
     
   }
   cancelLeave(index: number){
-    debugger
     this._service.cancelLeave(this.leaveRequests[index].id).subscribe(
         (data) =>{
-          console.log(data);
             if(data){
               this.data.splice(index,1)
               this.dataSource = new MatTableDataSource<Element>(this.data);

@@ -1,15 +1,14 @@
 import { Injectable, Injector, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { LoginParameters } from '../models/LoginParameters';
 import { environment } from '../../environments/environment'
 import { MatSnackBar, MatDialog } from '@angular/material';
-// import { LeaveRequests } from '../models/leaveRequests';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
-// import * as CryptoJS from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
 import { __spread } from 'tslib';
+import {Location} from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -25,8 +24,9 @@ export class LeaveMgmtService {
   reEnterdpassword: any;
   // leaverequestId: number;
   visible: EventEmitter<any> = new EventEmitter();
+  back: EventEmitter<any> = new EventEmitter();
   constructor(public route: Router, public httpClient: HttpClient,
-    private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService) {
+    private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService, public location: Location) {
 
   }
   getEmpType(): Observable<any> {
@@ -80,7 +80,6 @@ export class LeaveMgmtService {
     return this.httpClient.post(environment.apiUrl + 'Login/Add', data)
   }
   openSnackBar(message: string, action: string) {
-    console.log(123);
 
     this._snackBar.open(message, action, {
       duration: 2000,
@@ -127,6 +126,10 @@ export class LeaveMgmtService {
     this.cookieService.delete('LoggedIn');
     this.visible.emit({LoggedInStatus: false});
   }
+  goBack(){
+    this.location.back();
+    this.visible.emit({back: false});
+  }
   openChangePassDialog(id): void {
 
     const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
@@ -141,9 +144,7 @@ export class LeaveMgmtService {
       if (result && (result.passwordOne == result.passwordTwo)) {
         this.changePassword(id, result.passwordOne).subscribe(
           data => {
-            debugger
             if (data) {
-              console.log(data);
               this.openSnackBar("Password updation", "Success!!");
             }
           }
@@ -162,4 +163,5 @@ export class LeaveMgmtService {
       this.route.navigateByUrl('employee-home');
     }
   }
+  
 }

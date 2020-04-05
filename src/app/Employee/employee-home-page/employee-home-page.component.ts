@@ -46,15 +46,11 @@ export class EmployeeHomePageComponent implements OnInit {
         this.Type = true;
       }
     }
- 
+    this._service.back.emit({back:false})
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
-        console.log(data);
-
         this.headers = Object.keys(data['LeaveBalanceData'][0]);
-        console.log(this.headers);
         this.rowData = data['LeaveBalanceData'];
-        console.log(this.rowData);
       });
   }
   getLeaveRequests() {
@@ -122,6 +118,7 @@ export class EmployeeHomePageComponent implements OnInit {
     this._service.allLeaveRequests(this.loginparameters.id).subscribe((details) => {
       if (details[0] != null) {
         localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        this._service.back.emit({ back: true })
         this.route.navigateByUrl('all-leave-requests');
       }
       else {
@@ -132,6 +129,20 @@ export class EmployeeHomePageComponent implements OnInit {
 
   }
   transactionListing(): void {
-    this.route.navigateByUrl('/report');
+    this._service.transactionListing(this.loginparameters.id).subscribe(
+      data => {
+        if (data[0]!=null) {
+          this.dialog.open(TransactionListingComponent, {
+            width: '90%',
+            height: '90%',
+            data: data
+          });
+        }
+        else {
+          this._service.openSnackBar("No transactions to show", "Sorry!!")
+        }
+      }
+    )
+
   }
 }

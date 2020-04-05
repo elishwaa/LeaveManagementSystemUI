@@ -27,15 +27,11 @@ export class AllLeaveRequestsComponent implements OnInit {
     this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'));
     this.data = Object.assign(this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data);
-    console.log(this.leaveRequests);
   }
-  approveRequest(employee: LeaveRequests, i) {
-    console.log(employee);
-
+  approveRequest(employee: LeaveRequests, i: number) {
     this._service.approveRequest(employee).subscribe(
       data => {
         if (data) {
-
           this.data.splice(i, 1)
           this.dataSource = new MatTableDataSource<Element>(this.data);
 
@@ -44,12 +40,14 @@ export class AllLeaveRequestsComponent implements OnInit {
           this._service.openSnackBar("No Balance Leaves", "Failed!!");
 
         }
+      },
+      (err)=>{
+        this._service.openSnackBar("No Balance Leaves", "Failed!!");
       }
     );
   }
 
   openConfirmDialog(element: LeaveRequests, i: number): void {
-
     const dialogRef = this.dialog.open(DeletePopUpComponent, {
       width: '25%',
       height: '25%',
@@ -65,10 +63,8 @@ export class AllLeaveRequestsComponent implements OnInit {
     });
   }
   cancelLeave(index: number) {
-    debugger
     this._service.cancelLeave(this.leaveRequests[index].id).subscribe(
       (data) => {
-        console.log(data);
         if (data) {
           this.data.splice(index, 1)
           this.dataSource = new MatTableDataSource<Element>(this.data);

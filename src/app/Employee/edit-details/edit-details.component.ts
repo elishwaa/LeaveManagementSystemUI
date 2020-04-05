@@ -28,14 +28,12 @@ export class EditDetailsComponent implements OnInit {
     this._service.getEmpType().subscribe(
       data =>{
         this.empType = data;
-        console.log(this.empType);
         
       } )
     
     this._service.getLocation().subscribe(
       data =>{
         this.locations = data;
-        console.log(this.locations);
         
       } )
 

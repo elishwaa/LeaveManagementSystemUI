@@ -33,6 +33,7 @@ export class EditLeaveBalanceComponent implements OnInit {
   }
 
   ngOnInit() {
+    this._service.back.emit({ back: true });
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
@@ -51,7 +52,6 @@ export class EditLeaveBalanceComponent implements OnInit {
 
     window.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
         this.returnData[0]['employeeId'] = (result.Id);
         this.returnData[0]['leaves'] = [];
         this.returnData[0]['year'] = (result.Year);
@@ -65,10 +65,6 @@ export class EditLeaveBalanceComponent implements OnInit {
           })
         })
       }
-
-      console.log(this.returnData);
-
-
       this._service.updatedLeaveBalance(this.returnData).subscribe(
         data => {
           if (data) {

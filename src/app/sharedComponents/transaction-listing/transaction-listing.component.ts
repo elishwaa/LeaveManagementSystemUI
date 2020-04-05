@@ -12,8 +12,6 @@ import { AllEmployeesComponent } from 'src/app/Admin/all-employees/all-employees
   styleUrls: ['./transaction-listing.component.css']
 })
 export class TransactionListingComponent implements OnInit {
-
-
   @ViewChild('TABLE', { static: false }) table: ElementRef;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 

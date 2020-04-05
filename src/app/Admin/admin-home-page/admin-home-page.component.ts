@@ -23,6 +23,7 @@ export class AdminHomePageComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
+    this._service.back.emit({back:false})
     if(localStorage.getItem('employee') != null){
       this.loginparameters = JSON.parse(localStorage.getItem('employee'));
       this.hideComponent = true;
@@ -35,6 +36,7 @@ export class AdminHomePageComponent implements OnInit {
       (details) => {
       if (details[0]!= null) {
         localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        this._service.back.emit({ back: true });
         this.route.navigateByUrl('all-leave-requests');
       }
       else{
@@ -45,6 +47,7 @@ export class AdminHomePageComponent implements OnInit {
   }
   getAllEmployees(){
     this._service.getAllEmployees();
+    this._service.back.emit({ back: true });
     this.route.navigateByUrl('all-employees')
   }
   logout() {

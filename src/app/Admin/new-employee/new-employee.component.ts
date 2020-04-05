@@ -35,8 +35,6 @@ export class NewEmployeeComponent implements OnInit {
     this._service.getProjects().subscribe(
       data =>{
         this.projects = data;
-        console.log(data);
-        
       }
     )
 

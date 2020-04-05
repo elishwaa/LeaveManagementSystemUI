@@ -28,7 +28,7 @@ export class AuditComponent implements OnInit {
       
     });
   }
-  Audit(){
+  audit(){
     let data = {...this.auditData.value, year:parseInt(this.auditData.value.year), leaveId:parseInt(this.auditData.value.leaveId),
     numberOfDays: parseInt(this.auditData.value.numberOfDays)}
 

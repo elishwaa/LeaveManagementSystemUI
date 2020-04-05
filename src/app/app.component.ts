@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { LeaveMgmtService } from './services/leave-mgmt.service';
 import { CookieService } from 'ngx-cookie-service';
 @Component({
@@ -9,10 +9,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class AppComponent {
   title = 'LeaveManagementSystem';
 
-  constructor(public _service: LeaveMgmtService, public cookieService: CookieService) {
+  constructor(public _service: LeaveMgmtService, public cookieService: CookieService, public cdRef : ChangeDetectorRef) {
   }
  
   visible :boolean = false;
+  back: boolean = false;
   ngOnInit(){
     if(this.cookieService.get('LoggedIn')){
       this.visible = true;
@@ -24,6 +25,15 @@ export class AppComponent {
         }
       }
     );
+    this._service.back.subscribe(
+      data=>{
+        if('back' in data){
+          this.back = data.back;
+          this.cdRef.detectChanges();
+        }
+      }
+    );
+    
   }
   logout(){
     this._service.logout();
@@ -31,6 +41,9 @@ export class AppComponent {
   home(){
     let type = JSON.parse(localStorage.getItem('empType'));
     this._service.routeToHome(type);
+  }
+  goBack(){
+    this._service.goBack();
   }
 }
 

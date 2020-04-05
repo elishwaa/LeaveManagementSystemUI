@@ -30,7 +30,6 @@ export class ForgotPasswordComponent implements OnInit {
             this.employeeId = data;
             this.onNoClick();
             this._service.openChangePassDialog(this.employeeId)
-            debugger
           }
           else {
             this.Error = true;
