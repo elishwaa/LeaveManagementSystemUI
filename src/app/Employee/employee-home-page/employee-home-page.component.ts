@@ -46,7 +46,7 @@ export class EmployeeHomePageComponent implements OnInit {
         this.Type = true;
       }
     }
-    this._service.visible.emit({ LoggedInStatus: true });
+ 
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
         console.log(data);

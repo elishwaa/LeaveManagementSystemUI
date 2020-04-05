@@ -33,7 +33,6 @@ export class EditLeaveBalanceComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._service.visible.emit({ LoggedInStatus: true });
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {

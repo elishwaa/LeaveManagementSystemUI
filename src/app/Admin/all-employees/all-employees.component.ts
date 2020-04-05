@@ -22,11 +22,10 @@ export class AllEmployeesComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog, public httpClient: HttpClient, public route: Router) { }
 
   ngOnInit() {
+
     this._service.getAllEmployees().subscribe(
       data => {
         this.employeeInfo = data;
-        console.log(this.employeeInfo);
-
       }
     )
   }
@@ -95,7 +94,7 @@ export class AllEmployeesComponent implements OnInit {
   showTransactions(employee: LoginParameters): void {
     this._service.transactionListing(employee.id).subscribe(
       data => {
-        if (data) {
+        if (data[0]!=null) {
           this.dialog.open(TransactionListingComponent, {
             width: '90%',
             height: '90%',

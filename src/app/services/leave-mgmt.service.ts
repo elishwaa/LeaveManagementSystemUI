@@ -1,13 +1,13 @@
-import { Injectable, Injector, EventEmitter } from '@angular/core';
+import { Injectable, Injector, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http'
 import { LoginParameters } from '../models/LoginParameters';
 import { environment } from '../../environments/environment'
 import { MatSnackBar, MatDialog } from '@angular/material';
-import { LeaveRequests } from '../models/leaveRequests';
+// import { LeaveRequests } from '../models/leaveRequests';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
-import * as CryptoJS from 'crypto-js';
+// import * as CryptoJS from 'crypto-js';
 import { CookieService } from 'ngx-cookie-service';
 import { __spread } from 'tslib';
 
@@ -16,18 +16,16 @@ import { __spread } from 'tslib';
 })
 export class LeaveMgmtService {
   loginparameters: LoginParameters;
-  empId: number;
-  startDate: Date;
-  endDate: Date;
-  leaveType: string;
-  reason: string;
+  // empId: number;
+  // startDate: Date;
+  // endDate: Date;
+  // leaveType: string;
+  // reason: string;
   newPassword: any;
   reEnterdpassword: any;
-  // allLeaveRequests: LeaveRequests[];
-  leaverequestId: number;
+  // leaverequestId: number;
   visible: EventEmitter<any> = new EventEmitter();
-
-  constructor(public route: Router, public httpClient: HttpClient, private injector: Injector,
+  constructor(public route: Router, public httpClient: HttpClient,
     private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService) {
 
   }
@@ -79,7 +77,7 @@ export class LeaveMgmtService {
     return this.httpClient.get(environment.apiUrl + 'Leave/Transactions', { params: params })
   }
   addLogin(data): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Login/Login', data)
+    return this.httpClient.post(environment.apiUrl + 'Login/Add', data)
   }
   openSnackBar(message: string, action: string) {
     console.log(123);

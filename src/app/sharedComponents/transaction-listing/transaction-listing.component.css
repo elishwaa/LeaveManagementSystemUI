@@ -2,11 +2,11 @@ table{
     width: 100%;
 }
 .example-container {
-    height: 85%;
-    width: 90%;
+    height: 100%;
+    width: 100%;
     overflow: auto;
-    margin-left: 5%;
-    margin-top: 2%;
+    /* margin-left: 5%; */
+    /* margin-top: 2%; */
 
   }
   button{

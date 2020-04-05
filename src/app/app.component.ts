@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { LeaveMgmtService } from './services/leave-mgmt.service';
+import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,11 +9,14 @@ import { LeaveMgmtService } from './services/leave-mgmt.service';
 export class AppComponent {
   title = 'LeaveManagementSystem';
 
-  constructor(public _service: LeaveMgmtService) {
+  constructor(public _service: LeaveMgmtService, public cookieService: CookieService) {
   }
  
   visible :boolean = false;
   ngOnInit(){
+    if(this.cookieService.get('LoggedIn')){
+      this.visible = true;
+    }
     this._service.visible.subscribe(
       data=>{
         if('LoggedInStatus' in data){

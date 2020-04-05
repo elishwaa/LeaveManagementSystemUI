@@ -28,6 +28,7 @@ export class SignInPageComponent implements OnInit {
     });
 
     if (this.cookieService.get('LoggedIn')) {
+      this._service.visible.emit({ LoggedInStatus: true });
       this.loginParameters = JSON.parse(localStorage.getItem('employee'));
       if (this.loginParameters.typeName = 'Admin') {
         this.route.navigateByUrl('admin-home');

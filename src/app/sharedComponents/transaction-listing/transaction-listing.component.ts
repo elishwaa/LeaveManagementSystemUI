@@ -20,24 +20,18 @@ export class TransactionListingComponent implements OnInit {
   dataSource: any;
   loginparameters: LoginParameters;
   displayedColumns: string[] = ['name', 'leave', 'startdate', 'enddate', 'totaldays', 'status'];
-  constructor(public _service: LeaveMgmtService) {
+  constructor(public _service: LeaveMgmtService, @Inject(MAT_DIALOG_DATA) public data: any) {
   }
 
   ngOnInit() {
-    this._service.visible.emit({LoggedInStatus: true});
-    this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-    this._service.transactionListing(this.loginparameters.id).subscribe(
-      data => {
-        console.log(data);
-        if (data[0] != null) {
-          this.dataSource = new MatTableDataSource(data);
-          this.dataSource.sort = this.sort;
-        }
-        else {
-          this._service.openSnackBar("No Transactions yet", "Have a nice day")
-        }
-      }
-    )
+
+    if (this.data[0] != null) {
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.sort = this.sort;
+    }
+    else {
+      this._service.openSnackBar("No Transactions yet", "Have a nice day")
+    }
 
 
   }
