@@ -22,7 +22,7 @@ export class SignInPageComponent implements OnInit {
   ngOnInit() {
     this.signInForm = new FormGroup({
       username: new FormControl(),
-      password: new FormControl()
+      password: new FormControl('',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(10)]))
     });
 
     if (this.cookieService.get('LoggedIn')) {
