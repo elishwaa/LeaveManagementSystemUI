@@ -1,15 +1,15 @@
 <div class="dialogBox">
     <mat-form-field hidden class="example-full-width">
         <mat-label>Employee id</mat-label>
-        <input matInput placeholder="id" [(ngModel)]="data.id">
+        <input matInput placeholder="id"  [(ngModel)]="data.id">
     </mat-form-field><br>
 
-    <mat-form-field hidden class="example-full-width">
+    <mat-form-field *ngIf= "isAdmin" class="example-full-width">
         <mat-label>Type id</mat-label>
         <input matInput placeholder="type id" [(ngModel)]="data.typeId">
     </mat-form-field><br>
 
-    <mat-form-field >
+    <mat-form-field *ngIf= "isAdmin" >
         <mat-label>Employee Type</mat-label>
         <mat-select [(ngModel)]="data.typeId">
           <mat-option *ngFor="let type of empType" [value]="type.id">
@@ -39,42 +39,45 @@
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Salary</mat-label>
-        <input matInput placeholder="salary" [(ngModel)]="data.salary" >
-    </mat-form-field><br>
-
-    <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
         <input matInput placeholder="username" [(ngModel)]="data.username">
     </mat-form-field><br>
 
-    <mat-form-field *ngIf= "isAdmin">
-      <mat-label>Project</mat-label>
-      <mat-select [(ngModel)]="data.projectId">
-        <mat-option *ngFor="let type of projects" [value]="type.id">
-          {{type.name}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> <br>
-
-    <mat-form-field *ngIf= "isAdmin">
-      <mat-label>Manager</mat-label>
-      <mat-select [(ngModel)]="data.managerId">
-        <mat-option *ngFor="let type of managers" [value]="type.managerId">
-          {{type.managerName}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field> <br>
-
-    <mat-form-field *ngIf= "isAdmin">
-        <mat-label>Location</mat-label>
-        <mat-select [(ngModel)]="data.locationId">
-          <mat-option *ngFor="let type of locations" [value]="type.locationId">
-            {{type.locationName}}
+    <div  *ngIf= "isAdmin" >
+      <mat-form-field *ngIf= "isAdmin" class="example-full-width">
+        <mat-label>Salary</mat-label>
+        <input matInput placeholder="salary" [(ngModel)]="data.salary" >
+    </mat-form-field><br>
+  
+      <mat-form-field *ngIf= "isAdmin">
+        <mat-label>Project</mat-label>
+        <mat-select [(ngModel)]="data.projectId">
+          <mat-option *ngFor="let type of projects" [value]="type.id">
+            {{type.name}}
           </mat-option>
         </mat-select>
       </mat-form-field> <br>
-      
+  
+      <mat-form-field *ngIf= "isAdmin">
+        <mat-label>Manager</mat-label>
+        <mat-select [(ngModel)]="data.managerId">
+          <mat-option *ngFor="let type of managers" [value]="type.managerId">
+            {{type.managerName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field> <br>
+  
+      <mat-form-field *ngIf= "isAdmin">
+          <mat-label>Location</mat-label>
+          <mat-select [(ngModel)]="data.locationId">
+            <mat-option *ngFor="let type of locations" [value]="type.locationId">
+              {{type.locationName}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field> <br>
+        
+    </div>
+  
     <button mat-button color="primary" [mat-dialog-close]="data">Save Changes</button>
     <button mat-button color="primary" (click)="onNoClick()"> Cancel</button>
 

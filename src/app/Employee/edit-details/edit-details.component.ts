@@ -20,6 +20,7 @@ export class EditDetailsComponent implements OnInit {
    ) {}
 
   ngOnInit(): void {
+
    if(JSON.parse(localStorage.getItem('employee')).typeName != 'Admin'){
     this.isAdmin = false;
    }
