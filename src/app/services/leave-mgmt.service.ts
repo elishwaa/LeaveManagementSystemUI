@@ -51,9 +51,22 @@ export class LeaveMgmtService {
     let params = new HttpParams().set('id', empId.toString())
     return this.httpClient.get(environment.apiUrl + 'Leave/GetRequest', { params: params });
   }
-  allLeaveRequests(empId: number): Observable<any> {
+  allLeaveRequests(empId: number) {
     let params = new HttpParams().set('id', empId.toString())
-    return this.httpClient.get(environment.apiUrl + 'Leave/GetAll', { params: params });
+    this.httpClient.get(environment.apiUrl + 'Leave/GetAll', { params: params }).subscribe(
+      (details) => {
+      if (details[0]!= null) {
+        localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+        this.back.emit({ back: true });
+        this.route.navigateByUrl('all-leave-requests');
+      }
+      else{
+        this.openSnackBar("No leave requests","Have a nice day")
+      }
+  
+    });
+   
+
   }
   addLeaveRequest(data): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Leave/AddRequest', data)

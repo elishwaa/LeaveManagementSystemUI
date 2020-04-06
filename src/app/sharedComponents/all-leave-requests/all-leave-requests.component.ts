@@ -5,6 +5,7 @@ import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { MatDialog } from '@angular/material';
 import { DeletePopUpComponent } from 'src/app/sharedComponents/delete-pop-up/delete-pop-up.component';
 import { HttpClient } from '@angular/common/http';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 
 @Component({
   selector: 'app-all-leave-requests',
@@ -13,16 +14,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AllLeaveRequestsComponent implements OnInit {
   leaveRequests: LeaveRequests[];
+  loginparameters:EmployeeInfo;
   data: any;
   dataSource:any;
-
-
   displayedColumns: string[] = ['employeeName', 'startDate', 'endDate', 'leave', 'status', 'reason', 'approve', 'reject'];
   constructor(public httpClient: HttpClient, public dialog: MatDialog, public _service: LeaveMgmtService) { }
 
   ngOnInit() {
-    
-    this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'));
+    this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'))
+    this.loginparameters = JSON.parse(localStorage.getItem('employee'));
     this.data = Object.assign(this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data);
   }
@@ -30,8 +30,9 @@ export class AllLeaveRequestsComponent implements OnInit {
     this._service.approveRequest(employee).subscribe(
       data => {
         if (data) {
-          this.data.splice(i, 1)
-          this.dataSource = new MatTableDataSource<Element>(this.data);
+          this._service.allLeaveRequests(this.loginparameters.id)
+          window.location.reload();
+          this._service.openSnackBar("Leave Approved", "Succesfully");
 
         }
         else {
@@ -64,8 +65,9 @@ export class AllLeaveRequestsComponent implements OnInit {
     this._service.cancelLeave(this.leaveRequests[index].id).subscribe(
       (data) => {
         if (data) {
-          this.data.splice(index, 1)
-          this.dataSource = new MatTableDataSource<Element>(this.data);
+          this._service.allLeaveRequests(this.loginparameters.id);
+          window.location.reload();
+          this._service.openSnackBar("Leave Rejected", "Succesfully");
         }
       },
       err => {

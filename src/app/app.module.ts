@@ -11,7 +11,7 @@ import { SubmitLeaveComponent } from './sharedComponents/submit-leave/submit-lea
 import { CancelLeaveComponent } from './sharedComponents/cancel-leave/cancel-leave.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatOptionModule } from '@angular/material/core';
+import { MatOptionModule, MatNativeDateModule } from '@angular/material/core';
 import {MatInputModule, MatSnackBar, MatSnackBarModule, MatSortModule} from '@angular/material';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
@@ -38,6 +38,7 @@ import { AllLeaveRequestsComponent } from './sharedComponents/all-leave-requests
 import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/change-password-pop-up.component';
 import { CookieService } from 'ngx-cookie-service';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,7 +84,10 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatTabsModule,
     MatSelectModule,
     MatSortModule,
-    MatIconModule 
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+     
   ],
   providers: [LeaveMgmtService,CookieService],
   bootstrap: [AppComponent],
