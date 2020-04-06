@@ -42,7 +42,7 @@ export class AuditComponent implements OnInit {
         },
         err =>{
           if(err.status == 500)
-           this._service.openSnackBar("Audit","Failed" )
+           this._service.openSnackBar("Audit","Operation Failed!!" )
         }
     )
 

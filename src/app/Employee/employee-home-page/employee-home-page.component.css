@@ -38,13 +38,14 @@ li a{
    
 }
 
-h2{
-    margin-left: 7%;
+h4{
+    margin-left: 6%;
 }
 .EmpInfo{
     width: 60%;
     float: right;
     margin-right: 8%;
+    margin-top: 5%;
 }
 .EmpInfo ul{
     margin-top: 5%;
@@ -64,13 +65,27 @@ h2{
 }
 table {
     width: 100%;    
-
 }
 
 .example-container {
 
     overflow: auto;
-    margin: 5%;
-    width: 80%;
+    margin: 2%;
+    width: 60%;
     margin-left: 5%;
 }
+#employee {
+    border-collapse: collapse;
+    width: 50%;
+    margin-left: 5%;
+  }
+  
+  #employee td, #employee th {
+    padding: 8px;
+  }
+  #employee th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    
+  }

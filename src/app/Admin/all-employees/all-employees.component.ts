@@ -37,6 +37,7 @@ export class AllEmployeesComponent implements OnInit {
         middleName: employeeInfo.middleName, lastName: employeeInfo.lastName, email: employeeInfo.email,
         salary: employeeInfo.salary, username: employeeInfo.username, projectId: employeeInfo.projectId, projectName: employeeInfo.projectName,
         managerId: employeeInfo.managerId, manager: employeeInfo.manager, locationId: employeeInfo.locationId, locationName: employeeInfo.locationName
+   
       }
     });
 
@@ -50,13 +51,12 @@ export class AllEmployeesComponent implements OnInit {
         this._service.editEmployee(data).subscribe(
           data => {
             if (data) {
-
               this.employeeInfo = result;
               window.location.reload();
             }
             (error: HttpErrorResponse) => {
               if (!error.ok) {
-                this._service.openSnackBar("", "Failed")
+                this._service.openSnackBar("Employee details updation", "Operation Failed!!")
               }
             }
           }
@@ -72,7 +72,7 @@ export class AllEmployeesComponent implements OnInit {
         this.route.navigateByUrl('cancel-leave');
       }
       else {
-        this._service.openSnackBar("No leave requests to show", "Have a nice day")
+        this._service.openSnackBar("No leave requests", "Have a nice day")
       }
     });
   }
@@ -98,7 +98,7 @@ export class AllEmployeesComponent implements OnInit {
           });
         }
         else {
-          this._service.openSnackBar("No transactions to show", "Sorry!!")
+          this._service.openSnackBar("No transactions yet", "Have a nice day")
         }
       }
     )

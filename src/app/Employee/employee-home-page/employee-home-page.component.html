@@ -6,7 +6,7 @@
                 <li> <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change
                         Password</button> </li>
                 <li> <button mat-raised-button (click)="openSubmitLeave(loginparameters.id)">Submit Leave
-                        request</button></li>
+                        Request</button></li>
                 <li> <button mat-raised-button (click)="getLeaveRequests()">Leave Requests Status</button></li>
                 <li> <button mat-raised-button (click)="transactionListing()">Transaction Listing</button></li>
                 <li *ngIf="Type">
@@ -17,19 +17,35 @@
     </div>
     <div class="EmpInfoBox">
         <div class="EmpInfo">
-            <ul>
-                <h2 style="color: rgb(4, 52, 36);">{{loginparameters.firstName}}</h2>
-                <li><b>Employee Id</b> : {{loginparameters.id}} </li>
-                <li><b>Employee Type</b> : {{loginparameters.typeName}} </li>
-                <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}}
-                    {{loginparameters.lastName}} </li>
-                <li><b>Email</b> : {{loginparameters.email}} </li>
-                <li><b>Salary</b> : {{loginparameters.salary}} </li>
-                <li><b>Username</b> : {{loginparameters.username}}</li>
-                <li><b>Location Id</b> : {{loginparameters.locationName}}</li>
-
-            </ul>
+            <div class="employeeInfoTable">
+                <h4>Employee Details</h4>
+                <table id="employee">
+                    <tr>
+                        <th>Full Name</th>
+                        <td>{{loginparameters.firstName}} {{loginparameters.middleName}}
+                            {{loginparameters.lastName}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{loginparameters.email}}</td>
+                    </tr>
+                    <tr>
+                        <th>Salary</th>
+                        <td>{{loginparameters.salary}}</td>
+                    </tr>
+                    <tr>
+                        <th>Username</th>
+                        <td>{{loginparameters.username}}</td>
+                    </tr>
+                    <tr>
+                        <th>Location</th>
+                        <td>{{loginparameters.locationName}}</td>
+                    </tr>
+                    </table>
+            </div>
+            <br>
             <div>
+                <h4>Leave Balance Details</h4>
                 <div class="example-container mat-elevation-z8" *ngIf="rowData.length">
                     <table mat-table [dataSource]="rowData">
 
@@ -43,8 +59,6 @@
                     </table>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

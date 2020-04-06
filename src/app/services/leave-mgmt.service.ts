@@ -139,7 +139,7 @@ export class LeaveMgmtService {
         this.changePassword(id, result.passwordOne).subscribe(
           data => {
             if (data) {
-              this.openSnackBar("Password updation", "Success!!");
+              this.openSnackBar("Password updated", "Successfully");
             }
           }
         )

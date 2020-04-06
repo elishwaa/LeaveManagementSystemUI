@@ -43,15 +43,15 @@ export class SubmitLeaveComponent implements OnInit {
       data => {
         if (data) {
           this.onNoClick();
-          this._service.openSnackBar("Leave Request", "Success!!")
+          this._service.openSnackBar("Leave request submitted", "Successfully")
         }
         else{
-          this._service.openSnackBar("No Leave Balance", "Sorry!")
+          this._service.openSnackBar("No Leave Balance", "Have a nice day")
         }
       },
       err => {
         if (err.status == 500)
-          this._service.openSnackBar("No Leave Balance", "Sorry!")
+          this._service.openSnackBar("No Leave Balance", "Have a nice day!")
       }
     )
 

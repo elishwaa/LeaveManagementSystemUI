@@ -35,12 +35,12 @@ export class AllLeaveRequestsComponent implements OnInit {
 
         }
         else {
-          this._service.openSnackBar("No Leaves Balance", "Failed!!");
+          this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
 
         }
       },
       (err)=>{
-        this._service.openSnackBar("No Leaves Balance", "Failed!!");
+        this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
       }
     );
   }
@@ -70,7 +70,7 @@ export class AllLeaveRequestsComponent implements OnInit {
       },
       err => {
         if (err.status == 500)
-          this._service.openSnackBar("Cancelation", "Failed")
+          this._service.openSnackBar("Leave request cancelation", "Operation Failed!!")
       }
     );
   }

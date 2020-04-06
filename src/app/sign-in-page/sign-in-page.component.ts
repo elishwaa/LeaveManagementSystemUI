@@ -48,7 +48,7 @@ export class SignInPageComponent implements OnInit {
           this._service.visible.emit({ LoggedInStatus: true });
         }
         else {
-          this._service.openSnackBar("Invalid Login Details", "Login Again")
+          this._service.openSnackBar("Invalid Login Details", "Login again")
         }
       });
   }

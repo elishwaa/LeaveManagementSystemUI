@@ -27,12 +27,12 @@ export class NewDesignationComponent implements OnInit {
       data=>{
         if(data){
           this.onNoClick();
-          this._service.openSnackBar("New Employee Designation","Added Succesfully!!")
+          this._service.openSnackBar("New designation added","Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.openSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid details","Operation Failed!!" )
       }
     )
    

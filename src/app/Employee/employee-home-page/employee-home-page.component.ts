@@ -58,7 +58,7 @@ export class EmployeeHomePageComponent implements OnInit {
           this.route.navigateByUrl('cancel-leave');
         }
         else {
-          this._service.openSnackBar("No Leave Requests", "Sorry!")
+          this._service.openSnackBar("No Leave Requests", "Have a nice day")
         }
 
       });
@@ -80,23 +80,27 @@ export class EmployeeHomePageComponent implements OnInit {
       data: {
         id: this.loginparameters.id, typeId: this.loginparameters.typeId , typeName: this.loginparameters.typeName, firstName: this.loginparameters.firstName,
         middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,
-        salary: this.loginparameters.salary, username: this.loginparameters.username, locationId: this.loginparameters.locationId, locationName: this.loginparameters.locationName
+        salary: this.loginparameters.salary, username: this.loginparameters.username, locationId: this.loginparameters.locationId,
+        locationName: this.loginparameters.locationName,projectId: this.loginparameters.projectId, projectName: this.loginparameters.projectName
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
+        console.log(data);
+        
         this._service.editEmployee(data)
           .subscribe(
             data => {
               if (data) {
                 this.loginparameters = result;
+                localStorage.setItem('employee',JSON.stringify(this.loginparameters))
               }
             },
             err => {
               if (err.status == 500)
-                this._service.openSnackBar("Updations", "Failed")
+                this._service.openSnackBar("Employee details updation", "Operation Failed!!")
             }
           )
       }
@@ -118,7 +122,7 @@ export class EmployeeHomePageComponent implements OnInit {
         this.route.navigateByUrl('all-leave-requests');
       }
       else {
-        this._service.openSnackBar("No Leave Requests", "Have a nice day!")
+        this._service.openSnackBar("No leave requests", "Have a nice day!")
       }
 
     });
@@ -135,7 +139,7 @@ export class EmployeeHomePageComponent implements OnInit {
           });
         }
         else {
-          this._service.openSnackBar("No transactions to show", "Sorry!!")
+          this._service.openSnackBar("No transactions yet", "Have a nice day")
         }
       }
     )

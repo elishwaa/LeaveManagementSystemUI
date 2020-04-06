@@ -40,7 +40,7 @@ export class AdminHomePageComponent implements OnInit {
         this.route.navigateByUrl('all-leave-requests');
       }
       else{
-        this._service.openSnackBar("No Leave Requests to show","Have a nice day")
+        this._service.openSnackBar("No leave requests","Have a nice day")
       }
   
     });

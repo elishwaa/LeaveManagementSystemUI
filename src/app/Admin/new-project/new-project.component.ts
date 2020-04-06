@@ -24,12 +24,12 @@ export class NewProjectComponent implements OnInit {
       data=>{
         if(data == true){
           this.onNoClick();
-          this._service.openSnackBar("New Project","Added Succesfully!!")
+          this._service.openSnackBar("New project added","Succesfully!!")
         }
       },
       err =>{
         if(err.status == 500)
-         this._service.openSnackBar("Invalid  Details","Failed" )
+         this._service.openSnackBar("Invalid details","Operation Failed!!" )
       }
     )
    

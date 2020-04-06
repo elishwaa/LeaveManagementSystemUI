@@ -37,7 +37,7 @@ export class CancelLeaveComponent implements OnInit {
         },
         err =>{
           if(err.status == 500)
-           this._service.openSnackBar("Cancelation","Failed" )
+           this._service.openSnackBar("Leave request cancelation","Operation Failed!!" )
         }
     );
  } 

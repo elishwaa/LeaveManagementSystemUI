@@ -58,12 +58,12 @@ export class NewEmployeeComponent implements OnInit {
        data=>{
          if(data){
            this.onNoClick();
-           this._service.openSnackBar("New Employee", "Added");
+           this._service.openSnackBar("New employee added", "Succesfully");
          }
          },
          err =>{
           if(err.status == 500)
-           this._service.openSnackBar("Invalid Employee Details","Failed" )
+           this._service.openSnackBar("Invalid employee details","Operation Failed!!" )
           }
      )
   }

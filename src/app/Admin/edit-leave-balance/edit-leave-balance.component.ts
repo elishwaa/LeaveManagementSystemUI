@@ -68,12 +68,12 @@ export class EditLeaveBalanceComponent implements OnInit {
       this._service.updatedLeaveBalance(this.returnData).subscribe(
         data => {
           if (data) {
-            this._service.openSnackBar("Leave Balance Updated", "Success!!")
+            this._service.openSnackBar("Leave balance updated", "Successfully!!")
           }
         },
         err => {
           if (err.status == 500)
-            this._service.openSnackBar("Invalid Details", "Failed")
+            this._service.openSnackBar("Invalid details", "Operation Failed!!")
         }
       )
     });
