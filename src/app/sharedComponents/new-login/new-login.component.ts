@@ -2,9 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { SignInPageComponent } from 'src/app/sign-in-page/sign-in-page.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import * as CryptoJS from 'crypto-js';
+import { HttpClient } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -14,12 +12,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class NewLoginComponent implements OnInit {
 
-  employeeId: number;
-  username: string;
-  password: string;
-
   newLoginForm:FormGroup;
-  Error: boolean = false;
   constructor(public dialogRef: MatDialogRef<SignInPageComponent>, public _service: LeaveMgmtService, public httpClient: HttpClient) { }
 
   ngOnInit() {
@@ -35,12 +28,9 @@ export class NewLoginComponent implements OnInit {
 
     this._service.addLogin(data).subscribe(
       data => {
-        if (data.value == true) {
+        if (data) {
           this.onNoClick();
           this._service.openSnackBar("New Login Added", "Success!!")
-        }
-        else{
-          this._service.openSnackBar("Invalid Details", "Failed")
         }
       },
       err => {

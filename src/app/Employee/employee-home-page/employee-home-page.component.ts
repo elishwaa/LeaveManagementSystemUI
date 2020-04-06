@@ -7,20 +7,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
 import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
 import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
-import { LoginParameters } from 'src/app/models/LoginParameters';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
-import { environment } from 'src/environments/environment';
-import { ChangePasswordPopUpComponent } from '../change-password-pop-up/change-password-pop-up.component';
-import * as CryptoJS from 'crypto-js';
-
 @Component({
   selector: 'app-employee-home-page',
   templateUrl: './employee-home-page.component.html',
   styleUrls: ['./employee-home-page.component.css']
 })
 export class EmployeeHomePageComponent implements OnInit {
-  loginparameters: LoginParameters;
+  loginparameters: EmployeeInfo;
   leaveRequests: LeaveRequests;
   Type: boolean = false;
   success: boolean = false;

@@ -1,14 +1,8 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpParams, HttpClient } from '@angular/common/http';
-import { Route } from '@angular/compiler/src/core';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { LoginParameters } from 'src/app/models/LoginParameters';
+import { HttpClient } from '@angular/common/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { environment } from '../../../environments/environment'
 import { EmployeeHomePageComponent } from 'src/app/Employee/employee-home-page/employee-home-page.component';
 
 @Component({

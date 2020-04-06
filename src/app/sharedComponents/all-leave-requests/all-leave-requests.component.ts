@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTable } from '@angular/material/table';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
@@ -14,14 +13,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AllLeaveRequestsComponent implements OnInit {
   leaveRequests: LeaveRequests[];
-  data;
-  dataSource;
+  data: any;
+  dataSource:any;
 
 
   displayedColumns: string[] = ['employeeName', 'startDate', 'endDate', 'leave', 'status', 'reason', 'approve', 'reject'];
   constructor(public httpClient: HttpClient, public dialog: MatDialog, public _service: LeaveMgmtService) { }
-
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngOnInit() {
     this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'));
@@ -37,12 +34,12 @@ export class AllLeaveRequestsComponent implements OnInit {
 
         }
         else {
-          this._service.openSnackBar("No Balance Leaves", "Failed!!");
+          this._service.openSnackBar("No Leaves Balance", "Failed!!");
 
         }
       },
       (err)=>{
-        this._service.openSnackBar("No Balance Leaves", "Failed!!");
+        this._service.openSnackBar("No Leaves Balance", "Failed!!");
       }
     );
   }
@@ -92,6 +89,8 @@ export class AllLeaveRequestsComponent implements OnInit {
       }
     });
   }
-
+  ngOnDestroy(){
+    localStorage.removeItem('AllLeaveRequests');
+  }
 }
 

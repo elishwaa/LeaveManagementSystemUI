@@ -1,4 +1,4 @@
-export class LoginParameters
+export class EmployeeInfo
 {
    id :number;
    typeId:number;

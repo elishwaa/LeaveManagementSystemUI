@@ -1,13 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { LoginParameters } from 'src/app/models/LoginParameters';
-import { MatPaginator, MatDialog } from '@angular/material';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 import { EditDetailsComponent } from '../../Employee/edit-details/edit-details.component';
-import { environment } from 'src/environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
 import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-all-employees',
@@ -18,7 +17,7 @@ export class AllEmployeesComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'firstName', 'middleName', 'lastName', 'type', 'email', 'salary',
     'username', 'manager', 'project', 'location', 'info', 'transactions', 'leaveRequests', 'addLeaveRequest'];
-  employeeInfo: LoginParameters[];
+  employeeInfo: EmployeeInfo[];
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog, public httpClient: HttpClient, public route: Router) { }
 
   ngOnInit() {
@@ -29,7 +28,7 @@ export class AllEmployeesComponent implements OnInit {
       }
     )
   }
-  edit(employeeInfo: LoginParameters): void {
+  edit(employeeInfo: EmployeeInfo): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {
       width: '30%',
       height: '75%',
@@ -66,7 +65,7 @@ export class AllEmployeesComponent implements OnInit {
     });
 
   }
-  employeeleaveRequests(employee: LoginParameters) {
+  employeeleaveRequests(employee: EmployeeInfo) {
     this._service.getLeaveRequests(employee.id).subscribe((details) => {
       if (details[0] != null) {
         localStorage.setItem('leaveRequests', JSON.stringify(details));
@@ -78,7 +77,7 @@ export class AllEmployeesComponent implements OnInit {
     });
   }
 
-  addLeaveRequest(employee: LoginParameters): void {
+  addLeaveRequest(employee: EmployeeInfo): void {
     const dialogRef = this.dialog.open(SubmitLeaveComponent, {
       width: '30%',
       height: '75%',
@@ -88,7 +87,7 @@ export class AllEmployeesComponent implements OnInit {
     });
 
   }
-  showTransactions(employee: LoginParameters): void {
+  showTransactions(employee: EmployeeInfo): void {
     this._service.transactionListing(employee.id).subscribe(
       data => {
         if (data[0]!=null) {

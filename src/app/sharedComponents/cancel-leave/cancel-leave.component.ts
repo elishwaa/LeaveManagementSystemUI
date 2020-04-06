@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { LoginParameters } from 'src/app/models/LoginParameters';
-import { Observable } from 'rxjs';
-import { environment} from '../../../environments/environment'
+import { HttpClient } from '@angular/common/http';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 import { MatDialog, MatTableDataSource } from '@angular/material';
 import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 
@@ -17,18 +15,13 @@ import { DeletePopUpComponent } from '../delete-pop-up/delete-pop-up.component';
 export class CancelLeaveComponent implements OnInit {
   displayedColumns: string[] = ['employeeName', 'startDate', 'endDate','leave','status','reason','cancel'];
    leaveRequests: LeaveRequests[];
-   data ;
-   dataSource;;
-   status:any;
-   index:number;
-   loginparameters:LoginParameters;
+   data:any ;
+   dataSource:any;
+   loginparameters:EmployeeInfo;
   constructor(public _service : LeaveMgmtService, public httpClient: HttpClient, public dialog: MatDialog) { }
 
   ngOnInit() {
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-    if(this.loginparameters.id == 2 || this.loginparameters.id == 3){
-      
-    }
     this.leaveRequests = JSON.parse(localStorage.getItem('leaveRequests'));
     this.data = Object.assign( this.leaveRequests);
     this.dataSource = new MatTableDataSource<Element>(this.data)

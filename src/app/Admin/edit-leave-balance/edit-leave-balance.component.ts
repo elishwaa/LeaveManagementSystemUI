@@ -4,7 +4,7 @@ import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
 import { MatDialog } from '@angular/material';
 import { LeaveBalancePopUpComponent } from '../leave-balance-pop-up/leave-balance-pop-up.component';
-import { LoginParameters } from 'src/app/models/LoginParameters';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EditLeaveBalanceComponent implements OnInit {
 
-  loginparameters: LoginParameters;
+  loginparameters: EmployeeInfo;
   headers: string[] = [];
   rowData = [];
   leaves = [];

@@ -2,7 +2,7 @@ import { Injectable, Injector, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http'
-import { LoginParameters } from '../models/LoginParameters';
+import { EmployeeInfo } from '../models/employeeInfo';
 import { environment } from '../../environments/environment'
 import { MatSnackBar, MatDialog } from '@angular/material';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
@@ -14,15 +14,9 @@ import {Location} from '@angular/common';
   providedIn: 'root'
 })
 export class LeaveMgmtService {
-  loginparameters: LoginParameters;
-  // empId: number;
-  // startDate: Date;
-  // endDate: Date;
-  // leaveType: string;
-  // reason: string;
+  loginparameters: EmployeeInfo;
   newPassword: any;
   reEnterdpassword: any;
-  // leaverequestId: number;
   visible: EventEmitter<any> = new EventEmitter();
   back: EventEmitter<any> = new EventEmitter();
   constructor(public route: Router, public httpClient: HttpClient,

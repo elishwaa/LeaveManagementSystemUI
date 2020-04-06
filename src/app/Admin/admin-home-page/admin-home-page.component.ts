@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LeaveMgmtService } from '../../services/leave-mgmt.service';
-import { LoginParameters } from '../../models/LoginParameters'
+import { EmployeeInfo } from '../../models/employeeInfo'
 import { Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
 import { NewEmployeeComponent } from 'src/app/Admin/new-employee/new-employee.component';
@@ -18,7 +18,7 @@ import { TransactionListingComponent } from 'src/app/sharedComponents/transactio
 })
 export class AdminHomePageComponent implements OnInit {
 
-  loginparameters: LoginParameters
+  loginparameters: EmployeeInfo
   hideComponent:boolean = false;
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 

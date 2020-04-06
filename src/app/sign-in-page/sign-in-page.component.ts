@@ -5,7 +5,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material';
 import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/forgot-password.component';
 import { NewLoginComponent } from '../sharedComponents/new-login/new-login.component';
-import { LoginParameters } from '../models/LoginParameters';
+import { EmployeeInfo } from '../models/employeeInfo';
 import { CookieService } from 'ngx-cookie-service';
 
 
@@ -16,9 +16,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class SignInPageComponent implements OnInit {
   signInForm: FormGroup;
-  empType = [];
-  loginDetails: string;
-  loginParameters: LoginParameters;
+  loginParameters: EmployeeInfo;
   constructor(public route: Router, public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService) { }
 
   ngOnInit() {
@@ -37,17 +35,16 @@ export class SignInPageComponent implements OnInit {
         this.route.navigateByUrl('employee-home');
       }
     }
-
   }
 
   login() {
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
-      (details) => {
-        if (details.id != 0) {
-          this.cookieService.set('LoggedIn', details.typeName,0.25);
-          localStorage.setItem('employee', JSON.stringify(details));
-          localStorage.setItem('empType', details.typeId);
-          this._service.routeToHome(details.typeId);
+      (data) => {
+        if (data.id != 0) {
+          this.cookieService.set('LoggedIn', data.typeName,0.25);
+          localStorage.setItem('employee', JSON.stringify(data));
+          localStorage.setItem('empType', data.typeId);
+          this._service.routeToHome(data.typeId);
           this._service.visible.emit({ LoggedInStatus: true });
         }
         else {

@@ -1,10 +1,9 @@
 import { OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
+import {  MAT_DIALOG_DATA, MatTableDataSource, MatSort } from '@angular/material';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import * as XLSX from 'xlsx';
-import { LoginParameters } from 'src/app/models/LoginParameters';
-import { AllEmployeesComponent } from 'src/app/Admin/all-employees/all-employees.component';
+import { EmployeeInfo } from 'src/app/models/employeeInfo';
 
 @Component({
   selector: 'app-transaction-listing',
@@ -12,11 +11,10 @@ import { AllEmployeesComponent } from 'src/app/Admin/all-employees/all-employees
   styleUrls: ['./transaction-listing.component.css']
 })
 export class TransactionListingComponent implements OnInit {
-  @ViewChild('TABLE', { static: false }) table: ElementRef;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild('TABLE', { static: true }) table: ElementRef;
 
   dataSource: any;
-  loginparameters: LoginParameters;
+  loginparameters: EmployeeInfo;
   displayedColumns: string[] = ['name', 'leave', 'startdate', 'enddate', 'totaldays', 'status'];
   constructor(public _service: LeaveMgmtService, @Inject(MAT_DIALOG_DATA) public data: any) {
   }
@@ -25,7 +23,6 @@ export class TransactionListingComponent implements OnInit {
 
     if (this.data[0] != null) {
       this.dataSource = new MatTableDataSource(this.data);
-      this.dataSource.sort = this.sort;
     }
     else {
       this._service.openSnackBar("No Transactions yet", "Have a nice day")

@@ -2,8 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {  MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { EmployeeHomePageComponent } from '../employee-home-page/employee-home-page.component';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { CookieService } from 'ngx-cookie-service';
-import { LoginParameters } from 'src/app/models/LoginParameters';
 
 
 @Component({
