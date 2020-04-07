@@ -75,8 +75,8 @@ export class AdminHomePageComponent implements OnInit {
     this._service.transactionListing(this.loginparameters.id).subscribe(
       data => {
         this.dialog.open(TransactionListingComponent,{
-          width: '95%',
-          height: '95%',
+          width: '98%',
+          height: '98%',
           data : data
         })
       }

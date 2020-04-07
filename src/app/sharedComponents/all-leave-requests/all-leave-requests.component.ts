@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material';
 import { DeletePopUpComponent } from 'src/app/sharedComponents/delete-pop-up/delete-pop-up.component';
 import { HttpClient } from '@angular/common/http';
 import { EmployeeInfo } from 'src/app/models/employeeInfo';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-all-leave-requests',
@@ -26,7 +27,10 @@ export class AllLeaveRequestsComponent implements OnInit {
   }
   approveRequest(employee: LeaveRequests, i: number) {
     let date = new Date();
-    if (employee.startDate >= date && employee.endDate >= employee.startDate) {
+    let startDate = new Date(employee.startDate);
+    let endDate = new Date(employee.endDate);
+
+    if (startDate >= date && endDate >= startDate) {
         this._service.approveRequest(employee).subscribe(
           (data) => {
             if (data) {

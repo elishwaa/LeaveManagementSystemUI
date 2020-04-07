@@ -6,7 +6,6 @@ import { MatSnackBar } from '@angular/material';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { LeaveRequests } from 'src/app/models/leaveRequests';
 import { TransactionListingComponent } from '../../sharedComponents/transaction-listing/transaction-listing.component';
-import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
 import { EmployeeInfo } from 'src/app/models/employeeInfo';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
 import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/submit-leave.component';
@@ -19,13 +18,6 @@ export class EmployeeHomePageComponent implements OnInit {
   loginparameters: EmployeeInfo;
   leaveRequests: LeaveRequests;
   Type: boolean = false;
-  success: boolean = false;
-  employeeType: any;
-  LRStatus: any;
-  returnData: any;
-  newPassword: string;
-  reEnterdpassword: string;
-  leaveBalance: LeaveBalanceDetails;
   headers: string[] = [];
   rowData = [];
   hideComponent: boolean = false;
@@ -42,7 +34,7 @@ export class EmployeeHomePageComponent implements OnInit {
         this.Type = true;
       }
     }
-    this._service.back.emit({back:false})
+    this._service.back.emit({ back: false })
     this._service.getLeaveBalance(this.loginparameters.id).subscribe(
       data => {
         this.headers = Object.keys(data['LeaveBalanceData'][0]);
@@ -78,10 +70,10 @@ export class EmployeeHomePageComponent implements OnInit {
       width: '30%',
       height: '75%',
       data: {
-        id: this.loginparameters.id, typeId: this.loginparameters.typeId , typeName: this.loginparameters.typeName, firstName: this.loginparameters.firstName,
+        id: this.loginparameters.id, typeId: this.loginparameters.typeId, typeName: this.loginparameters.typeName, firstName: this.loginparameters.firstName,
         middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,
         salary: this.loginparameters.salary, username: this.loginparameters.username, locationId: this.loginparameters.locationId,
-        locationName: this.loginparameters.locationName,projectId: this.loginparameters.projectId, projectName: this.loginparameters.projectName
+        locationName: this.loginparameters.locationName, projectId: this.loginparameters.projectId, projectName: this.loginparameters.projectName
       }
     });
 
@@ -89,13 +81,13 @@ export class EmployeeHomePageComponent implements OnInit {
       if (result) {
         let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
         console.log(data);
-        
+
         this._service.editEmployee(data)
           .subscribe(
             data => {
               if (data) {
                 this.loginparameters = result;
-                localStorage.setItem('employee',JSON.stringify(this.loginparameters))
+                localStorage.setItem('employee', JSON.stringify(this.loginparameters))
               }
             },
             err => {
@@ -116,23 +108,11 @@ export class EmployeeHomePageComponent implements OnInit {
 
   allLeaveRequests() {
     this._service.allLeaveRequests(this.loginparameters.id);
-    // .subscribe((details) => {
-    //   if (details[0] != null) {
-    //     localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
-    //     this._service.back.emit({ back: true })
-    //     this.route.navigateByUrl('all-leave-requests');
-    //   }
-    //   else {
-    //     this._service.openSnackBar("No leave requests", "Have a nice day!")
-    //   }
-
-    // });
-
   }
   transactionListing(): void {
     this._service.transactionListing(this.loginparameters.id).subscribe(
       data => {
-        if (data[0]!=null) {
+        if (data[0] != null) {
           this.dialog.open(TransactionListingComponent, {
             width: '90%',
             height: '90%',

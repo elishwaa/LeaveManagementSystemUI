@@ -10,11 +10,11 @@
             <th mat-header-cell *matHeaderCellDef> Leave start date
             <th>
             <td mat-cell *matCellDef="let element">
-                <mat-form-field  *ngIf="element.status == 'Pending'" floatLabel="never">
-                    <input matInput placeholder="startDate" [ngModel]="element.startDate | date" 
-                    (ngModelChange)="element.startDate=$event">
+                <mat-form-field *ngIf="element.status == 'Pending'" floatLabel="never">
+                    <input matInput placeholder="startDate" [ngModel]="element.startDate"
+                        (ngModelChange)="element.startDate=$event">
                 </mat-form-field>
-                <div *ngIf="element.status != 'Pending'">{{element.startDate | date}}</div>
+                <div *ngIf="element.status != 'Pending'">{{element.startDate}}</div>
             </td>
         </ng-container>
 
@@ -23,17 +23,12 @@
             <th>
             <td mat-cell *matCellDef="let element">
                 <mat-form-field *ngIf="element.status == 'Pending'" floatLabel="never">
-                    <input matInput placeholder="endDate" [ngModel]="element.endDate | date" 
-                    (ngModelChange)="element.endDate=$event">
+                    <input matInput placeholder="endDate" [ngModel]="element.endDate "
+                        (ngModelChange)="element.endDate=$event">
                 </mat-form-field>
-                <!-- <mat-form-field *ngIf="element.status == 'Pending'" floatLabel="never">
-                    <input matInput [matDatepicker]="leaveEndDate" autocomplete="on"  [ngModel]="element.endDate | date" 
-                    (ngModelChange)="element.endDate=$event">
-                    <mat-datepicker-toggle matSuffix [for]="leaveEndDate"></mat-datepicker-toggle>
-                    <mat-datepicker #leaveEndDate color="primary"></mat-datepicker>
-                </mat-form-field> -->
-                <div *ngIf="element.status != 'Pending'">{{element.startDate | date}}</div>
+                <div *ngIf="element.status != 'Pending'">{{element.endDate}}</div>
             </td>
+
         </ng-container>
 
         <ng-container matColumnDef="leave">
@@ -51,20 +46,22 @@
             <th mat-header-cell *matHeaderCellDef> Reason </th>
             <td mat-cell *matCellDef="let element"> {{element.reason}} </td>
         </ng-container>
-        
+
         <ng-container matColumnDef="approve">
             <th mat-header-cell *matHeaderCellDef> Approve </th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <button *ngIf="element.status == 'Pending'" mat-raised-button color="primary" (click)="openConfirmDialog(element,i)">Approve</button>
+                <button *ngIf="element.status == 'Pending'" mat-raised-button color="primary"
+                    (click)="openConfirmDialog(element,i)">Approve</button>
             </td>
         </ng-container>
-        <ng-container  matColumnDef="reject">
+        <ng-container matColumnDef="reject">
             <th mat-header-cell *matHeaderCellDef> Reject </th>
             <td mat-cell *matCellDef="let element; let i = index">
-                <button *ngIf="element.status == 'Pending'" mat-raised-button color="primary" (click)="openCancelDialog(i)">Reject</button>
+                <button *ngIf="element.status == 'Pending'" mat-raised-button color="primary"
+                    (click)="openCancelDialog(i)">Reject</button>
             </td>
         </ng-container>
-      
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -1,44 +1,43 @@
-
-<div >
-    <form [formGroup]="newEmployeeForm">
+<div>
+  <form [formGroup]="newEmployeeForm">
 
     <mat-form-field class="example-full-width">
-        <mat-label>First Name</mat-label>
-        <input matInput placeholder="enter first name" required formControlName="firstName">
-    </mat-form-field><br>
-    
-    <mat-form-field class="example-full-width">
-        <mat-label>Middle Name</mat-label>
-        <input matInput placeholder="enter middle name"  formControlName="middleName">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="enter first name" required formControlName="firstName">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Last Name</mat-label>
-        <input matInput placeholder="enter last name"  required formControlName="lastName" >
-    </mat-form-field><br>
-
-    <mat-form-field >
-        <mat-label>Employee Type</mat-label>
-        <mat-select  required formControlName="empType" [(ngModel)]="selectedEmployeeType" >
-          <mat-option *ngFor="let type of empType" [value]="type.id" >
-            {{type.empType}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> <br>
-
-    <mat-form-field class="example-full-width">
-        <mat-label>Email Id</mat-label>
-        <input matInput placeholder="enter emailId" required formControlName="email" >
+      <mat-label>Middle Name</mat-label>
+      <input matInput placeholder="enter middle name" formControlName="middleName">
     </mat-form-field><br>
 
     <mat-form-field class="example-full-width">
-        <mat-label>Salary</mat-label>
-        <input matInput placeholder="enter salary " required formControlName="salary">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="enter last name" required formControlName="lastName">
+    </mat-form-field><br>
+
+    <mat-form-field>
+      <mat-label>Employee Type</mat-label>
+      <mat-select required formControlName="empType">
+        <mat-option *ngFor="let type of empType" [value]="type.id">
+          {{type.empType}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> <br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Email Id</mat-label>
+      <input matInput placeholder="enter emailId" required formControlName="email">
+    </mat-form-field><br>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>Salary</mat-label>
+      <input matInput placeholder="enter salary " required formControlName="salary">
     </mat-form-field><br>
 
     <mat-form-field>
       <mat-label>Project</mat-label>
-      <mat-select required formControlName="project">
+      <mat-select formControlName="project">
         <mat-option *ngFor="let type of projects" [value]="type.id">
           {{type.name}}
         </mat-option>
@@ -46,28 +45,26 @@
     </mat-form-field> <br>
 
     <mat-form-field>
-        <mat-label>Location</mat-label>
-        <mat-select required formControlName="location">
-          <mat-option *ngFor="let type of locations" [value]="type.locationId">
-            {{type.locationName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> <br>
-    </form>
-    
-    <div *ngIf="selectedEmployeeType != 1">
-      <mat-form-field   >
-        <mat-label>Manager</mat-label>
-        <mat-select required formControlName="manager">
-          <mat-option *ngFor="let type of managers" [value]="type.managerId">
-            {{type.managerName}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field> <br>
-    </div>
-   
+      <mat-label>Location</mat-label>
+      <mat-select formControlName="location">
+        <mat-option *ngFor="let type of locations" [value]="type.locationId">
+          {{type.locationName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> <br>
 
-    <button mat-button [disabled]="!newEmployeeForm.valid" (click)="saveNewEmployee()">Add</button><br>
-    <button mat-button (click)="onNoClick()"> Cancel</button>
+    <mat-form-field>
+      <mat-label>Manager</mat-label>
+      <mat-select formControlName="manager">
+        <mat-option *ngFor="let type of managers" [value]="type.managerId">
+          {{type.managerName}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> <br>
+
+  </form>
+
+  <button mat-button [disabled]="!newEmployeeForm.valid" (click)="saveNewEmployee()">Add</button><br>
+  <button mat-button (click)="onNoClick()"> Cancel</button>
 
 </div>

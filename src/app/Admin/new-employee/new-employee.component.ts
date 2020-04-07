@@ -52,8 +52,20 @@ export class NewEmployeeComponent implements OnInit {
       project: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required])
     });
+    this.newEmployeeForm.controls['empType'].valueChanges.subscribe(
+      value=>{
+        if(value == 1){
+          this.newEmployeeForm.controls['manager'].setValue('');
+          this.newEmployeeForm.controls['manager'].disable()
+        }
+        else{
+          this.newEmployeeForm.controls['manager'].enable()
+        }
+        
+      }
+    )
   }
-  SaveNewEmployee() {
+  saveNewEmployee() {
     let data = {
       ...this.newEmployeeForm.value, empType: parseInt(this.newEmployeeForm.value.empType), salary: parseInt(this.newEmployeeForm.value.salary),
       manager: parseInt(this.newEmployeeForm.value.manager), project: parseInt(this.newEmployeeForm.value.project),

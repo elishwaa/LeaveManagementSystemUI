@@ -1,12 +1,10 @@
 table {
     width: 100%;
-   
   }
 
   .example-container {
+    height: 83%;
     overflow: auto;
-    margin-top: 1%;
-    width: 80%;
-    margin-left: 10%;
-    height: 85%;
+    margin: 2%;
+    margin-left: 5%;
   }

@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { LeaveMgmt } from 'src/app/leave-mgmt';
 import { LeaveMgmtService } from 'src/app/services/leave-mgmt.service';
-import { LeaveBalanceDetails } from 'src/app/models/leaveBalanceDetails';
 import { MatDialog } from '@angular/material';
 import { LeaveBalancePopUpComponent } from '../leave-balance-pop-up/leave-balance-pop-up.component';
 import { EmployeeInfo } from 'src/app/models/employeeInfo';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-leave-balance',

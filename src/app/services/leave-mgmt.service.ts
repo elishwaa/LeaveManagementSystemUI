@@ -101,8 +101,8 @@ export class LeaveMgmtService {
   approveRequest(leaveRequest) {
     return this.httpClient.post(environment.apiUrl + 'Leave/Approve', leaveRequest)
   }
-  saveEmployee(addEmployee): Observable<any> {
-    return this.httpClient.post(environment.apiUrl + 'Employee/Add', {employee :addEmployee})
+  saveEmployee(employee): Observable<any> {
+    return this.httpClient.post(environment.apiUrl + 'Employee/Add', employee)
 
   }
   editEmployee(data):Observable<any>{

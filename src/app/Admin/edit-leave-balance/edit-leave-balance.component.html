@@ -1,5 +1,5 @@
-<div>
-    <div class="example-container mat-elevation-z8" *ngIf="rowData.length">
+<div class="example-container mat-elevation-z8">
+    <div  *ngIf="rowData.length">
         <table mat-table [dataSource]="rowData">
 
             <ng-container *ngFor="let header of headers" matColumnDef="{{header}}">
