@@ -32,10 +32,13 @@ export class NewLoginComponent implements OnInit {
           this.onNoClick();
           this._service.openSnackBar("New Login Added", "Successfully")
         }
+        else{
+          this._service.openSnackBar("Failed to add new login", "Operation Failed!!")
+        }
       },
       err => {
         if (err.status == 500){
-          this._service.openSnackBar("New login", "Operation Failed!!")
+          this._service.openSnackBar("Failed to add new login", "Operation Failed!!")
         }
       }
     );

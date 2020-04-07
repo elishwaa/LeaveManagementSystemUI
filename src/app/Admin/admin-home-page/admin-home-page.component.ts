@@ -43,32 +43,32 @@ export class AdminHomePageComponent implements OnInit {
   }
   addNewEmployee() :void {
     this.dialog.open(NewEmployeeComponent, {
-      width: '25%',
-      height: '80%',
+      width: '35%',
+      height: '85%',
     });
   }
   addNewLeaveType(){
     this.dialog.open(NewLeaveTypeComponent,{
-      width: '30%',
-      height: '35%',
+      width: '25%',
+      height: '30%',
     });
   }
   addNewDesignation(){
     this.dialog.open(NewDesignationComponent,{
-      width: '30%',
-      height: '35%',
+      width: '25%',
+      height: '30%',
     });
   }
   addNewLocation(){
     this.dialog.open(NewLocationComponent,{
-      width: '30%',
-      height: '35%',
+      width: '25%',
+      height: '30%',
     });
   }
   addNewProject(){
     this.dialog.open(NewProjectComponent,{
-      width: '30%',
-      height: '35%',
+      width: '25%',
+      height: '30%',
     })
   }
   report():void {

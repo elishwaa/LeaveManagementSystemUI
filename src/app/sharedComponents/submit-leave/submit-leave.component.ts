@@ -57,7 +57,7 @@ export class SubmitLeaveComponent implements OnInit {
       )
     }
     else {
-      this._service.openSnackBar("Invalid dates", "Check your leave dates")
+      this._service.openSnackBar("Invalid dates", "Check leave dates")
     }
 
 

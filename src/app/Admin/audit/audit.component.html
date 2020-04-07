@@ -1,5 +1,6 @@
 
-<div class="Box"  [formGroup]="auditData">
+<div [formGroup]="auditData">
+  <br>
     <mat-form-field class="example-full-width">
         <mat-label>Year</mat-label>
         <input  matInput placeholder="enter year" formControlName ="year">
@@ -20,7 +21,7 @@
     </mat-form-field><br>
   
     <button mat-button (click)="audit()">Save</button>
-    <button mat-button (click)="onNoClick()"> Back</button>
+    <button mat-button (click)="onNoClick()">Cancel</button>
 
   </div>
   

@@ -2,12 +2,11 @@
     <mat-form-field hidden class="example-full-width">
         <mat-label>Employee id</mat-label>
         <input matInput placeholder="id"  [(ngModel)]="data.id">
-    </mat-form-field><br>
-
-    <mat-form-field *ngIf= "isAdmin" class="example-full-width">
+    </mat-form-field>
+    <mat-form-field hidden *ngIf= "isAdmin" class="example-full-width">
         <mat-label>Type id</mat-label>
         <input matInput placeholder="type id" [(ngModel)]="data.typeId">
-    </mat-form-field><br>
+    </mat-form-field>
 
     <mat-form-field *ngIf= "isAdmin" >
         <mat-label>Employee Type</mat-label>

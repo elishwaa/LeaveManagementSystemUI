@@ -46,7 +46,7 @@ export class EditLeaveBalanceComponent implements OnInit {
   updateLeaveBalance(data) {
     let window = this.dialog.open(LeaveBalancePopUpComponent, {
       width: '25%',
-      height: '75%',
+      height: '60%',
     })
     window.componentInstance.data = data;
 

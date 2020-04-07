@@ -23,27 +23,30 @@ export class AllLeaveRequestsComponent implements OnInit {
   ngOnInit() {
     this.leaveRequests = JSON.parse(localStorage.getItem('AllLeaveRequests'))
     this.loginparameters = JSON.parse(localStorage.getItem('employee'));
-    this.data = Object.assign(this.leaveRequests);
-    this.dataSource = new MatTableDataSource<Element>(this.data);
   }
   approveRequest(employee: LeaveRequests, i: number) {
-    this._service.approveRequest(employee).subscribe(
-      data => {
-        if (data) {
-          this._service.allLeaveRequests(this.loginparameters.id)
-          window.location.reload();
-          this._service.openSnackBar("Leave Approved", "Succesfully");
+    let date = new Date();
+    if (employee.startDate >= date && employee.endDate >= employee.startDate) {
+        this._service.approveRequest(employee).subscribe(
+          (data) => {
+            if (data) {
+              this._service.allLeaveRequests(this.loginparameters.id)
+              window.location.reload();
+              this._service.openSnackBar("Leave Approved", "Succesfully");
+            }
+            else {
+              this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
 
-        }
-        else {
-          this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
-
-        }
-      },
-      (err)=>{
-        this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
+            }
+          },
+          err => {
+            this._service.openSnackBar("No Leaves Balance", "Operation Failed!!");
+          }
+        );
       }
-    );
+      else{
+        this._service.openSnackBar("Invalid dates", "Check leave dates")
+      }
   }
 
   openConfirmDialog(element: LeaveRequests, i: number): void {
@@ -76,7 +79,7 @@ export class AllLeaveRequestsComponent implements OnInit {
       }
     );
   }
-  openCancelDialog(element: LeaveRequests, i: number): void {
+  openCancelDialog( i: number): void {
 
     const dialogRef = this.dialog.open(DeletePopUpComponent, {
       width: '25%',

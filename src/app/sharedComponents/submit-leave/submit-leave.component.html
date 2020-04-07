@@ -1,23 +1,23 @@
 <div class="dialogBox" [formGroup]="leaveRequest">
   <mat-form-field hidden class="example-full-width">
     <mat-label>Employee Id</mat-label>
-    <input matInput  placeholder="id" formControlName="empId" [(ngModel)]=data.empId>
+    <input matInput placeholder="id" formControlName="empId" [(ngModel)]=data.empId>
   </mat-form-field><br>
 
   <mat-form-field class="example-full-width">
     <mat-label>Start Date</mat-label>
-    <input matInput [matDatepicker]="leaveStartDate" autocomplete="off"  formControlName=startDate>
+    <input matInput [matDatepicker]="leaveStartDate" autocomplete="off" formControlName=startDate>
     <mat-datepicker-toggle matSuffix [for]="leaveStartDate"></mat-datepicker-toggle>
     <mat-datepicker #leaveStartDate color="primary"></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
     <mat-label>End Date</mat-label>
-    <input matInput [matDatepicker]="leaveEndDate" autocomplete="off"  formControlName=endDate>
+    <input matInput [matDatepicker]="leaveEndDate" autocomplete="off" formControlName=endDate>
     <mat-datepicker-toggle matSuffix [for]="leaveEndDate"></mat-datepicker-toggle>
     <mat-datepicker #leaveEndDate color="primary"></mat-datepicker>
   </mat-form-field>
-  
+
 
   <mat-form-field>
     <mat-label>Leave Type</mat-label>
@@ -30,7 +30,7 @@
 
   <mat-form-field class="example-full-width">
     <mat-label>Reason</mat-label>
-    <textarea matInput  formControlName=reason></textarea>
+    <textarea matInput formControlName=reason></textarea>
   </mat-form-field><br>
 
 
