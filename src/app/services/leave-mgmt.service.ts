@@ -8,7 +8,7 @@ import { MatSnackBar, MatDialog } from '@angular/material';
 import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up/change-password-pop-up.component';
 import { CookieService } from 'ngx-cookie-service';
 import { __spread } from 'tslib';
-import {Location} from '@angular/common';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -55,17 +55,17 @@ export class LeaveMgmtService {
     let params = new HttpParams().set('id', empId.toString())
     this.httpClient.get(environment.apiUrl + 'Leave/GetAll', { params: params }).subscribe(
       (details) => {
-      if (details[0]!= null) {
-        localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
-        this.back.emit({ back: true });
-        this.route.navigateByUrl('all-leave-requests');
-      }
-      else{
-        this.openSnackBar("No leave requests","Have a nice day")
-      }
-  
-    });
-   
+        if (details[0] != null) {
+          localStorage.setItem('AllLeaveRequests', JSON.stringify(details));
+          this.back.emit({ back: true });
+          this.route.navigateByUrl('all-leave-requests');
+        }
+        else {
+          this.openSnackBar("No leave requests", "Have a nice day")
+        }
+
+      });
+
 
   }
   addLeaveRequest(data): Observable<any> {
@@ -92,8 +92,8 @@ export class LeaveMgmtService {
       duration: 2000,
     });
   }
-  getEmail(data):Observable<any>{
-    return this.httpClient.get(environment.apiUrl+'Employee/GetEmail', data )
+  getEmail(data): Observable<any> {
+    return this.httpClient.get(environment.apiUrl + 'Employee/GetEmail', data)
   }
   getAllEmployees(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Employee/GetAll')
@@ -103,9 +103,8 @@ export class LeaveMgmtService {
   }
   saveEmployee(employee): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Employee/Add', employee)
-
   }
-  editEmployee(data):Observable<any>{
+  editEmployee(data): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Employee/Edit', data)
   }
   addNewDesignation(designation): Observable<any> {
@@ -131,11 +130,11 @@ export class LeaveMgmtService {
     this.route.navigateByUrl('');
     localStorage.clear();
     this.cookieService.delete('LoggedIn');
-    this.visible.emit({LoggedInStatus: false});
+    this.visible.emit({ LoggedInStatus: false });
   }
-  goBack(){
+  goBack() {
     this.location.back();
-    this.visible.emit({back: false});
+    this.visible.emit({ back: false });
   }
   openChangePassDialog(id): void {
 
@@ -162,13 +161,13 @@ export class LeaveMgmtService {
       }
     });
   }
-  routeToHome(type){
-    if (type == 1 ) {
+  routeToHome(type) {
+    if (type == 1) {
       this.route.navigateByUrl('admin-home');
     }
-    else if(type!= 1){
+    else if (type != 1) {
       this.route.navigateByUrl('employee-home');
     }
   }
-  
+
 }

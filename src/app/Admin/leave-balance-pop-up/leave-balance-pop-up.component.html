@@ -2,7 +2,7 @@
     <div *ngFor ="let header of headers">
         <mat-form-field *ngIf="header != 'Id' && header != 'FirstName'" class="example-full-width" >
             <mat-label >{{header}}</mat-label>
-            <input matInput [(ngModel)]="data[header]">
+            <input matInput [(ngModel)]="data[header]" placeholder="enter number of days">
         </mat-form-field><br>
     </div>
     <button mat-button color="primary" [mat-dialog-close]="data">Update</button> <br>

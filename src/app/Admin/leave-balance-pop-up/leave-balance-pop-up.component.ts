@@ -16,9 +16,7 @@ export class LeaveBalancePopUpComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit() {
-    
     this.headers = Object.keys(this.data)
-    
   }
 
 }

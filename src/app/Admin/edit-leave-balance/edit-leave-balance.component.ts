@@ -23,7 +23,6 @@ export class EditLeaveBalanceComponent implements OnInit {
     leaves: [
       { leaveId: 0, value: 0 }
     ],
-
   }]
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog) {
 
@@ -44,8 +43,8 @@ export class EditLeaveBalanceComponent implements OnInit {
     let window = this.dialog.open(LeaveBalancePopUpComponent, {
       width: '25%',
       height: '60%',
+      data : data
     })
-    window.componentInstance.data = data;
 
     window.afterClosed().subscribe(result => {
       if (result) {
@@ -53,6 +52,7 @@ export class EditLeaveBalanceComponent implements OnInit {
         this.returnData[0]['leaves'] = [];
         this.returnData[0]['year'] = (result.Year);
 
+        // Checks whether the leave types match with the keys of data from popup component
         Object.keys(result).forEach(element => {
           this.leaves.forEach(leave => {
 
