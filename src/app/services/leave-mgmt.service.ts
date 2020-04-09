@@ -16,6 +16,7 @@ import { Location } from '@angular/common';
 export class LeaveMgmtService {
   loginparameters: EmployeeInfo;
   newPassword: any;
+  incorrectPassword:any;
   reEnterdpassword: any;
   visible: EventEmitter<any> = new EventEmitter();
   back: EventEmitter<any> = new EventEmitter();
@@ -138,26 +139,11 @@ export class LeaveMgmtService {
   }
   openChangePassDialog(id): void {
 
-    const dialogRef = this.dialog.open(ChangePasswordPopUpComponent, {
-      width: '25%',
-      height: '40%',
+    this.dialog.open(ChangePasswordPopUpComponent, {
+      width: '30%',
+      height: '45%',
       data: {
-        password1: this.newPassword, password2: this.reEnterdpassword
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result && (result.passwordOne == result.passwordTwo)) {
-        this.changePassword(id, result.passwordOne).subscribe(
-          data => {
-            if (data) {
-              this.openSnackBar("Password updated", "Successfully");
-            }
-          }
-        )
-      }
-      else {
-        this.openSnackBar("Password mismatch", "Operation Failed!!");
+        empId: id, password1: this.newPassword, password2: this.reEnterdpassword
       }
     });
   }

@@ -15,12 +15,15 @@
   <div mat-dialog-content>
     <mat-form-field>
       <mat-label>Password</mat-label>
-      <input type="password" placeholder="minimum length 6, maximum 10" formControlName="password" matInput>
+      <input type="password" placeholder="password length 6-15" formControlName="password" matInput>
     </mat-form-field>
   </div>
   <div *ngIf="Error">
     <p style="color: red;"> employee id not valid </p>
   </div>
+  <div *ngIf="incorrectPassword" style="margin-left: 7%;">  <p style="font-size:small; color: grey;">*Password must contain Uppercase, Lowercase, Numbers and Special characters, password length </p>
+  </div>
+
   <div mat-dialog-actions>
     <button mat-button (click)="onNoClick()">Cancel</button>
     <button mat-button [disabled]="!newLoginForm.valid" (click)="newLogin()" cdkFocusInitial>Add Login Details</button>

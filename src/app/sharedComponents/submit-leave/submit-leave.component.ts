@@ -51,7 +51,7 @@ export class SubmitLeaveComponent implements OnInit {
             this._service.openSnackBar("Leave request submitted", "Successfully")
           }
           else {
-            this._service.openSnackBar("No Leave Balance", "Have a nice day")
+            this._service.openSnackBar("Some error occured", "Check leave balance or leave dates")
           }
         }
       )

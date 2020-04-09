@@ -62,8 +62,8 @@ export class SignInPageComponent implements OnInit {
   }
   newLogin() {
     this.dialog.open(NewLoginComponent, {
-      width: '25%',
-      height: '45%',
+      width: '30%',
+      height: '60%',
     });
   }
 }
