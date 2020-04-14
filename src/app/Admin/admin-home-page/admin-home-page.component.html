@@ -1,41 +1,69 @@
 <div *ngIf="hideComponent">
-    <div class="EmpInfoBox">
-        <mat-tab-group>
-            <mat-tab label="Admin Info">
-                <div class="EmpInfo">
-                    <ul>
-                        <h1 style="color: rgb(14, 143, 100);">{{loginparameters.firstName}}</h1>
-                        <li><b>Employee Id</b> : {{loginparameters.id}} </li>
-                        <li><b>Employee Type</b> : {{loginparameters.typeId}} </li>
-                        <li><b>Full Name</b> : {{loginparameters.firstName}} {{loginparameters.middleName}}
-                            {{loginparameters.lastName}} </li>
-                        <li><b>Email</b> : {{loginparameters.email}} </li>
-                        <li><b>Salary</b> : {{loginparameters.salary}} </li>
-                        <li><b>Username</b> : {{loginparameters.username}}</li>
-                        <li><b>Location</b> : {{loginparameters.locationName}}</li>
-
-                    </ul>
-                </div>
-            </mat-tab>
-            <mat-tab label="Updations">
-
-                <ul>
-                    <li (click)="addNewEmployee()"> New Employee</li>
-                    <li (click)="addNewDesignation()"> New Employee Designation</li>
-                    <li (click)="addNewLeaveType()"> Add Leave Types</li>
-                    <li (click)="addNewLocation()"> Add a location</li>
-                    <li (click)="addNewProject()"> New Project</li>
-                    <li routerLink="/edit-leave-balance" routerLinkActive="active"> Edit Leave Balance</li>
-                </ul>
-            </mat-tab>
-            <mat-tab label="Employee">
-                <ul>
-                    <li (click)="allLeaveRequests()"> Approve leave request</li>
-                    <li (click)="getAllEmployees()"> Employee information</li>
-                    <li (click)="audit()"> Audit </li>
-                    <li (click)="report()"> Report of Transactions</li>
-                </ul>
-            </mat-tab>
-        </mat-tab-group>
+    <div class="menuBar">
+        <div class="icon">
+            <mat-icon [inline]="true">account_circle</mat-icon>
+        </div>
+        <div class="info">
+            <h3> {{loginparameters.firstName}} {{loginparameters.middleName}}
+                {{loginparameters.lastName}}</h3> 
+            <p> {{loginparameters.email}} </p>
+            <p [matMenuTriggerFor]="more">More Actions</p>
+            <mat-menu #more="matMenu" yPosition="below">
+                <button (click)="editInfo()" mat-menu-item>Edit Info</button>
+                <button (click)="openChangePassDialog(loginparameters.id)" mat-menu-item>Change Password</button>
+            </mat-menu> 
+        </div>
+        <div class="menu">
+            <button mat-button (click)="updations()">Updations</button> 
+            <button mat-button autofocus (click)="employeeDetails()">Employee Details </button>
+        </div>
     </div>
+    <div>
+        <div class="adminFunc" *ngIf="employeeDetailsFlag">
+            <div class="container"><br>
+                <img src="https://s3.amazonaws.com/blog.v-comply.com/wp-content/uploads/2018/04/16114031/684774092.jpg" alt=""><br><br><br>
+                <p (click)="getAllEmployees()">All Employees</p>
+            </div>
+            <div class="container"><br><br>
+                <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzWpJu4oFzReU-fDYC9AhuC1a0gUfdZBNDWtWgTl2r14KBXSV6&usqp=CAU" alt=""><br><br>
+                <p (click)="allLeaveRequests()">Leave Requests</p>
+            </div>
+            <div class="container"><br> 
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWB-Edvr-pfdTkhD967uyCIPOTL_BGGBn1rL7ksrBm7m95I_Ie&usqp=CAU" alt=""><br><br>
+                <p routerLink="/edit-leave-balance" routerLinkActive="active">Edit Leave balance</p>
+            </div>
+            <div class="container"><br><br>
+                <img src="https://www.uhyhn.co.nz/wp-content/uploads/2019/01/Audit-Benefits-pic.png" alt=""><br><br>
+                <p (click)="audit()">Audit</p>
+            </div>
+            <div class="container"><br><br>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTlakpzo7pjK40CSP3T7m2D_oymkCaT8rY4lX67AmTvw_p6iRu&usqp=CAU" alt=""><br><br>
+                <p (click)="report()">Report Generation</p>
+            </div>
+        </div>
+        <div class="adminFunc" *ngIf="updationsFlag">
+            <div class="container"> <br><br>
+                <img src="https://www.asicentral.com/media/27173/new-employee-616.jpg" alt=""><br><br>
+                <p (click)="addNewEmployee()">Add Employee</p>
+            </div>
+            <div class="container"><br><br>
+                <img src="https://www.iag.biz/wp-content/uploads/2016/10/095-15-Types-of-Questions-to-use-in-your-Requirements-Discovery-Sessions.jpg" alt=""><br><br>
+                <p (click)="addNewProject()">Add Project</p>
+            </div>
+            <div class="container"><br><br>
+                <img src="https://www.softwareadvice.com/resources/wp-content/uploads/how-to-improve-employee-engagement-Tile.png" alt=""><br><br>
+                <p (click)="addNewDesignation()">Add Designation</p>
+            </div>
+            <div class="container"><br><br>
+                <img src=" https://i.ytimg.com/vi/HPoULa-3mXU/maxresdefault.jpg" alt=""><br><br>
+                <p (click)="addNewLocation()">Add Location</p>
+            </div>
+            <div class="container"><br>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhpHKerKn2zwhgkRCe2zkKC1LIFmmwIFak0fwyghptl5bILw1B&usqp=CAU" alt=""><br><br>
+                <p (click)="addNewLeaveType()">Add Leave </p><br>
+            </div>
+        </div>
+        
+    </div>
+   
 </div>

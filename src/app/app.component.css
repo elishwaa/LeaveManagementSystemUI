@@ -1,11 +1,12 @@
 body{
-    overflow:hidden;
+    overflow:auto;
     position:fixed;
     top:0px;
     bottom:0px;
     left:0px;
     right:0px;
-    
+    width: 100%;
+    background-color: whitesmoke;
 }
 .topbar{
     width: 100%;

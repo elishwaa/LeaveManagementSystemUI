@@ -10,6 +10,7 @@ import { NewLocationComponent } from 'src/app/Admin/new-location/new-location.co
 import { NewProjectComponent } from 'src/app/Admin/new-project/new-project.component';
 import { AuditComponent } from 'src/app/Admin/audit/audit.component';
 import { TransactionListingComponent } from 'src/app/sharedComponents/transaction-listing/transaction-listing.component';
+import { EditDetailsComponent } from 'src/app/Employee/edit-details/edit-details.component';
 
 @Component({
   selector: 'app-home-page',
@@ -20,6 +21,8 @@ export class AdminHomePageComponent implements OnInit {
 
   loginparameters: EmployeeInfo
   hideComponent:boolean = false;
+  employeeDetailsFlag : boolean = true;
+  updationsFlag: boolean = false;
   constructor(public _service: LeaveMgmtService, public route: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
@@ -88,5 +91,49 @@ export class AdminHomePageComponent implements OnInit {
       height: '55%',
     })
   }
+  editInfo(): void {
+    const dialogRef = this.dialog.open(EditDetailsComponent, {
+      width: '30%',
+      height: '75%',
+      data: {
+        id: this.loginparameters.id, typeId: this.loginparameters.typeId, typeName: this.loginparameters.typeName, firstName: this.loginparameters.firstName,
+        middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,
+        salary: this.loginparameters.salary, username: this.loginparameters.username, locationId: this.loginparameters.locationId,
+        locationName: this.loginparameters.locationName, projectId: this.loginparameters.projectId, projectName: this.loginparameters.projectName
+      }
+    });
 
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        let data = { ...result, id: parseInt(result.id), typeId: parseInt(result.typeId), salary: parseInt(result.salary) }
+        console.log(data);
+
+        this._service.editEmployee(data)
+          .subscribe(
+            data => {
+              if (data) {
+                this.loginparameters = result;
+                localStorage.setItem('employee', JSON.stringify(this.loginparameters))
+              }
+            },
+            err => {
+              if (err.status == 500)
+                this._service.openSnackBar("Employee details updation", "Operation Failed!!")
+            }
+          )
+      }
+    });
+
+  }
+  openChangePassDialog(id: number): void {
+    this._service.openChangePassDialog(id);
+  }
+  employeeDetails(){
+    this.updationsFlag = false;
+    this.employeeDetailsFlag = true;
+  }
+  updations(){
+    this.employeeDetailsFlag = false;
+    this.updationsFlag = true;
+  }
 }

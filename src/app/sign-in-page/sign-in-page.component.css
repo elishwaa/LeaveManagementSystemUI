@@ -22,11 +22,13 @@ img{
     align-content: center;
     text-align: center;
     width: 80%;
+    color: white;
     padding-top: 12%;
     padding-bottom: 10%;
     border-radius: 15px;
     opacity: .8;
-    background-color:#14e6bc;
+    background-color: #135cb5; /* For browsers that do not support gradients */
+    background-image: linear-gradient(to bottom right, #1a68c7, #4d6787); /* Standard syntax (must be last) */
     margin: 8%;
    
 }

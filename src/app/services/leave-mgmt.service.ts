@@ -40,14 +40,12 @@ export class LeaveMgmtService {
   getProjects(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Project/Get')
   }
-
   getEmployeeInfo(loginDetails): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Login/Get', loginDetails);
   }
   getLeaves(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Leave/Get');
   }
-
   getLeaveRequests(empId: number): Observable<any> {
     let params = new HttpParams().set('id', empId.toString())
     return this.httpClient.get(environment.apiUrl + 'Leave/GetRequest', { params: params });
@@ -66,13 +64,10 @@ export class LeaveMgmtService {
         }
 
       });
-
-
   }
   addLeaveRequest(data): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Leave/AddRequest', data)
   }
-
   changePassword(id, Encryptedpass): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Login/EditPassword', { id, password: Encryptedpass });
   }
@@ -126,7 +121,6 @@ export class LeaveMgmtService {
   updatedLeaveBalance(updatedLeaveBalance): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Leave/EditLeaveBalance', updatedLeaveBalance);
   }
-
   logout() {
     this.route.navigateByUrl('');
     localStorage.clear();
@@ -155,5 +149,4 @@ export class LeaveMgmtService {
       this.route.navigateByUrl('employee-home');
     }
   }
-
 }

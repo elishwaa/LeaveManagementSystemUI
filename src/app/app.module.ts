@@ -39,6 +39,7 @@ import { ChangePasswordPopUpComponent } from './Employee/change-password-pop-up/
 import { CookieService } from 'ngx-cookie-service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,7 +87,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     MatSortModule,
     MatIconModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatMenuModule
      
   ],
   providers: [LeaveMgmtService,CookieService],

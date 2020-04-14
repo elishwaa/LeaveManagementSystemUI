@@ -22,6 +22,8 @@ export class EmployeeHomePageComponent implements OnInit {
   rowData = [];
   hideComponent: boolean = false;
   displayedColumns: string[] = ['casualLeave', 'sickLeave', 'other'];
+  employeeInfoFlag:boolean = false;
+  leaveRequestFlag:boolean = true;
 
   constructor(public _service: LeaveMgmtService, private _snackBar: MatSnackBar,
     public httpClient: HttpClient, public route: Router, public dialog: MatDialog) { }
@@ -40,6 +42,14 @@ export class EmployeeHomePageComponent implements OnInit {
         this.headers = Object.keys(data['LeaveBalanceData'][0]);
         this.rowData = data['LeaveBalanceData'];
       });
+  }
+  leaveRequestMenu(){
+    this.leaveRequestFlag = true;
+    this.employeeInfoFlag = false;
+  }
+  employeeInfoMenu(){
+    this.employeeInfoFlag = true;
+    this.leaveRequestFlag = false;
   }
   getLeaveRequests() {
 
@@ -65,7 +75,7 @@ export class EmployeeHomePageComponent implements OnInit {
     });
 
   }
-  edit(): void {
+  editInfo(): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {
       width: '30%',
       height: '75%',
@@ -122,6 +132,9 @@ export class EmployeeHomePageComponent implements OnInit {
         else {
           this._service.openSnackBar("No transactions yet", "Have a nice day")
         }
+      },
+      err =>{
+        this._service.openSnackBar("No transactions yet", "Have a nice day")
       }
     )
 

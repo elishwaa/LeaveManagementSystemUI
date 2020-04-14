@@ -1,24 +1,28 @@
 <div *ngIf="hideComponent">
-    <div>
-        <nav id="sidebar">
-            <ul>
-                <li> <button mat-raised-button (click)="edit()">Edit Info</button> </li>
-                <li> <button mat-raised-button (click)="openChangePassDialog(loginparameters.id)">Change
-                        Password</button> </li>
-                <li> <button mat-raised-button (click)="openSubmitLeave(loginparameters.id)">Submit Leave
-                        Request</button></li>
-                <li> <button mat-raised-button (click)="getLeaveRequests()">Leave Requests Status</button></li>
-                <li> <button mat-raised-button (click)="transactionListing()">Transaction Listing</button></li>
-                <li *ngIf="Type">
-                    <button mat-raised-button (click)="allLeaveRequests()">Employee Leave Requests</button>
-                <li>
-            </ul>
-        </nav>
+    <div class="menuBar">
+        <div class="icon">
+            <mat-icon [inline]="true">account_circle</mat-icon>
+        </div>
+        <div class="info">
+            <h3> {{loginparameters.firstName}} {{loginparameters.middleName}}
+                {{loginparameters.lastName}}</h3>
+            <p> {{loginparameters.email}} </p>
+            <p [matMenuTriggerFor]="more">More Actions</p>
+            <mat-menu #more="matMenu" yPosition="below">
+                <button (click)="editInfo()" mat-menu-item>Edit Info</button>
+                <button (click)="openChangePassDialog(loginparameters.id)" mat-menu-item>Change Password</button>
+            </mat-menu>
+        </div>
+        <div class="menu">
+            <button mat-button (click)="employeeInfoMenu()">Employee Info</button>
+            <button mat-button autofocus (click)="leaveRequestMenu()">Leave Request</button>
+
+        </div>
     </div>
-    <div class="EmpInfoBox">
-        <div class="EmpInfo">
-            <div class="employeeInfoTable">
-                <h4>Employee Details</h4>
+    <div *ngIf="employeeInfoFlag">
+        <h5 class="employeeHeader">EMPLOYEE DETAILS</h5>
+        <div class="employeeInfo">
+            <div class="firstHalf">
                 <table id="employee">
                     <tr>
                         <th>Full Name</th>
@@ -33,6 +37,10 @@
                         <th>Salary</th>
                         <td>{{loginparameters.salary}}</td>
                     </tr>
+                </table>
+            </div>
+            <div class="secondHalf">
+                <table id="employee">
                     <tr>
                         <th>Username</th>
                         <td>{{loginparameters.username}}</td>
@@ -41,34 +49,50 @@
                         <th>Location</th>
                         <td>{{loginparameters.locationName}}</td>
                     </tr>
-                    </table>
-            </div>
-            <br>
-            <div>
-                <h4>Leave Balance Details</h4>
-                <div class="example-container mat-elevation-z8" *ngIf="rowData.length">
-                    <table mat-table [dataSource]="rowData">
-
-                        <ng-container *ngFor="let header of headers" matColumnDef="{{header}}">
-                            <th mat-header-cell *matHeaderCellDef>
-                                <span *ngIf="header != 'Id'">
-                                    {{header}} 
-                                </span>
-                                </th>
-
-                            <td mat-cell *matCellDef="let element">
-                                <span *ngIf="header != 'Id'">
-                                    {{element[header]}}
-                                </span>
-                                
-                            </td>
-                        </ng-container>
-
-                        <tr mat-header-row *matHeaderRowDef="headers sticky: true"></tr>
-                        <tr mat-row *matRowDef="let row; columns: headers;"></tr>
-                    </table>
-                </div>
+                    <tr>
+                        <th>Project</th>
+                        <td>{{loginparameters.projectName}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
+        <h5 class="leaveBalanceHeader">LEAVE BALANCE DETAILS</h5>
+        <div class="leaveBalanceInfo">
+            <table id="leave">
+                <tr *ngFor="let header of headers">
+                    <th>
+                        <span *ngIf="header != 'Id'">
+                            {{header}}
+                        </span>
+                    </th>
+                    <td *ngFor="let element of rowData ">
+                        <span *ngIf="header != 'Id'">
+                            {{element[header]}}
+                        </span>
+                    </td>
+                </tr>
+
+            </table>
+        </div>
     </div>
-</div>
+    <div class="employeeFunc" *ngIf="leaveRequestFlag">
+        <div class="container"> <br><br><br>
+            <img src="https://www.careeraddict.com/uploads/article/58274/illustration-woman-writing-absence-letter.jpg"
+                alt=""><br><br>
+            <p (click)="openSubmitLeave(loginparameters.id)">New Request</p>
+        </div>
+        <div class="container"><br><br><br>
+            <img src="https://blog.data-basics.com/hs-fs/hubfs/Nonprofit-Leave-Management-Best-Practices.png?width=800&name=Nonprofit-Leave-Management-Best-Practices.png"
+                alt=""><br><br>
+            <p (click)="getLeaveRequests()">Request Status</p>
+        </div>
+        <div class="container"><br>
+            <img src="https://www.atsi.in/images//inner/emp-payroll.png" alt="">
+            <p (click)="transactionListing()">Transactions</p>
+        </div>
+        <div *ngIf="Type" class="container"><br><br>
+            <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzWpJu4oFzReU-fDYC9AhuC1a0gUfdZBNDWtWgTl2r14KBXSV6&usqp=CAU"
+                alt=""><br><br>
+            <p (click)="allLeaveRequests()">Employee Leave Requests </p><br>
+        </div> -->
+    </div>
