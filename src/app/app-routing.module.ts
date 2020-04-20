@@ -10,12 +10,12 @@ import { AuditComponent } from './Admin/audit/audit.component';
 import { AdminHomePageComponent } from './Admin/admin-home-page/admin-home-page.component';
 import { AllEmployeesComponent } from './Admin/all-employees/all-employees.component';
 import { TransactionListingComponent } from './sharedComponents/transaction-listing/transaction-listing.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
-  
   {
     path: '',
-    component : SignInPageComponent
+    component: AppComponent
   },
   { 
     path : 'admin-home', 
@@ -56,7 +56,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

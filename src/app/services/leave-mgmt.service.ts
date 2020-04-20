@@ -9,6 +9,7 @@ import { ChangePasswordPopUpComponent } from '../Employee/change-password-pop-up
 import { CookieService } from 'ngx-cookie-service';
 import { __spread } from 'tslib';
 import { Location } from '@angular/common';
+import { AdalService } from 'adal-angular4';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +22,7 @@ export class LeaveMgmtService {
   visible: EventEmitter<any> = new EventEmitter();
   back: EventEmitter<any> = new EventEmitter();
   constructor(public route: Router, public httpClient: HttpClient,
-    private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService, public location: Location) {
+    private _snackBar: MatSnackBar, public dialog: MatDialog, public cookieService: CookieService, public location: Location, public adalService: AdalService) {
 
   }
   getEmpType(): Observable<any> {
@@ -122,7 +123,7 @@ export class LeaveMgmtService {
     return this.httpClient.post(environment.apiUrl + 'Leave/EditLeaveBalance', updatedLeaveBalance);
   }
   logout() {
-    this.route.navigateByUrl('');
+    this.adalService.logOut();
     localStorage.clear();
     this.cookieService.delete('LoggedIn');
     this.visible.emit({ LoggedInStatus: false });

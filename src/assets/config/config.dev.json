@@ -1,0 +1,30 @@
+{
+    "env": {
+    "name": "DEV"
+     },
+    "appInsights": {
+    "instrumentationKey": "<dev-guid-here>"
+     },
+    "logging": {
+    "console": true,
+    "appInsights": false
+    },
+    "aad": {
+    "requireAuth": true,
+    "tenant": "<dev-guid-here>",
+    "clientId": "<dev-guid-here>"
+    },
+    "apiServer": {
+    "metadata": "https://metadata.demo.com/api/v1.0/",
+    "rules": "https://rules.demo.com/api/v1.0/"
+    },
+    "adalConfig": {
+        "requireAuth": true,
+        "clientId": "53f2a03b-145b-403a-804c-dc98a85b5d2e",
+        "tenant": "bf3fb9cd-ad82-45ee-bdbe-ae6176997c7c",
+        "cacheLocation": "localStorage",
+        "endpoints": {
+            "api": "bbe5baf8-0a2b-41aa-a145-2d52f5d3dc4d"
+        }
+    }
+}

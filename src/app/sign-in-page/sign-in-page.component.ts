@@ -7,6 +7,7 @@ import { ForgotPasswordComponent } from '../sharedComponents/forgot-password/for
 import { NewLoginComponent } from '../sharedComponents/new-login/new-login.component';
 import { EmployeeInfo } from '../models/employeeInfo';
 import { CookieService } from 'ngx-cookie-service';
+import { AdalService } from 'adal-angular4';
 
 
 @Component({
@@ -17,14 +18,16 @@ import { CookieService } from 'ngx-cookie-service';
 export class SignInPageComponent implements OnInit {
   signInForm: FormGroup;
   loginParameters: EmployeeInfo;
-  constructor(public route: Router, public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService) { }
+  constructor(public route: Router, public dialog: MatDialog, public _service: LeaveMgmtService, public cookieService: CookieService, private authService: AdalService) { }
 
   ngOnInit() {
     this.signInForm = new FormGroup({
       username: new FormControl(),
-      password: new FormControl('',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(10)]))
+      // password: new FormControl('',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(10)]))
     });
 
+    
+    
     if (this.cookieService.get('LoggedIn')) {
       this._service.visible.emit({ LoggedInStatus: true });
       this.loginParameters = JSON.parse(localStorage.getItem('employee'));
@@ -38,6 +41,7 @@ export class SignInPageComponent implements OnInit {
   }
 
   login() {
+    debugger
     this._service.getEmployeeInfo(this.signInForm.value).subscribe(
       (data) => {
         if (data.id != 0) {
