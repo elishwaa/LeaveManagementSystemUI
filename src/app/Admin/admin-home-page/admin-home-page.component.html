@@ -20,47 +20,47 @@
     </div>
     <div>
         <div class="adminFunc" *ngIf="employeeDetailsFlag">
-            <div class="container"><br>
+            <div class="container" (click)="getAllEmployees()"><br>
                 <img src="https://s3.amazonaws.com/blog.v-comply.com/wp-content/uploads/2018/04/16114031/684774092.jpg" alt=""><br><br><br>
-                <p (click)="getAllEmployees()">All Employees</p>
+                <p >All Employees</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="allLeaveRequests()"><br><br>
                 <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzWpJu4oFzReU-fDYC9AhuC1a0gUfdZBNDWtWgTl2r14KBXSV6&usqp=CAU" alt=""><br><br>
-                <p (click)="allLeaveRequests()">Leave Requests</p>
+                <p >Leave Requests</p>
             </div>
-            <div class="container"><br> 
+            <div class="container" routerLink="/edit-leave-balance" routerLinkActive="active"><br> 
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQWB-Edvr-pfdTkhD967uyCIPOTL_BGGBn1rL7ksrBm7m95I_Ie&usqp=CAU" alt=""><br><br>
-                <p routerLink="/edit-leave-balance" routerLinkActive="active">Edit Leave balance</p>
+                <p >Edit Leave balance</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="audit()"><br><br>
                 <img src="https://www.uhyhn.co.nz/wp-content/uploads/2019/01/Audit-Benefits-pic.png" alt=""><br><br>
-                <p (click)="audit()">Audit</p>
+                <p >Audit</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="report()"><br><br>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQTlakpzo7pjK40CSP3T7m2D_oymkCaT8rY4lX67AmTvw_p6iRu&usqp=CAU" alt=""><br><br>
-                <p (click)="report()">Report Generation</p>
+                <p >Report Generation</p>
             </div>
         </div>
         <div class="adminFunc" *ngIf="updationsFlag">
-            <div class="container"> <br><br>
+            <div class="container" (click)="addNewEmployee()"> <br><br>
                 <img src="https://www.asicentral.com/media/27173/new-employee-616.jpg" alt=""><br><br>
-                <p (click)="addNewEmployee()">Add Employee</p>
+                <p >Add Employee</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="addNewProject()"><br><br>
                 <img src="https://www.iag.biz/wp-content/uploads/2016/10/095-15-Types-of-Questions-to-use-in-your-Requirements-Discovery-Sessions.jpg" alt=""><br><br>
-                <p (click)="addNewProject()">Add Project</p>
+                <p >Add Project</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="addNewDesignation()"><br><br>
                 <img src="https://www.softwareadvice.com/resources/wp-content/uploads/how-to-improve-employee-engagement-Tile.png" alt=""><br><br>
-                <p (click)="addNewDesignation()">Add Designation</p>
+                <p >Add Designation</p>
             </div>
-            <div class="container"><br><br>
+            <div class="container" (click)="addNewLocation()"><br><br>
                 <img src=" https://i.ytimg.com/vi/HPoULa-3mXU/maxresdefault.jpg" alt=""><br><br>
-                <p (click)="addNewLocation()">Add Location</p>
+                <p >Add Location</p>
             </div>
-            <div class="container"><br>
+            <div class="container" (click)="addNewLeaveType()"><br>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRhpHKerKn2zwhgkRCe2zkKC1LIFmmwIFak0fwyghptl5bILw1B&usqp=CAU" alt=""><br><br>
-                <p (click)="addNewLeaveType()">Add Leave </p><br>
+                <p >Add Leave </p><br>
             </div>
         </div>
         

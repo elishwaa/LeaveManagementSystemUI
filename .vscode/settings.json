@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/08ed556e-b9c6-4ae8-a40f-3861bb8a2302/resourceGroups/leaveManagementSystemUI/providers/Microsoft.Web/sites/EmployeeLeaveManagementSystem",
+    "appService.deploySubpath": "dist\\EmpLeaveManagementSystem"
+}

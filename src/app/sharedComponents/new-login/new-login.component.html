@@ -18,9 +18,7 @@
       <input type="password" placeholder="password length 6-15" formControlName="password" matInput>
     </mat-form-field>
   </div>
-  <div *ngIf="Error">
-    <p style="color: red;"> employee id not valid </p>
-  </div>
+ 
   <div *ngIf="incorrectPassword" style="margin-left: 7%;">  <p style="font-size:small; color: grey;">*Password must contain Uppercase, Lowercase, Numbers and Special characters, password length 6-10 </p>
   </div>
 

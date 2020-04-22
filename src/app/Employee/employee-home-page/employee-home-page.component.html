@@ -76,23 +76,23 @@
         </div>
     </div>
     <div class="employeeFunc" *ngIf="leaveRequestFlag">
-        <div class="container"> <br><br><br>
+        <div class="container" (click)="openSubmitLeave(loginparameters.id)"> <br><br><br>
             <img src="https://www.careeraddict.com/uploads/article/58274/illustration-woman-writing-absence-letter.jpg"
                 alt=""><br><br>
-            <p (click)="openSubmitLeave(loginparameters.id)">New Request</p>
+            <p>New Request</p>
         </div>
-        <div class="container"><br><br><br>
+        <div class="container" (click)="getLeaveRequests()"><br><br><br>
             <img src="https://blog.data-basics.com/hs-fs/hubfs/Nonprofit-Leave-Management-Best-Practices.png?width=800&name=Nonprofit-Leave-Management-Best-Practices.png"
                 alt=""><br><br>
-            <p (click)="getLeaveRequests()">Request Status</p>
+            <p>Request Status</p>
         </div>
-        <div class="container"><br>
+        <div class="container" (click)="transactionListing()"><br>
             <img src="https://www.atsi.in/images//inner/emp-payroll.png" alt="">
-            <p (click)="transactionListing()">Transactions</p>
+            <p>Transactions</p>
         </div>
-        <div *ngIf="Type" class="container"><br><br>
+        <div *ngIf="Type" class="container" (click)="allLeaveRequests()"><br><br>
             <img src=" https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSzWpJu4oFzReU-fDYC9AhuC1a0gUfdZBNDWtWgTl2r14KBXSV6&usqp=CAU"
                 alt=""><br><br>
-            <p (click)="allLeaveRequests()">Employee Leave Requests </p><br>
-        </div> -->
+            <p>Employee Leave Requests</p>
+        </div> 
     </div>

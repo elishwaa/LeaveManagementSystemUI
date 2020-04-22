@@ -18,5 +18,8 @@ export class LeaveBalancePopUpComponent implements OnInit {
   ngOnInit() {
     this.headers = Object.keys(this.data)
   }
+  onNoClick(){
+    this.dialogRef.close();
+  }
 
 }

@@ -13,11 +13,11 @@
   #employee td, #employee th, #leave td, #leave th {
     padding: 2%;
   }
-  #employee th {
+  /* #employee th {
     padding-right: 0;
     text-align: left;
     width: 50%;
-  }
+  } */
 
 .icon {
     padding-top: 0;

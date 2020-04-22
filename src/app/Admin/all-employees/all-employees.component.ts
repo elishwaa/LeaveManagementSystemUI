@@ -21,7 +21,7 @@ export class AllEmployeesComponent implements OnInit {
   constructor(public _service: LeaveMgmtService, public dialog: MatDialog, public httpClient: HttpClient, public route: Router) { }
 
   ngOnInit() {
-
+ 
     this._service.getAllEmployees().subscribe(
       data => {
         this.employeeInfo = data;
@@ -51,8 +51,11 @@ export class AllEmployeesComponent implements OnInit {
         this._service.editEmployee(data).subscribe(
           data => {
             if (data) {
-              this.employeeInfo = result;
-              window.location.reload();
+              this._service.getAllEmployees().subscribe(
+                data => {
+                  this.employeeInfo = data;
+                }
+              )
             }
             (error: HttpErrorResponse) => {
               if (!error.ok) {
