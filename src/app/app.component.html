@@ -3,7 +3,7 @@
 </head>
 <body>
   <mat-toolbar >
-    <div  class="topbar"> 
+    <div *ngIf="visible" class="topbar"> 
       <div style="float: left">LEAVE  MANAGEMENT SYSTEM</div>
       <button  mat-raised-button (click)=logout()>Logout</button>
       <button mat-raised-button (click)=home()>Home</button>

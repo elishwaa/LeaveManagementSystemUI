@@ -3,7 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  apiUrl: 'https://localhost:44398/api/',
+  apiUrl: 'https://lmsweb20200422010418.azurewebsites.net/api/',
   production: false,
   authConfig: {
     tenant: 'bf3fb9cd-ad82-45ee-bdbe-ae6176997c7c',
