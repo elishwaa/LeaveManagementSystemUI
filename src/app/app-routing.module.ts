@@ -17,10 +17,6 @@ const routes: Routes = [
     path: '',
     component: AppComponent
   },
-  {
-    path: '**',
-    component: AppComponent
-  },
   { 
     path : 'admin-home', 
     component: AdminHomePageComponent
