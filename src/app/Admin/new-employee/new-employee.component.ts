@@ -48,6 +48,7 @@ export class NewEmployeeComponent implements OnInit {
       empType: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required]),
       salary: new FormControl('', [Validators.required]),
+      username: new FormControl ('',[Validators.required]),
       manager: new FormControl('', [Validators.required]),
       project: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required])

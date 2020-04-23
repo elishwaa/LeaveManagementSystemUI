@@ -37,12 +37,8 @@
     <input matInput placeholder="email" [(ngModel)]="data.email">
   </mat-form-field><br>
 
-  <div *ngIf="isAdmin">
-    <mat-form-field class="example-full-width">
-      <mat-label>Username</mat-label>
-      <input matInput placeholder="username" [(ngModel)]="data.username">
-    </mat-form-field><br>
 
+  <div *ngIf="isAdmin">
     <mat-form-field *ngIf="isAdmin" class="example-full-width">
       <mat-label>Salary</mat-label>
       <input matInput placeholder="salary" [(ngModel)]="data.salary">
@@ -74,6 +70,11 @@
         </mat-option>
       </mat-select>
     </mat-form-field> <br>
+
+    <mat-form-field hidden class="example-full-width">
+      <mat-label>Username</mat-label>
+      <input matInput placeholder="username" [(ngModel)]="data.username">
+    </mat-form-field>
   </div>
 
   <button mat-button color="primary" [mat-dialog-close]="data">Save Changes</button>

@@ -42,7 +42,7 @@ export class SubmitLeaveComponent implements OnInit {
 
     let data = { ...this.leaveRequest.value, empId: parseInt(this.leaveRequest.value.empId), leave: parseInt(this.leaveRequest.value.leave) }
     let date = new Date();
-    if (data.startDate >= date && data.endDate >= data.startDate) {
+    if (data.endDate >= data.startDate) {
 
       this._service.addLeaveRequest(data).subscribe(
         data => {
