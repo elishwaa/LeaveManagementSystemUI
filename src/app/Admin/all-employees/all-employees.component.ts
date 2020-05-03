@@ -83,7 +83,7 @@ export class AllEmployeesComponent implements OnInit {
   addLeaveRequest(employee: EmployeeInfo): void {
     const dialogRef = this.dialog.open(SubmitLeaveComponent, {
       width: '30%',
-      height: '75%',
+      height: '68%',
       data: {
         empId: employee.id
       }

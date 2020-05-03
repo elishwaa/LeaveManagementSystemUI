@@ -32,9 +32,7 @@
     <mat-label>Reason</mat-label>
     <textarea matInput formControlName=reason></textarea>
   </mat-form-field><br>
-
-
+  
   <button mat-button [disabled]="!leaveRequest.valid" (click)="submitLeave()">Save Changes</button>
   <button mat-button (click)="onNoClick()"> Cancel</button>
-
 </div>

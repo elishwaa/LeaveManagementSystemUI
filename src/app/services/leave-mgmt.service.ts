@@ -44,6 +44,10 @@ export class LeaveMgmtService {
   getEmployeeInfo(loginDetails): Observable<any> {
     return this.httpClient.post(environment.apiUrl + 'Login/Get', loginDetails);
   }
+  getEmployeeDetails(id){
+    let params = new HttpParams().set('id', id.toString())
+    return this.httpClient.get(environment.apiUrl + 'Employee/Get', { params: params })
+  }
   getLeaves(): Observable<any> {
     return this.httpClient.get(environment.apiUrl + 'Leave/Get');
   }

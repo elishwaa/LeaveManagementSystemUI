@@ -16,6 +16,7 @@ import { SubmitLeaveComponent } from 'src/app/sharedComponents/submit-leave/subm
 })
 export class EmployeeHomePageComponent implements OnInit {
   loginparameters: EmployeeInfo;
+  employee : EmployeeInfo;
   leaveRequests: LeaveRequests;
   Type: boolean = false;
   headers: string[] = [];
@@ -31,6 +32,12 @@ export class EmployeeHomePageComponent implements OnInit {
   ngOnInit() {
     if (localStorage.getItem('employee') != null) {
       this.loginparameters = JSON.parse(localStorage.getItem('employee'));
+      this._service.getEmployeeDetails(this.loginparameters.id).subscribe(
+        data =>{
+          localStorage.setItem('employee', JSON.stringify(data));
+          this.loginparameters = JSON.parse(localStorage.getItem('employee'));
+        }
+      )
       this.hideComponent = true;
       if (this.loginparameters.typeName == 'Manager') {
         this.Type = true;
@@ -68,7 +75,7 @@ export class EmployeeHomePageComponent implements OnInit {
   openSubmitLeave(id: number): void {
     this.dialog.open(SubmitLeaveComponent, {
       width: '30%',
-      height: '75%',
+      height: '68%',
       data: {
         empId: id
       }

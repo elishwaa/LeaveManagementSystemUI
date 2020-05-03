@@ -25,9 +25,6 @@ export class SignInPageComponent implements OnInit {
       username: new FormControl(),
       // password: new FormControl('',Validators.compose([Validators.required,Validators.minLength(6), Validators.maxLength(10)]))
     });
-
-    
-    
     if (this.cookieService.get('LoggedIn')) {
       this._service.visible.emit({ LoggedInStatus: true });
       this.loginParameters = JSON.parse(localStorage.getItem('employee'));
