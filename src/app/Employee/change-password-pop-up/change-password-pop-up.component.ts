@@ -14,6 +14,8 @@ export class ChangePasswordPopUpComponent implements OnInit {
   password1;
   password2;
   empId;
+  hidepassword1 = true;
+  hidepassword2 = true;
   constructor(public dialogRef: MatDialogRef<EmployeeHomePageComponent, ForgotPasswordComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, public _service:LeaveMgmtService) { }
 

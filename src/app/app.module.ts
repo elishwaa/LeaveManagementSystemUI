@@ -43,6 +43,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { AdalService } from 'adal-angular4';
 import { RouterModule } from '@angular/router';
 
+
 @NgModule({
   declarations: [
     AppComponent,

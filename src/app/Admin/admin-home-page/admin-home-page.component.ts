@@ -94,7 +94,6 @@ export class AdminHomePageComponent implements OnInit {
   editInfo(): void {
     const dialogRef = this.dialog.open(EditDetailsComponent, {
       width: '30%',
-      height: '75%',
       data: {
         id: this.loginparameters.id, typeId: this.loginparameters.typeId, typeName: this.loginparameters.typeName, firstName: this.loginparameters.firstName,
         middleName: this.loginparameters.middleName, lastName: this.loginparameters.lastName, email: this.loginparameters.email,

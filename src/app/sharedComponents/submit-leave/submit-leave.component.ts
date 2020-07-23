@@ -29,8 +29,8 @@ export class SubmitLeaveComponent implements OnInit {
     )
     this.leaveRequest = new FormGroup({
       empId: new FormControl(),
-      startDate: new FormControl('', [Validators.required]),
-      endDate: new FormControl('', [Validators.required]),
+      startDate: new FormControl('yyyy/MM/dd', [Validators.required]),
+      endDate: new FormControl('yyyy/MM/dd', [Validators.required]),
       leave: new FormControl('', [Validators.required]),
       reason: new FormControl('', [Validators.required]),
     });
@@ -53,6 +53,9 @@ export class SubmitLeaveComponent implements OnInit {
           else {
             this._service.openSnackBar("Some error occured", "Check leave balance or leave dates")
           }
+        },
+        err =>{
+          this._service.openSnackBar("Some error occured", "Operation Failed")
         }
       )
     }
